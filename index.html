@@ -4,7 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Furniro - Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css">
 </head>
 
 <body>
@@ -16,7 +19,7 @@
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="shop.html">Shop</a></li>
+        <li><a href="shop/index.html">Shop</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
@@ -30,18 +33,342 @@
   </header>
 
   <main>
-    <section>
+    <!-- Hero Banner -->
+    <section class="hero">
+      <div class="hero-content">
+        <span class="hero-tag">New Arrival</span>
+        <h1>Discover Our New Collection</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
+        <a href="shop/index.html" class="btn btn-buy">BUY NOW</a>
+      </div>
+    </section>
+
+    <!-- Browse The Range -->
+    <section class="browse-range">
+      <div class="section-heading">
+        <h2>Browse The Range</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+
+      <div class="range-grid">
+        <div class="range-item">
+          <img src="images/category-dining.jpg" alt="Dining room table styled with linen and pottery">
+          <h3>Dining</h3>
+        </div>
+        <div class="range-item">
+          <img src="images/category-living.jpg" alt="Living room armchair with cushions and throw">
+          <h3>Living</h3>
+        </div>
+        <div class="range-item">
+          <img src="images/category-bedroom.jpg" alt="Bedroom corner with folding screen and plant">
+          <h3>Bedroom</h3>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Product -->
+    <section class="our-products">
+      <h2 class="section-title">Our Products</h2>
+
+      <div class="products-grid">
+
+        <div class="product-card">
+          <div class="product-thumb">
+            <img src="images/product-syltherine.jpg" alt="Syltherine stylish cafe chair">
+            <span class="badge badge--sale">-30%</span>
+
+            <div class="product-overlay">
+              <button class="btn-add-cart">Add to cart</button>
+              <div class="product-actions">
+                <a href="#" class="action-link"><img src="images/icon/icon-share.svg" alt="">Share</a>
+                <a href="#" class="action-link"><img src="images/icon/icon-compare.svg" alt="">Compare</a>
+                <a href="#" class="action-link"><img src="images/icon/icon-like.svg" alt="">Like</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-info">
+            <h3 class="product-name">Syltherine</h3>
+            <p class="product-category">Stylish cafe chair</p>
+            <div class="product-price">
+              <span class="price">Rp 2.500.000</span>
+              <span class="price-old">Rp 3.500.000</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-thumb">
+            <img src="images/product-leviosa.jpg" alt="leviosa">
+
+            <div class="product-overlay">
+              <button class="btn-add-cart">Add to cart</button>
+              <div class="product-actions">
+                <a href="#" class="action-link"><img src="images/icon/icon-share.svg" alt="">Share</a>
+                <a href="#" class="action-link"><img src="images/icon/icon-compare.svg" alt="">Compare</a>
+                <a href="#" class="action-link"><img src="images/icon/icon-like.svg" alt="">Like</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-info">
+            <h3 class="product-name">Leviosa</h3>
+            <p class="product-category">Stylish cafe chair</p>
+            <div class="product-price">
+              <span class="price">Rp 2.500.000</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-thumb">
+            <img src="images/product-lolito.jpg" alt="Syltherine stylish cafe chair">
+            <span class="badge badge--sale">-50%</span>
+
+            <div class="product-overlay">
+              <button class="btn-add-cart">Add to cart</button>
+              <div class="product-actions">
+                <a href="#" class="action-link"><img src="images/icon/icon-share.svg" alt="">Share</a>
+                <a href="#" class="action-link"><img src="images/icon/icon-compare.svg" alt="">Compare</a>
+                <a href="#" class="action-link"><img src="images/icon/icon-like.svg" alt="">Like</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-info">
+            <h3 class="product-name">Lolito</h3>
+            <p class="product-category">Luxuary big sofa</p>
+            <div class="product-price">
+              <span class="price">Rp 7.000.000</span>
+              <span class="price-old">Rp 14.000.000</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-thumb">
+            <img src="images/product-respira.jpg" alt="Syltherine stylish cafe chair">
+            <span class="badge badge--new">New</span>
+
+            <div class="product-overlay">
+              <button class="btn-add-cart">Add to cart</button>
+              <div class="product-actions">
+                <a href="#" class="action-link"><img src="images/icon/icon-share.svg" alt="">Share</a>
+                <a href="#" class="action-link"><img src="images/icon/icon-compare.svg" alt="">Compare</a>
+                <a href="#" class="action-link"><img src="images/icon/icon-like.svg" alt="">Like</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-info">
+            <h3 class="product-name">Syltherine</h3>
+            <p class="product-category">Stylish cafe chair</p>
+            <div class="product-price">
+              <span class="price">Rp 2.500.000</span>
+              <span class="price-old">Rp 3.500.000</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-thumb">
+            <img src="images/product-grifo.jpg" alt="Syltherine stylish cafe chair">
+
+            <div class="product-overlay">
+              <button class="btn-add-cart">Add to cart</button>
+              <div class="product-actions">
+                <a href="#" class="action-link"><img src="images/icon/icon-share.svg" alt="">Share</a>
+                <a href="#" class="action-link"><img src="images/icon/icon-compare.svg" alt="">Compare</a>
+                <a href="#" class="action-link"><img src="images/icon/icon-like.svg" alt="">Like</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-info">
+            <h3 class="product-name">Syltherine</h3>
+            <p class="product-category">Stylish cafe chair</p>
+            <div class="product-price">
+              <span class="price">Rp 2.500.000</span>
+              <span class="price-old">Rp 3.500.000</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-thumb">
+            <img src="images/product-muggo.jpg" alt="Syltherine stylish cafe chair">
+            <span class="badge badge--new">New</span>
+
+            <div class="product-overlay">
+              <button class="btn-add-cart">Add to cart</button>
+              <div class="product-actions">
+                <a href="#" class="action-link"><img src="images/icon/icon-share.svg" alt="">Share</a>
+                <a href="#" class="action-link"><img src="images/icon/icon-compare.svg" alt="">Compare</a>
+                <a href="#" class="action-link"><img src="images/icon/icon-like.svg" alt="">Like</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-info">
+            <h3 class="product-name">Syltherine</h3>
+            <p class="product-category">Stylish cafe chair</p>
+            <div class="product-price">
+              <span class="price">Rp 2.500.000</span>
+              <span class="price-old">Rp 3.500.000</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-thumb">
+            <img src="images/product-pingky.jpg" alt="Syltherine stylish cafe chair">
+            <span class="badge badge--sale">-50%</span>
+
+            <div class="product-overlay">
+              <button class="btn-add-cart">Add to cart</button>
+              <div class="product-actions">
+                <a href="#" class="action-link"><img src="images/icon/icon-share.svg" alt="">Share</a>
+                <a href="#" class="action-link"><img src="images/icon/icon-compare.svg" alt="">Compare</a>
+                <a href="#" class="action-link"><img src="images/icon/icon-like.svg" alt="">Like</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-info">
+            <h3 class="product-name">Syltherine</h3>
+            <p class="product-category">Stylish cafe chair</p>
+            <div class="product-price">
+              <span class="price">Rp 2.500.000</span>
+              <span class="price-old">Rp 3.500.000</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-thumb">
+            <img src="images/product-potty.jpg" alt="Syltherine stylish cafe chair">
+            <span class="badge badge--new">New</span>
+
+            <div class="product-overlay">
+              <button class="btn-add-cart">Add to cart</button>
+              <div class="product-actions">
+                <a href="#" class="action-link"><img src="images/icon/icon-share.svg" alt="">Share</a>
+                <a href="#" class="action-link"><img src="images/icon/icon-compare.svg" alt="">Compare</a>
+                <a href="#" class="action-link"><img src="images/icon/icon-like.svg" alt="">Like</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-info">
+            <h3 class="product-name">Syltherine</h3>
+            <p class="product-category">Stylish cafe chair</p>
+            <div class="product-price">
+              <span class="price">Rp 2.500.000</span>
+              <span class="price-old">Rp 3.500.000</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <button class="btn btn-outline show-more">Show More</button>
+    </section>
+
+    <!-- Room Inspiration -->
+    <section class="room-inspiration">
+      <div class="room-inspiration-inner">
+        <div class="room-inspiration-content">
+          <h2>50+ Beautiful rooms inspiration</h2>
+          <p>Our designer already made a lot of beautiful prototipe of rooms that inspire you</p>
+          <a href="shop/index.html" class="btn btn-primary">Explore More</a>
+        </div>
+
+        <div class="room-carousel">
+          <div class="room-carousel-viewport">
+            <div class="room-carousel-track">
+              <div class="room-slide">
+                <img src="images/room-bedroom.jpg" alt="Bedroom styled with a framed gallery wall and floor cushions">
+                <div class="room-caption">
+                  <div class="room-caption-text">
+                    <span class="room-caption-index">01 &mdash; Bed Room</span>
+                    <h3>Inner Peace</h3>
+                  </div>
+                  <a href="#" class="room-caption-arrow" aria-label="View Bed Room inspiration">&rarr;</a>
+                </div>
+              </div>
+              <div class="room-slide">
+                <img src="images/room-dining.jpg" alt="Bright dining nook with wooden chairs and a wall clock">
+              </div>
+              <div class="room-slide">
+                <img src="images/room-living.jpg" alt="Wooden dresser styled with a lamp and hanging vase">
+              </div>
+
+              <div class="room-carousel-dots">
+                <button type="button" class="dot is-active" aria-label="Go to slide 1"></button>
+                <button type="button" class="dot" aria-label="Go to slide 2"></button>
+                <button type="button" class="dot" aria-label="Go to slide 3"></button>
+              </div>
+            </div>
+
+            <button type="button" class="room-carousel-next" aria-label="Next room">&gt;</button>
+          </div>
+        </div>
+      </div>
 
     </section>
 
-    <section>
-
+    <!-- Share Setup -->
+    <section class="share-setup">
+      <p class="share-setup-tag">Share your setup with</p>
+      <h2 class="share-setup-hashtag">#FuniroFurniture</h2>
     </section>
   </main>
 
-  <footer>
+  <footer class="site-footer">
+    <div class="footer-context">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <p class="footer-logo">Funiro.</p>
+          <address>400 University Drive Suite 200 Coral Gables,<br>FL 33134 USA</address>
+        </div>
 
+        <div class="footer-col">
+          <h3>Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop/index.html">Shop</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Help</h3>
+          <ul>
+            <li><a href="#">Payment Options</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Privacy Policies</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-newsletter">
+          <h3>Newsletter</h3>
+          <form class="newsletter-form">
+            <label for="newsletter-email" class="sr-only">Email address</label>
+            <input type="email" id="newsletter-email" name="email" placeholder="Enter Your Email Address" required>
+            <button type="submit">SUBSCRIBE</button>
+          </form>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>2023 furino. All rights reverved</p>
+      </div>
+    </div>
   </footer>
+
+  <script src="js/main.js"></script>
 </body>
 
 </html>
