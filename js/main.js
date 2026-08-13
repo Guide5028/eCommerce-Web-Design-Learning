@@ -1,5 +1,4 @@
 /* product card */
-
 (function () {
   var isTouchDevice = window.matchMedia('(hover: none)').matches;
 
@@ -93,7 +92,6 @@
 
       track.style.transform = 'translateX(-' + offset + 'px)';
 
-      // dots live inside the track, so counter-shift them to stay put
       if (dotsWrap) {
         dotsWrap.style.transform = 'translateX(' + offset + 'px)';
       }
