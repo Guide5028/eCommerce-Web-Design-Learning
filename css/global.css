@@ -785,7 +785,9 @@ nav ul li a.active {
 
 .feature-icon {
   flex-shrink: 0;
-  color: #333;
+  width: 40px;
+  height: 40px;
+  mix-blend-mode: multiply;
 }
 
 .feature-title {

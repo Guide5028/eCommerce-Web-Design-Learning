@@ -209,6 +209,23 @@
   });
 })();
 
+/* checkout payment method */
+
+(function () {
+  var options = document.querySelectorAll('.payment-option input[type="radio"]');
+  var activeName = document.getElementById('payment-active-name');
+  var activeDesc = document.getElementById('payment-active-desc');
+  if (!options.length || !activeName || !activeDesc) return;
+
+  options.forEach(function (radio) {
+    radio.addEventListener('change', function () {
+      if (!radio.checked) return;
+      activeName.textContent = radio.value;
+      activeDesc.textContent = radio.dataset.desc || '';
+    });
+  });
+})();
+
 /* newsletter */
 
 (function () {
