@@ -1,5 +1,8 @@
 /* product card */
 (function () {
+
+  // เช็คว่า เป็น ipad iphone รึป่าว ถ้าใช่การกด hover ทำไม่ได้เปลี่ยนเป็นกดครั้งเเรก ขึ้นเเบบ hover 
+
   var isTouchDevice = window.matchMedia('(hover: none)').matches;
 
   if (isTouchDevice) {
@@ -28,6 +31,7 @@
     });
   }
 
+  // click เพิ่มสินค้า โดยใช้ busy เพื่อ กันไม่ให้เกิดการกด ซ้ำสองครั้ง มี timeout
   document.addEventListener('click', function (event) {
     var button = event.target.closest('.btn-add-cart');
     if (!button) return;
@@ -47,6 +51,7 @@
     }, 1200);
   });
 
+  // click link เเต่ยังไม่ได้ตั้งปลายทาง
   document.addEventListener('click', function (event) {
     var link = event.target.closest('.action-link');
     if (!link) return;
@@ -61,6 +66,26 @@
     if (link.getAttribute('href') === '#') {
       event.preventDefault();
     }
+  });
+})();
+
+/* mobile nav toggle */
+
+(function () {
+  var header = document.querySelector('header');
+  var toggle = header ? header.querySelector('.nav-toggle') : null;
+  if (!header || !toggle) return;
+
+  toggle.addEventListener('click', function () {
+    var isOpen = header.classList.toggle('nav-open');
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+
+  header.querySelectorAll('nav a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      header.classList.remove('nav-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
   });
 })();
 
@@ -79,6 +104,7 @@
 
     if (!track || slides.length === 0) return;
 
+    //infinite loop slide
     var currentIndex = 0;
 
     function goToSlide(index) {
@@ -91,10 +117,6 @@
       if (isNaN(offset)) offset = currentIndex * (slide.offsetWidth + gap);
 
       track.style.transform = 'translateX(-' + offset + 'px)';
-
-      if (dotsWrap) {
-        dotsWrap.style.transform = 'translateX(' + offset + 'px)';
-      }
 
       dots.forEach(function (dot, i) {
         dot.classList.toggle('is-active', i === currentIndex);
@@ -155,7 +177,7 @@
   var totalEl = totalsWrap ? totalsWrap.querySelector('.cart-totals-row--total .cart-totals-value') : null;
 
   function parseCurrency(text) {
-    // skip the period in "Rs." and grab the actual number
+    // คิดเลขหลัก ปกติ เเยก กับ ทศนิยม เเล้วรวมกันทีหลัง
     var match = text.match(/[\d,]+\.\d+/);
     if (!match) return 0;
     var num = parseFloat(match[0].replace(/,/g, ''));
@@ -235,6 +257,7 @@
   form.addEventListener('submit', function (event) {
     event.preventDefault();
 
+    // checkvalid and reportvalid for check if there correct format such as no "@"
     var input = form.querySelector('input[type="email"]');
     var button = form.querySelector('button');
     if (!input || !input.checkValidity()) {

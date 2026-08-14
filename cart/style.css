@@ -35,7 +35,7 @@
   display: flex;
   align-items: flex-start;
   gap: 32px;
-  padding: 60px 100px;
+  padding: 60px 100px 0px;
 }
 
 .cart-table-wrap {
@@ -162,4 +162,137 @@
 .btn-checkout:hover {
   background-color: #333;
   color: #fff;
+}
+
+/* Responsive */
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  .cart-hero-content h1 {
+    font-size: 36px;
+  }
+
+  .cart-section {
+    flex-direction: column;
+    padding: 40px;
+  }
+
+  .cart-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .cart-table {
+    min-width: 560px;
+  }
+
+  .cart-totals {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .cart-hero {
+    min-height: 220px;
+    padding: 0 20px;
+  }
+
+  .cart-hero-content h1 {
+    font-size: 28px;
+  }
+
+  .cart-section {
+    flex-direction: column;
+    padding: 24px 20px;
+    gap: 24px;
+  }
+
+  /* stack the table into cards instead of scrolling it sideways -
+     the columns collide/overlap at this width otherwise */
+  .cart-table-wrap {
+    overflow-x: visible;
+  }
+
+  .cart-table {
+    min-width: 0;
+  }
+
+  .cart-table thead {
+    display: none;
+  }
+
+  .cart-table,
+  .cart-table tbody,
+  .cart-table tr,
+  .cart-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .cart-table tbody tr {
+    position: relative;
+    margin-bottom: 16px;
+    padding: 16px;
+    border: 1px solid var(--color-border);
+  }
+
+  .cart-table td {
+    padding: 0;
+  }
+
+  .cart-product {
+    padding-right: 36px;
+    margin-bottom: 12px;
+  }
+
+  .cart-product img {
+    width: 64px;
+    height: 64px;
+  }
+
+  .cart-table td.cart-price,
+  .cart-table td.cart-subtotal,
+  .cart-table td.cart-qty-cell {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-top: 1px solid var(--color-border);
+    font-size: 14px;
+  }
+
+  .cart-price::before {
+    content: "Price";
+    font-weight: 500;
+    color: #333;
+  }
+
+  .cart-subtotal::before {
+    content: "Subtotal";
+    font-weight: 500;
+    color: #333;
+  }
+
+  .cart-table td.cart-qty-cell::before {
+    content: "Quantity";
+    font-weight: 500;
+    color: #333;
+  }
+
+  .cart-qty-input {
+    width: 70px;
+  }
+
+  .cart-table td.cart-remove-cell {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: auto;
+  }
+
+  .cart-totals {
+    flex: 1 1 auto;
+    width: 100%;
+    padding: 24px;
+  }
 }
