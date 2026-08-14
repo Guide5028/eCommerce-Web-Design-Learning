@@ -192,13 +192,13 @@ nav ul li a.active {
   margin-bottom: 17px;
 }
 
-.hero-content p{
+.hero-content p {
   font-size: 18px;
   line-height: 24px;
   font-weight: 500;
 }
 
-.hero-content span{
+.hero-content span {
   font-weight: 600;
   letter-spacing: 3px;
 }
@@ -261,6 +261,7 @@ nav ul li a.active {
 /* Product Card */
 
 .product-card {
+  position: relative;
   background-color: #F4F5F7;
   cursor: pointer;
 }
@@ -333,6 +334,7 @@ nav ul li a.active {
   font-size: 16px;
   font-weight: 600;
   font-family: inherit;
+  white-space: nowrap;
   border: none;
   cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease;
@@ -356,6 +358,7 @@ nav ul li a.active {
   color: #fff;
   font-size: 14px;
   font-weight: 600;
+  white-space: nowrap;
   transition: color 0.2s ease;
 }
 
@@ -404,6 +407,7 @@ nav ul li a.active {
   font-size: 20px;
   font-weight: 600;
   color: #333;
+  white-space: nowrap;
   transition: color 0.3s ease;
 }
 
@@ -411,6 +415,7 @@ nav ul li a.active {
   font-size: 16px;
   color: #B0B0B0;
   text-decoration: line-through;
+  white-space: nowrap;
   transition: color 0.3s ease;
 }
 
@@ -539,16 +544,20 @@ nav ul li a.active {
   height: 516px;
 }
 
-.room-caption {
+.room-caption-row {
   position: absolute;
   display: flex;
   left: 24px;
   right: 24px;
   bottom: 24px;
-  max-width: 217px;
+  align-items: flex-end;
+}
+
+.room-caption {
+  display: flex;
   align-items: center;
+  max-width: 217px;
   padding: 24px;
-  padding-right: 72px;
   background-color: #fff;
   backdrop-filter: blur(10px);
 }
@@ -566,10 +575,8 @@ nav ul li a.active {
 }
 
 .room-caption-arrow {
-  position: absolute;
   display: flex;
-  right: 0;
-  bottom: 0;
+  flex-shrink: 0;
   width: 48px;
   height: 48px;
   border-radius: 0;
@@ -784,7 +791,7 @@ nav ul li a.active {
   margin-top: 48px;
 }
 
-.footer-bottom p{
+.footer-bottom p {
   bottom: 0px;
   font-weight: 400;
   font-size: 16px;
@@ -1038,24 +1045,57 @@ nav ul li a.active {
     max-width: 100%;
     height: auto;
     margin-right: 0;
-    padding: 28px 24px;
+    padding: 24px 20px;
   }
 
   .hero-content h1 {
-    font-size: 30px;
+    font-size: 24px;
     line-height: 1.3;
   }
 
+  .hero-content p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .hero-content span {
+    font-size: 12px;
+  }
+
+  .btn-buy {
+    padding: 14px 32px;
+    margin-top: 20px;
+    font-size: 14px;
+  }
+
+  .section-heading h2 {
+    font-size: 22px;
+  }
+
+  .section-heading p {
+    font-size: 14px;
+  }
+
   .browse-range {
-    padding: 40px 20px;
+    padding: 32px 20px;
   }
 
   .range-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 24px;
   }
 
   .range-item img {
     max-width: 100%;
+    max-height: 140px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .range-item h3 {
+    margin-top: 10px;
+    font-size: 14px;
   }
 
   .our-products {
@@ -1063,9 +1103,48 @@ nav ul li a.active {
     padding: 0 20px 40px;
   }
 
+  .our-products h2 {
+    font-size: 22px;
+  }
+
   .products-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .products-grid .product-card {
+    min-width: 0;
+  }
+
+  .products-grid .product-price {
+    flex-wrap: wrap;
+    gap: 6px 12px;
+  }
+
+  .products-grid .product-actions {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .product-name {
+    font-size: 15px;
+  }
+
+  .product-category {
+    font-size: 12px;
+  }
+
+  .price {
+    font-size: 15px;
+  }
+
+  .price-old {
+    font-size: 12px;
+  }
+
+  .product-info {
+    padding: 12px;
   }
 
   .room-inspiration-inner {

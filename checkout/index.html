@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Furniro - Checkout</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/global.css">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -17,7 +17,12 @@
       <img src="../images/logo-furniro.svg" alt="Furniro">
       <span>Furniro</span>
     </div>
-    <nav>
+    <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-controls="site-nav" aria-expanded="false">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+    <nav id="site-nav">
       <ul>
         <li><a href="../index.html">Home</a></li>
         <li><a href="../shop/index.html">Shop</a></li>
@@ -29,7 +34,7 @@
       <a href="#"><img src="../images/icon/icon-account.jpg" alt="Account"></a>
       <a href="#"><img src="../images/icon/icon-search.jpg" alt="Search"></a>
       <a href="#"><img src="../images/icon/icon-wishlist.jpg" alt="Wishlist"></a>
-      <a href="#"><img src="../images/icon/icon-cart.jpg" alt="Cart"></a>
+      <a href="../cart/index.html"><img src="../images/icon/icon-cart.jpg" alt="Cart"></a>
     </div>
   </header>
 
@@ -112,7 +117,8 @@
 
         <div class="form-field">
           <label for="additional-info" class="sr-only">Additional information</label>
-          <textarea id="additional-info" name="additional-info" rows="4" placeholder="Additional information"></textarea>
+          <textarea id="additional-info" name="additional-info" rows="4"
+            placeholder="Additional information"></textarea>
         </div>
       </form>
 
@@ -175,7 +181,7 @@
 
     <section class="features-bar">
       <div class="feature-item">
-        <img class="feature-icon" src="../images/icon/Group.jpg" alt="Trophy icon" width="40" height="40">
+        <img class="feature-icon" src="../images/icon/trophy.jpg" alt="Trophy icon" width="40" height="40">
         <div class="feature-text">
           <h3 class="feature-title">High Quality</h3>
           <p class="feature-subtitle">crafted from top materials</p>
@@ -199,7 +205,8 @@
       </div>
 
       <div class="feature-item">
-        <img class="feature-icon" src="../images/icon/customer-support.jpg" alt="Support headset icon" width="40" height="40">
+        <img class="feature-icon" src="../images/icon/customer-support.jpg" alt="Support headset icon" width="40"
+          height="40">
         <div class="feature-text">
           <h3 class="feature-title">24 / 7 Support</h3>
           <p class="feature-subtitle">Dedicated support</p>

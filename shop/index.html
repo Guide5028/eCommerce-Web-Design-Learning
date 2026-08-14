@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Furniro - Shop</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/global.css">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -17,7 +17,12 @@
       <img src="../images/logo-furniro.svg" alt="Furniro">
       <span>Furniro</span>
     </div>
-    <nav>
+    <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-controls="site-nav" aria-expanded="false">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+    <nav id="site-nav">
       <ul>
         <li><a href="../index.html">Home</a></li>
         <li><a href="index.html">Shop</a></li>
@@ -29,7 +34,7 @@
       <a href="#"><img src="../images/icon/icon-account.jpg" alt="Account"></a>
       <a href="#"><img src="../images/icon/icon-search.jpg" alt="Search"></a>
       <a href="#"><img src="../images/icon/icon-wishlist.jpg" alt="Wishlist"></a>
-      <a href="#"><img src="../images/icon/icon-cart.jpg" alt="Cart"></a>
+      <a href="../cart/index.html"><img src="../images/icon/icon-cart.jpg" alt="Cart"></a>
     </div>
   </header>
 
@@ -49,33 +54,14 @@
       <div class="shop-toolbar">
         <div class="toolbar-left">
           <button type="button" class="toolbar-filter">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true">
-              <line x1="2" y1="5" x2="18" y2="5" stroke="currentColor" stroke-width="1.5" />
-              <circle cx="7" cy="5" r="2" fill="#fff" stroke="currentColor" stroke-width="1.5" />
-              <line x1="2" y1="10" x2="18" y2="10" stroke="currentColor" stroke-width="1.5" />
-              <circle cx="13" cy="10" r="2" fill="#fff" stroke="currentColor" stroke-width="1.5" />
-              <line x1="2" y1="15" x2="18" y2="15" stroke="currentColor" stroke-width="1.5" />
-              <circle cx="9" cy="15" r="2" fill="#fff" stroke="currentColor" stroke-width="1.5" />
-            </svg>
+            <img src="../images/icon/icon-filter.jpg" alt="" width="20" height="20">
             Filter
           </button>
           <button type="button" class="toolbar-icon-btn" aria-label="Grid view">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true">
-              <rect x="2" y="2" width="7" height="7" fill="currentColor" />
-              <rect x="11" y="2" width="7" height="7" fill="currentColor" />
-              <rect x="2" y="11" width="7" height="7" fill="currentColor" />
-              <rect x="11" y="11" width="7" height="7" fill="currentColor" />
-            </svg>
+            <img src="../images/icon/icon-grid-view.jpg" alt="" width="20" height="20">
           </button>
           <button type="button" class="toolbar-icon-btn" aria-label="List view">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true">
-              <rect x="2" y="3" width="16" height="3" fill="currentColor" />
-              <rect x="2" y="8.5" width="16" height="3" fill="currentColor" />
-              <rect x="2" y="14" width="16" height="3" fill="currentColor" />
-            </svg>
+            <img src="../images/icon/icon-list-view.jpg" alt="" width="20" height="20">
           </button>
           <span class="toolbar-divider"></span>
           <p class="toolbar-results">Showing 1&ndash;16 of 32 results</p>
@@ -104,15 +90,6 @@
           <div class="product-thumb">
             <img src="../images/product-syltherine.jpg" alt="Syltherine stylish cafe chair">
             <span class="badge badge--sale">-30%</span>
-
-            <div class="product-overlay">
-              <button class="btn-add-cart">Add to cart</button>
-              <div class="product-actions">
-                <a href="#" class="action-link"><img src="../images/icon/icon-share.svg" alt="">Share</a>
-                <a href="#" class="action-link"><img src="../images/icon/icon-compare.svg" alt="">Compare</a>
-                <a href="#" class="action-link"><img src="../images/icon/icon-like.svg" alt="">Like</a>
-              </div>
-            </div>
           </div>
 
           <div class="product-info">
@@ -123,20 +100,20 @@
               <span class="price-old">Rp 3.500.000</span>
             </div>
           </div>
+
+          <div class="product-overlay">
+            <button class="btn-add-cart">Add to cart</button>
+            <div class="product-actions">
+              <a href="#" class="action-link"><img src="../images/icon/icon-share.svg" alt="">Share</a>
+              <a href="#" class="action-link"><img src="../images/icon/icon-compare.svg" alt="">Compare</a>
+              <a href="#" class="action-link"><img src="../images/icon/icon-like.svg" alt="">Like</a>
+            </div>
+          </div>
         </div>
 
         <div class="product-card">
           <div class="product-thumb">
             <img src="../images/product-leviosa.jpg" alt="leviosa">
-
-            <div class="product-overlay">
-              <button class="btn-add-cart">Add to cart</button>
-              <div class="product-actions">
-                <a href="#" class="action-link"><img src="../images/icon/icon-share.svg" alt="">Share</a>
-                <a href="#" class="action-link"><img src="../images/icon/icon-compare.svg" alt="">Compare</a>
-                <a href="#" class="action-link"><img src="../images/icon/icon-like.svg" alt="">Like</a>
-              </div>
-            </div>
           </div>
 
           <div class="product-info">
@@ -146,21 +123,21 @@
               <span class="price">Rp 2.500.000</span>
             </div>
           </div>
+
+          <div class="product-overlay">
+            <button class="btn-add-cart">Add to cart</button>
+            <div class="product-actions">
+              <a href="#" class="action-link"><img src="../images/icon/icon-share.svg" alt="">Share</a>
+              <a href="#" class="action-link"><img src="../images/icon/icon-compare.svg" alt="">Compare</a>
+              <a href="#" class="action-link"><img src="../images/icon/icon-like.svg" alt="">Like</a>
+            </div>
+          </div>
         </div>
 
         <div class="product-card">
           <div class="product-thumb">
             <img src="../images/product-lolito.jpg" alt="Syltherine stylish cafe chair">
             <span class="badge badge--sale">-50%</span>
-
-            <div class="product-overlay">
-              <button class="btn-add-cart">Add to cart</button>
-              <div class="product-actions">
-                <a href="#" class="action-link"><img src="../images/icon/icon-share.svg" alt="">Share</a>
-                <a href="#" class="action-link"><img src="../images/icon/icon-compare.svg" alt="">Compare</a>
-                <a href="#" class="action-link"><img src="../images/icon/icon-like.svg" alt="">Like</a>
-              </div>
-            </div>
           </div>
 
           <div class="product-info">
@@ -171,21 +148,21 @@
               <span class="price-old">Rp 14.000.000</span>
             </div>
           </div>
+
+          <div class="product-overlay">
+            <button class="btn-add-cart">Add to cart</button>
+            <div class="product-actions">
+              <a href="#" class="action-link"><img src="../images/icon/icon-share.svg" alt="">Share</a>
+              <a href="#" class="action-link"><img src="../images/icon/icon-compare.svg" alt="">Compare</a>
+              <a href="#" class="action-link"><img src="../images/icon/icon-like.svg" alt="">Like</a>
+            </div>
+          </div>
         </div>
 
         <div class="product-card">
           <div class="product-thumb">
             <img src="../images/product-respira.jpg" alt="Syltherine stylish cafe chair">
             <span class="badge badge--new">New</span>
-
-            <div class="product-overlay">
-              <button class="btn-add-cart">Add to cart</button>
-              <div class="product-actions">
-                <a href="#" class="action-link"><img src="../images/icon/icon-share.svg" alt="">Share</a>
-                <a href="#" class="action-link"><img src="../images/icon/icon-compare.svg" alt="">Compare</a>
-                <a href="#" class="action-link"><img src="../images/icon/icon-like.svg" alt="">Like</a>
-              </div>
-            </div>
           </div>
 
           <div class="product-info">
@@ -194,6 +171,15 @@
             <div class="product-price">
               <span class="price">Rp 2.500.000</span>
               <span class="price-old">Rp 3.500.000</span>
+            </div>
+          </div>
+
+          <div class="product-overlay">
+            <button class="btn-add-cart">Add to cart</button>
+            <div class="product-actions">
+              <a href="#" class="action-link"><img src="../images/icon/icon-share.svg" alt="">Share</a>
+              <a href="#" class="action-link"><img src="../images/icon/icon-compare.svg" alt="">Compare</a>
+              <a href="#" class="action-link"><img src="../images/icon/icon-like.svg" alt="">Like</a>
             </div>
           </div>
         </div>
@@ -202,15 +188,6 @@
           <div class="product-thumb">
             <img src="../images/product-syltherine.jpg" alt="Syltherine stylish cafe chair">
             <span class="badge badge--sale">-30%</span>
-
-            <div class="product-overlay">
-              <button class="btn-add-cart">Add to cart</button>
-              <div class="product-actions">
-                <a href="#" class="action-link"><img src="../images/icon/icon-share.svg" alt="">Share</a>
-                <a href="#" class="action-link"><img src="../images/icon/icon-compare.svg" alt="">Compare</a>
-                <a href="#" class="action-link"><img src="../images/icon/icon-like.svg" alt="">Like</a>
-              </div>
-            </div>
           </div>
 
           <div class="product-info">
@@ -221,20 +198,20 @@
               <span class="price-old">Rp 3.500.000</span>
             </div>
           </div>
+
+          <div class="product-overlay">
+            <button class="btn-add-cart">Add to cart</button>
+            <div class="product-actions">
+              <a href="#" class="action-link"><img src="../images/icon/icon-share.svg" alt="">Share</a>
+              <a href="#" class="action-link"><img src="../images/icon/icon-compare.svg" alt="">Compare</a>
+              <a href="#" class="action-link"><img src="../images/icon/icon-like.svg" alt="">Like</a>
+            </div>
+          </div>
         </div>
 
         <div class="product-card">
           <div class="product-thumb">
             <img src="../images/product-leviosa.jpg" alt="leviosa">
-
-            <div class="product-overlay">
-              <button class="btn-add-cart">Add to cart</button>
-              <div class="product-actions">
-                <a href="#" class="action-link"><img src="../images/icon/icon-share.svg" alt="">Share</a>
-                <a href="#" class="action-link"><img src="../images/icon/icon-compare.svg" alt="">Compare</a>
-                <a href="#" class="action-link"><img src="../images/icon/icon-like.svg" alt="">Like</a>
-              </div>
-            </div>
           </div>
 
           <div class="product-info">
@@ -244,21 +221,21 @@
               <span class="price">Rp 2.500.000</span>
             </div>
           </div>
+
+          <div class="product-overlay">
+            <button class="btn-add-cart">Add to cart</button>
+            <div class="product-actions">
+              <a href="#" class="action-link"><img src="../images/icon/icon-share.svg" alt="">Share</a>
+              <a href="#" class="action-link"><img src="../images/icon/icon-compare.svg" alt="">Compare</a>
+              <a href="#" class="action-link"><img src="../images/icon/icon-like.svg" alt="">Like</a>
+            </div>
+          </div>
         </div>
 
         <div class="product-card">
           <div class="product-thumb">
             <img src="../images/product-lolito.jpg" alt="Syltherine stylish cafe chair">
             <span class="badge badge--sale">-50%</span>
-
-            <div class="product-overlay">
-              <button class="btn-add-cart">Add to cart</button>
-              <div class="product-actions">
-                <a href="#" class="action-link"><img src="../images/icon/icon-share.svg" alt="">Share</a>
-                <a href="#" class="action-link"><img src="../images/icon/icon-compare.svg" alt="">Compare</a>
-                <a href="#" class="action-link"><img src="../images/icon/icon-like.svg" alt="">Like</a>
-              </div>
-            </div>
           </div>
 
           <div class="product-info">
@@ -269,21 +246,21 @@
               <span class="price-old">Rp 14.000.000</span>
             </div>
           </div>
+
+          <div class="product-overlay">
+            <button class="btn-add-cart">Add to cart</button>
+            <div class="product-actions">
+              <a href="#" class="action-link"><img src="../images/icon/icon-share.svg" alt="">Share</a>
+              <a href="#" class="action-link"><img src="../images/icon/icon-compare.svg" alt="">Compare</a>
+              <a href="#" class="action-link"><img src="../images/icon/icon-like.svg" alt="">Like</a>
+            </div>
+          </div>
         </div>
 
         <div class="product-card">
           <div class="product-thumb">
             <img src="../images/product-respira.jpg" alt="Syltherine stylish cafe chair">
             <span class="badge badge--new">New</span>
-
-            <div class="product-overlay">
-              <button class="btn-add-cart">Add to cart</button>
-              <div class="product-actions">
-                <a href="#" class="action-link"><img src="../images/icon/icon-share.svg" alt="">Share</a>
-                <a href="#" class="action-link"><img src="../images/icon/icon-compare.svg" alt="">Compare</a>
-                <a href="#" class="action-link"><img src="../images/icon/icon-like.svg" alt="">Like</a>
-              </div>
-            </div>
           </div>
 
           <div class="product-info">
@@ -293,21 +270,21 @@
               <span class="price">Rp 500.000</span>
             </div>
           </div>
+
+          <div class="product-overlay">
+            <button class="btn-add-cart">Add to cart</button>
+            <div class="product-actions">
+              <a href="#" class="action-link"><img src="../images/icon/icon-share.svg" alt="">Share</a>
+              <a href="#" class="action-link"><img src="../images/icon/icon-compare.svg" alt="">Compare</a>
+              <a href="#" class="action-link"><img src="../images/icon/icon-like.svg" alt="">Like</a>
+            </div>
+          </div>
         </div>
 
         <div class="product-card">
           <div class="product-thumb">
             <img src="../images/product-syltherine.jpg" alt="Syltherine stylish cafe chair">
             <span class="badge badge--sale">-30%</span>
-
-            <div class="product-overlay">
-              <button class="btn-add-cart">Add to cart</button>
-              <div class="product-actions">
-                <a href="#" class="action-link"><img src="../images/icon/icon-share.svg" alt="">Share</a>
-                <a href="#" class="action-link"><img src="../images/icon/icon-compare.svg" alt="">Compare</a>
-                <a href="#" class="action-link"><img src="../images/icon/icon-like.svg" alt="">Like</a>
-              </div>
-            </div>
           </div>
 
           <div class="product-info">
@@ -318,20 +295,20 @@
               <span class="price-old">Rp 3.500.000</span>
             </div>
           </div>
+
+          <div class="product-overlay">
+            <button class="btn-add-cart">Add to cart</button>
+            <div class="product-actions">
+              <a href="#" class="action-link"><img src="../images/icon/icon-share.svg" alt="">Share</a>
+              <a href="#" class="action-link"><img src="../images/icon/icon-compare.svg" alt="">Compare</a>
+              <a href="#" class="action-link"><img src="../images/icon/icon-like.svg" alt="">Like</a>
+            </div>
+          </div>
         </div>
 
         <div class="product-card">
           <div class="product-thumb">
             <img src="../images/product-leviosa.jpg" alt="leviosa">
-
-            <div class="product-overlay">
-              <button class="btn-add-cart">Add to cart</button>
-              <div class="product-actions">
-                <a href="#" class="action-link"><img src="../images/icon/icon-share.svg" alt="">Share</a>
-                <a href="#" class="action-link"><img src="../images/icon/icon-compare.svg" alt="">Compare</a>
-                <a href="#" class="action-link"><img src="../images/icon/icon-like.svg" alt="">Like</a>
-              </div>
-            </div>
           </div>
 
           <div class="product-info">
@@ -341,21 +318,21 @@
               <span class="price">Rp 2.500.000</span>
             </div>
           </div>
+
+          <div class="product-overlay">
+            <button class="btn-add-cart">Add to cart</button>
+            <div class="product-actions">
+              <a href="#" class="action-link"><img src="../images/icon/icon-share.svg" alt="">Share</a>
+              <a href="#" class="action-link"><img src="../images/icon/icon-compare.svg" alt="">Compare</a>
+              <a href="#" class="action-link"><img src="../images/icon/icon-like.svg" alt="">Like</a>
+            </div>
+          </div>
         </div>
 
         <div class="product-card">
           <div class="product-thumb">
             <img src="../images/product-lolito.jpg" alt="Syltherine stylish cafe chair">
             <span class="badge badge--sale">-50%</span>
-
-            <div class="product-overlay">
-              <button class="btn-add-cart">Add to cart</button>
-              <div class="product-actions">
-                <a href="#" class="action-link"><img src="../images/icon/icon-share.svg" alt="">Share</a>
-                <a href="#" class="action-link"><img src="../images/icon/icon-compare.svg" alt="">Compare</a>
-                <a href="#" class="action-link"><img src="../images/icon/icon-like.svg" alt="">Like</a>
-              </div>
-            </div>
           </div>
 
           <div class="product-info">
@@ -366,21 +343,21 @@
               <span class="price-old">Rp 14.000.000</span>
             </div>
           </div>
+
+          <div class="product-overlay">
+            <button class="btn-add-cart">Add to cart</button>
+            <div class="product-actions">
+              <a href="#" class="action-link"><img src="../images/icon/icon-share.svg" alt="">Share</a>
+              <a href="#" class="action-link"><img src="../images/icon/icon-compare.svg" alt="">Compare</a>
+              <a href="#" class="action-link"><img src="../images/icon/icon-like.svg" alt="">Like</a>
+            </div>
+          </div>
         </div>
 
         <div class="product-card">
           <div class="product-thumb">
             <img src="../images/product-respira.jpg" alt="Syltherine stylish cafe chair">
             <span class="badge badge--new">New</span>
-
-            <div class="product-overlay">
-              <button class="btn-add-cart">Add to cart</button>
-              <div class="product-actions">
-                <a href="#" class="action-link"><img src="../images/icon/icon-share.svg" alt="">Share</a>
-                <a href="#" class="action-link"><img src="../images/icon/icon-compare.svg" alt="">Compare</a>
-                <a href="#" class="action-link"><img src="../images/icon/icon-like.svg" alt="">Like</a>
-              </div>
-            </div>
           </div>
 
           <div class="product-info">
@@ -390,21 +367,21 @@
               <span class="price">Rp 500.000</span>
             </div>
           </div>
+
+          <div class="product-overlay">
+            <button class="btn-add-cart">Add to cart</button>
+            <div class="product-actions">
+              <a href="#" class="action-link"><img src="../images/icon/icon-share.svg" alt="">Share</a>
+              <a href="#" class="action-link"><img src="../images/icon/icon-compare.svg" alt="">Compare</a>
+              <a href="#" class="action-link"><img src="../images/icon/icon-like.svg" alt="">Like</a>
+            </div>
+          </div>
         </div>
 
         <div class="product-card">
           <div class="product-thumb">
             <img src="../images/product-syltherine.jpg" alt="Syltherine stylish cafe chair">
             <span class="badge badge--sale">-30%</span>
-
-            <div class="product-overlay">
-              <button class="btn-add-cart">Add to cart</button>
-              <div class="product-actions">
-                <a href="#" class="action-link"><img src="../images/icon/icon-share.svg" alt="">Share</a>
-                <a href="#" class="action-link"><img src="../images/icon/icon-compare.svg" alt="">Compare</a>
-                <a href="#" class="action-link"><img src="../images/icon/icon-like.svg" alt="">Like</a>
-              </div>
-            </div>
           </div>
 
           <div class="product-info">
@@ -415,20 +392,20 @@
               <span class="price-old">Rp 3.500.000</span>
             </div>
           </div>
+
+          <div class="product-overlay">
+            <button class="btn-add-cart">Add to cart</button>
+            <div class="product-actions">
+              <a href="#" class="action-link"><img src="../images/icon/icon-share.svg" alt="">Share</a>
+              <a href="#" class="action-link"><img src="../images/icon/icon-compare.svg" alt="">Compare</a>
+              <a href="#" class="action-link"><img src="../images/icon/icon-like.svg" alt="">Like</a>
+            </div>
+          </div>
         </div>
 
         <div class="product-card">
           <div class="product-thumb">
             <img src="../images/product-leviosa.jpg" alt="leviosa">
-
-            <div class="product-overlay">
-              <button class="btn-add-cart">Add to cart</button>
-              <div class="product-actions">
-                <a href="#" class="action-link"><img src="../images/icon/icon-share.svg" alt="">Share</a>
-                <a href="#" class="action-link"><img src="../images/icon/icon-compare.svg" alt="">Compare</a>
-                <a href="#" class="action-link"><img src="../images/icon/icon-like.svg" alt="">Like</a>
-              </div>
-            </div>
           </div>
 
           <div class="product-info">
@@ -438,21 +415,21 @@
               <span class="price">Rp 2.500.000</span>
             </div>
           </div>
+
+          <div class="product-overlay">
+            <button class="btn-add-cart">Add to cart</button>
+            <div class="product-actions">
+              <a href="#" class="action-link"><img src="../images/icon/icon-share.svg" alt="">Share</a>
+              <a href="#" class="action-link"><img src="../images/icon/icon-compare.svg" alt="">Compare</a>
+              <a href="#" class="action-link"><img src="../images/icon/icon-like.svg" alt="">Like</a>
+            </div>
+          </div>
         </div>
 
         <div class="product-card">
           <div class="product-thumb">
             <img src="../images/product-lolito.jpg" alt="Syltherine stylish cafe chair">
             <span class="badge badge--sale">-50%</span>
-
-            <div class="product-overlay">
-              <button class="btn-add-cart">Add to cart</button>
-              <div class="product-actions">
-                <a href="#" class="action-link"><img src="../images/icon/icon-share.svg" alt="">Share</a>
-                <a href="#" class="action-link"><img src="../images/icon/icon-compare.svg" alt="">Compare</a>
-                <a href="#" class="action-link"><img src="../images/icon/icon-like.svg" alt="">Like</a>
-              </div>
-            </div>
           </div>
 
           <div class="product-info">
@@ -463,21 +440,21 @@
               <span class="price-old">Rp 14.000.000</span>
             </div>
           </div>
+
+          <div class="product-overlay">
+            <button class="btn-add-cart">Add to cart</button>
+            <div class="product-actions">
+              <a href="#" class="action-link"><img src="../images/icon/icon-share.svg" alt="">Share</a>
+              <a href="#" class="action-link"><img src="../images/icon/icon-compare.svg" alt="">Compare</a>
+              <a href="#" class="action-link"><img src="../images/icon/icon-like.svg" alt="">Like</a>
+            </div>
+          </div>
         </div>
 
         <div class="product-card">
           <div class="product-thumb">
             <img src="../images/product-respira.jpg" alt="Syltherine stylish cafe chair">
             <span class="badge badge--new">New</span>
-
-            <div class="product-overlay">
-              <button class="btn-add-cart">Add to cart</button>
-              <div class="product-actions">
-                <a href="#" class="action-link"><img src="../images/icon/icon-share.svg" alt="">Share</a>
-                <a href="#" class="action-link"><img src="../images/icon/icon-compare.svg" alt="">Compare</a>
-                <a href="#" class="action-link"><img src="../images/icon/icon-like.svg" alt="">Like</a>
-              </div>
-            </div>
           </div>
 
           <div class="product-info">
@@ -485,6 +462,15 @@
             <p class="product-category">Outdoor bar table and stool</p>
             <div class="product-price">
               <span class="price">Rp 500.000</span>
+            </div>
+          </div>
+
+          <div class="product-overlay">
+            <button class="btn-add-cart">Add to cart</button>
+            <div class="product-actions">
+              <a href="#" class="action-link"><img src="../images/icon/icon-share.svg" alt="">Share</a>
+              <a href="#" class="action-link"><img src="../images/icon/icon-compare.svg" alt="">Compare</a>
+              <a href="#" class="action-link"><img src="../images/icon/icon-like.svg" alt="">Like</a>
             </div>
           </div>
         </div>
@@ -502,7 +488,7 @@
 
     <section class="features-bar">
       <div class="feature-item">
-        <img class="feature-icon" src="../images/icon/Group.jpg" alt="Trophy icon" width="40" height="40">
+        <img class="feature-icon" src="../images/icon/trophy.jpg" alt="Trophy icon" width="40" height="40">
         <div class="feature-text">
           <h3 class="feature-title">High Quality</h3>
           <p class="feature-subtitle">crafted from top materials</p>
@@ -526,7 +512,8 @@
       </div>
 
       <div class="feature-item">
-        <img class="feature-icon" src="../images/icon/customer-support.jpg" alt="Support headset icon" width="40" height="40">
+        <img class="feature-icon" src="../images/icon/customer-support.jpg" alt="Support headset icon" width="40"
+          height="40">
         <div class="feature-text">
           <h3 class="feature-title">24 / 7 Support</h3>
           <p class="feature-subtitle">Dedicated support</p>

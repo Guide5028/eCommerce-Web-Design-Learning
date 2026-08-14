@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Furniro - single-product</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/global.css">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -17,7 +17,12 @@
       <img src="../images/logo-furniro.svg" alt="Furniro">
       <span>Furniro</span>
     </div>
-    <nav>
+    <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-controls="site-nav" aria-expanded="false">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+    <nav id="site-nav">
       <ul>
         <li><a href="../index.html">Home</a></li>
         <li><a href="../shop/index.html">Shop</a></li>
@@ -29,7 +34,7 @@
       <a href="#"><img src="../images/icon/icon-account.jpg" alt="Account"></a>
       <a href="#"><img src="../images/icon/icon-search.jpg" alt="Search"></a>
       <a href="#"><img src="../images/icon/icon-wishlist.jpg" alt="Wishlist"></a>
-      <a href="#"><img src="../images/icon/icon-cart.jpg" alt="Cart"></a>
+      <a href="../cart/index.html"><img src="../images/icon/icon-cart.jpg" alt="Cart"></a>
     </div>
   </header>
 
@@ -47,25 +52,25 @@
       <div class="product-gallery">
         <div class="product-thumbs">
           <button type="button" class="product-thumb-item is-active" aria-label="Show image 1">
-            <img src="../images/product-asgaard-sofa-cutout.png" alt="Asgaard sofa, navy outdoor lounge set">
+            <img src="../images/product-asgaard-sofa.jpg" alt="Asgaard sofa, navy outdoor lounge set">
           </button>
           <button type="button" class="product-thumb-item" aria-label="Show image 2">
-            <img src="../images/product-asgaard-outdoor-cutout.png" alt="Asgaard sofa, outdoor set variant">
+            <img src="../images/product-asgaard-outdoor.jpg" alt="Asgaard sofa, outdoor set variant">
           </button>
           <button type="button" class="product-thumb-item" aria-label="Show image 3">
-            <img src="../images/product-asgaard-pattern-cutout.png" alt="Asgaard sofa, patterned upholstery variant">
+            <img src="../images/product-asgaard-pattern.jpg" alt="Asgaard sofa, patterned upholstery variant">
           </button>
           <button type="button" class="product-thumb-item" aria-label="Show image 4">
-            <img src="../images/product-asgaard-beige-cutout.png" alt="Asgaard sofa, beige variant">
+            <img src="../images/product-asgaard-beige.jpg" alt="Asgaard sofa, beige variant">
           </button>
         </div>
 
         <div class="product-main-image">
-          <img src="../images/product-asgaard-sofa-cutout.png" alt="Asgaard sofa, navy outdoor lounge set">
+          <img src="../images/product-asgaard-sofa.jpg" alt="Asgaard sofa, navy outdoor lounge set">
         </div>
       </div>
 
-      <div class="product-info">
+      <div class="single-product-info">
         <h1>Asgaard sofa</h1>
         <p class="product-price">Rs. 250,000.00</p>
 
@@ -93,7 +98,8 @@
         <div class="product-option">
           <p class="product-option-label">Color</p>
           <div class="color-options">
-            <button type="button" class="color-swatch is-active" style="--swatch-color: #6C7BC2;" aria-label="Purple"></button>
+            <button type="button" class="color-swatch is-active" style="--swatch-color: #6C7BC2;"
+              aria-label="Purple"></button>
             <button type="button" class="color-swatch" style="--swatch-color: #000000;" aria-label="Black"></button>
             <button type="button" class="color-swatch" style="--swatch-color: #B88E2F;" aria-label="Gold"></button>
           </div>
@@ -129,19 +135,13 @@
             <dd class="product-share">
               :
               <a href="#" aria-label="Share on Facebook">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path d="M14 8a6 6 0 1 0-6.94 5.93V9.89H5.56V8h1.5V6.7c0-1.48.88-2.3 2.23-2.3.65 0 1.32.12 1.32.12v1.45h-.74c-.74 0-.97.46-.97.93V8h1.65l-.26 1.89H8.9v4.04A6 6 0 0 0 14 8z"/>
-                </svg>
+                <img src="../images/icon/icon-facebook.jpg" alt="" width="20" height="20">
               </a>
               <a href="#" aria-label="Share on LinkedIn">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path d="M3.6 5.8H1.2V14h2.4V5.8zM2.4 4.7a1.4 1.4 0 1 0 0-2.8 1.4 1.4 0 0 0 0 2.8zM14.8 14v-4.5c0-2.4-1.3-3.5-3-3.5-1.4 0-2 .8-2.3 1.3V6H7.1c0 .1 0 4.6 0 8h2.4V9.7c0-.2 0-.4.1-.6.2-.5.6-1 1.4-1 1 0 1.4.7 1.4 1.8V14h2.4z"/>
-                </svg>
+                <img src="../images/icon/icon-linkedin.jpg" alt="" width="20" height="20">
               </a>
               <a href="#" aria-label="Share on Twitter">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path d="M14.5 4c-.4.2-.9.3-1.4.4.5-.3.9-.8 1.1-1.4-.5.3-1 .5-1.6.6a2.5 2.5 0 0 0-4.3 2.3A7.1 7.1 0 0 1 3 3.2a2.5 2.5 0 0 0 .8 3.4c-.4 0-.8-.1-1.1-.3v.1c0 1.2.9 2.2 2 2.4-.4.1-.8.1-1.1.1l-.3-.1c.3 1 1.2 1.7 2.3 1.7A5 5 0 0 1 2 11.5a7 7 0 0 0 3.8 1.1c4.6 0 7.1-3.8 7.1-7.1v-.3c.5-.4.9-.8 1.2-1.3z"/>
-                </svg>
+                <img src="../images/icon/icon-twitter.jpg" alt="" width="20" height="20">
               </a>
             </dd>
           </div>
@@ -171,13 +171,14 @@
           leather strap enables easy and stylish travel.
         </p>
 
-        <div class="description-gallery">
-          <div class="description-gallery-item">
-            <img src="../images/product-asgaard-gallery-1-cutout.png" alt="Cream modular sofa, straight configuration">
-          </div>
-          <div class="description-gallery-item">
-            <img src="../images/product-asgaard-gallery-2-cutout.png" alt="Cream modular sofa, chaise configuration">
-          </div>
+
+      </div>
+      <div class="description-gallery">
+        <div class="description-gallery-item">
+          <img src="../images/product-asgaard-gallery-1.jpg" alt="Cream modular sofa, straight configuration">
+        </div>
+        <div class="description-gallery-item">
+          <img src="../images/product-asgaard-gallery-2.jpg" alt="Cream modular sofa, chaise configuration">
         </div>
       </div>
     </section>
@@ -191,15 +192,6 @@
           <div class="product-thumb">
             <img src="../images/product-syltherine.jpg" alt="Syltherine stylish cafe chair">
             <span class="badge badge--sale">-30%</span>
-
-            <div class="product-overlay">
-              <button class="btn-add-cart">Add to cart</button>
-              <div class="product-actions">
-                <a href="#" class="action-link"><img src="../images/icon/icon-share.svg" alt="">Share</a>
-                <a href="#" class="action-link"><img src="../images/icon/icon-compare.svg" alt="">Compare</a>
-                <a href="#" class="action-link"><img src="../images/icon/icon-like.svg" alt="">Like</a>
-              </div>
-            </div>
           </div>
 
           <div class="product-info">
@@ -210,20 +202,20 @@
               <span class="price-old">Rp 3.500.000</span>
             </div>
           </div>
+
+          <div class="product-overlay">
+            <button class="btn-add-cart">Add to cart</button>
+            <div class="product-actions">
+              <a href="#" class="action-link"><img src="../images/icon/icon-share.svg" alt="">Share</a>
+              <a href="#" class="action-link"><img src="../images/icon/icon-compare.svg" alt="">Compare</a>
+              <a href="#" class="action-link"><img src="../images/icon/icon-like.svg" alt="">Like</a>
+            </div>
+          </div>
         </div>
 
         <div class="product-card">
           <div class="product-thumb">
             <img src="../images/product-leviosa.jpg" alt="leviosa">
-
-            <div class="product-overlay">
-              <button class="btn-add-cart">Add to cart</button>
-              <div class="product-actions">
-                <a href="#" class="action-link"><img src="../images/icon/icon-share.svg" alt="">Share</a>
-                <a href="#" class="action-link"><img src="../images/icon/icon-compare.svg" alt="">Compare</a>
-                <a href="#" class="action-link"><img src="../images/icon/icon-like.svg" alt="">Like</a>
-              </div>
-            </div>
           </div>
 
           <div class="product-info">
@@ -233,21 +225,21 @@
               <span class="price">Rp 2.500.000</span>
             </div>
           </div>
+
+          <div class="product-overlay">
+            <button class="btn-add-cart">Add to cart</button>
+            <div class="product-actions">
+              <a href="#" class="action-link"><img src="../images/icon/icon-share.svg" alt="">Share</a>
+              <a href="#" class="action-link"><img src="../images/icon/icon-compare.svg" alt="">Compare</a>
+              <a href="#" class="action-link"><img src="../images/icon/icon-like.svg" alt="">Like</a>
+            </div>
+          </div>
         </div>
 
         <div class="product-card">
           <div class="product-thumb">
             <img src="../images/product-lolito.jpg" alt="Syltherine stylish cafe chair">
             <span class="badge badge--sale">-50%</span>
-
-            <div class="product-overlay">
-              <button class="btn-add-cart">Add to cart</button>
-              <div class="product-actions">
-                <a href="#" class="action-link"><img src="../images/icon/icon-share.svg" alt="">Share</a>
-                <a href="#" class="action-link"><img src="../images/icon/icon-compare.svg" alt="">Compare</a>
-                <a href="#" class="action-link"><img src="../images/icon/icon-like.svg" alt="">Like</a>
-              </div>
-            </div>
           </div>
 
           <div class="product-info">
@@ -258,21 +250,21 @@
               <span class="price-old">Rp 14.000.000</span>
             </div>
           </div>
+
+          <div class="product-overlay">
+            <button class="btn-add-cart">Add to cart</button>
+            <div class="product-actions">
+              <a href="#" class="action-link"><img src="../images/icon/icon-share.svg" alt="">Share</a>
+              <a href="#" class="action-link"><img src="../images/icon/icon-compare.svg" alt="">Compare</a>
+              <a href="#" class="action-link"><img src="../images/icon/icon-like.svg" alt="">Like</a>
+            </div>
+          </div>
         </div>
 
         <div class="product-card">
           <div class="product-thumb">
             <img src="../images/product-respira.jpg" alt="Syltherine stylish cafe chair">
             <span class="badge badge--new">New</span>
-
-            <div class="product-overlay">
-              <button class="btn-add-cart">Add to cart</button>
-              <div class="product-actions">
-                <a href="#" class="action-link"><img src="../images/icon/icon-share.svg" alt="">Share</a>
-                <a href="#" class="action-link"><img src="../images/icon/icon-compare.svg" alt="">Compare</a>
-                <a href="#" class="action-link"><img src="../images/icon/icon-like.svg" alt="">Like</a>
-              </div>
-            </div>
           </div>
 
           <div class="product-info">
@@ -280,6 +272,15 @@
             <p class="product-category">Outdoor bar table and stool</p>
             <div class="product-price">
               <span class="price">Rp 500.000</span>
+            </div>
+          </div>
+
+          <div class="product-overlay">
+            <button class="btn-add-cart">Add to cart</button>
+            <div class="product-actions">
+              <a href="#" class="action-link"><img src="../images/icon/icon-share.svg" alt="">Share</a>
+              <a href="#" class="action-link"><img src="../images/icon/icon-compare.svg" alt="">Compare</a>
+              <a href="#" class="action-link"><img src="../images/icon/icon-like.svg" alt="">Like</a>
             </div>
           </div>
         </div>

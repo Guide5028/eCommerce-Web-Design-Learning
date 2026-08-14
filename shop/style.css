@@ -183,7 +183,7 @@
   }
 
   .shop-hero-content h1 {
-    font-size: 28px;
+    font-size: 24px;
   }
 
   .shop-toolbar {
@@ -198,7 +198,36 @@
   .toolbar-left,
   .toolbar-right {
     flex-wrap: wrap;
-    gap: 10px 16px;
+    align-items: center;
+    gap: 10px 14px;
+  }
+
+  .toolbar-filter,
+  .toolbar-results,
+  .toolbar-field {
+    font-size: 13px;
+  }
+
+  .toolbar-filter img,
+  .toolbar-icon-btn img {
+    width: 16px;
+    height: 16px;
+  }
+
+  .toolbar-divider {
+    height: 18px;
+  }
+
+  .toolbar-show-input {
+    width: 36px;
+    padding: 6px;
+    font-size: 13px;
+  }
+
+  .toolbar-sort-select {
+    padding: 6px 10px;
+    min-width: 110px;
+    font-size: 13px;
   }
 
   .products-grid {
