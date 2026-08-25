@@ -1,0 +1,1094 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "slug": "syltherine",
+      "name": "Syltherine",
+      "category": "Stylish cafe chair",
+      "currency": "Rp",
+      "price": 2500000,
+      "priceOld": 3500000,
+      "badge": {
+        "type": "sale",
+        "label": "-30%"
+      },
+      "image": "images/product-syltherine.jpg",
+      "alt": "Syltherine stylish cafe chair",
+      "description": "A slim, sculpted cafe chair that brings comfort and character to any small dining corner.",
+      "descriptionParagraphs": [
+        "Syltherine pairs a lightweight bent frame with a curved backrest, so it's easy to carry from the kitchen table to the balcony without losing its shape.",
+        "Each chair is finished by hand, giving the surface a soft, matte texture that feels warm to the touch and pairs well with both wood and metal tables."
+      ],
+      "rating": 4.5,
+      "reviewCount": 5,
+      "sizes": [
+        "S",
+        "M",
+        "L"
+      ],
+      "colors": [
+        "#B88E2F",
+        "#6C7BC2",
+        "#2A2A2A"
+      ],
+      "sku": "SY-1001",
+      "tags": [
+        "Chair",
+        "Cafe",
+        "Dining"
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "leviosa",
+      "name": "Leviosa",
+      "category": "Stylish cafe chair",
+      "currency": "Rp",
+      "price": 2500000,
+      "priceOld": null,
+      "badge": null,
+      "image": "images/product-leviosa.jpg",
+      "alt": "Leviosa stylish cafe chair",
+      "description": "A softer, rounder companion to Syltherine, built for long conversations over coffee.",
+      "descriptionParagraphs": [
+        "Leviosa keeps the same light frame as its sibling chair but trades sharp lines for a gently curved seat that cradles you as you sit.",
+        "It stacks neatly against a wall when you need the floor space back, making it a practical pick for smaller cafes and apartments."
+      ],
+      "rating": 4.3,
+      "reviewCount": 3,
+      "sizes": [
+        "S",
+        "M",
+        "L"
+      ],
+      "colors": [
+        "#333333",
+        "#B88E2F",
+        "#9F9F9F"
+      ],
+      "sku": "LV-1002",
+      "tags": [
+        "Chair",
+        "Cafe"
+      ]
+    },
+    {
+      "id": 3,
+      "slug": "lolito",
+      "name": "Lolito",
+      "category": "Luxuary big sofa",
+      "currency": "Rp",
+      "price": 7000000,
+      "priceOld": 14000000,
+      "badge": {
+        "type": "sale",
+        "label": "-50%"
+      },
+      "image": "images/product-lolito.jpg",
+      "alt": "Lolito luxury big sofa",
+      "description": "An oversized sofa built for sinking in, with deep cushions and a tufted back.",
+      "descriptionParagraphs": [
+        "Lolito is sized for a real living room centerpiece \u2014 wide enough for an afternoon nap, deep enough that your feet won't touch the floor from the middle seat.",
+        "Underneath the tufted upholstery sits a hardwood frame and high-density foam, so the shape holds up through years of movie nights."
+      ],
+      "rating": 4.8,
+      "reviewCount": 12,
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        "#E4DED3",
+        "#333333",
+        "#8C7A63"
+      ],
+      "sku": "LL-1003",
+      "tags": [
+        "Sofa",
+        "Living Room",
+        "Luxury"
+      ]
+    },
+    {
+      "id": 4,
+      "slug": "respira",
+      "name": "Respira",
+      "category": "Outdoor bar table and stool",
+      "currency": "Rp",
+      "price": 500000,
+      "priceOld": null,
+      "badge": {
+        "type": "new",
+        "label": "New"
+      },
+      "image": "images/product-respira.jpg",
+      "alt": "Respira outdoor bar table and stool",
+      "description": "A compact bar-height table and stool set made for balconies and small patios.",
+      "descriptionParagraphs": [
+        "Respira is built from weather-treated materials that shrug off rain and sun, so it can live outside year-round without fading or warping.",
+        "The narrow footprint means it tucks into a balcony corner easily, while the bar height keeps it comfortable for standing conversations."
+      ],
+      "rating": 4.1,
+      "reviewCount": 2,
+      "sizes": [
+        "S",
+        "M"
+      ],
+      "colors": [
+        "#B88E2F",
+        "#5A5A5A",
+        "#FFFFFF"
+      ],
+      "sku": "RS-1004",
+      "tags": [
+        "Outdoor",
+        "Bar Table",
+        "Stool"
+      ]
+    },
+    {
+      "id": 5,
+      "slug": "grifo",
+      "name": "Grifo",
+      "category": "Night lamp",
+      "currency": "Rp",
+      "price": 1500000,
+      "priceOld": null,
+      "badge": null,
+      "image": "images/product-grifo.jpg",
+      "alt": "Grifo night lamp",
+      "description": "A soft-glow night lamp with a slim silhouette that fits any bedside table.",
+      "descriptionParagraphs": [
+        "Grifo uses a warm, dimmable bulb designed to wind you down before sleep rather than jolt you awake \u2014 no harsh white light here.",
+        "The base is weighted so the lamp stays put even on a crowded nightstand, and the cord routes discreetly through the stand itself."
+      ],
+      "rating": 4.6,
+      "reviewCount": 7,
+      "sizes": [
+        "S",
+        "M"
+      ],
+      "colors": [
+        "#2A2A2A",
+        "#B88E2F",
+        "#FFFFFF"
+      ],
+      "sku": "GR-1005",
+      "tags": [
+        "Lighting",
+        "Bedroom",
+        "Lamp"
+      ]
+    },
+    {
+      "id": 6,
+      "slug": "muggo",
+      "name": "Muggo",
+      "category": "Small mug",
+      "currency": "Rp",
+      "price": 150000,
+      "priceOld": null,
+      "badge": {
+        "type": "new",
+        "label": "New"
+      },
+      "image": "images/product-muggo.jpg",
+      "alt": "Muggo small mug",
+      "description": "A small ceramic mug with a wide handle, glazed by hand in small batches.",
+      "descriptionParagraphs": [
+        "Muggo is thrown on a wheel and glazed one at a time, so no two mugs are perfectly identical \u2014 small variations in the glaze are part of the charm.",
+        "It holds enough coffee to get through your morning routine without weighing your hand down, and it's safe for both the microwave and dishwasher."
+      ],
+      "rating": 4.7,
+      "reviewCount": 9,
+      "sizes": [
+        "S",
+        "M"
+      ],
+      "colors": [
+        "#FFFFFF",
+        "#B88E2F",
+        "#333333"
+      ],
+      "sku": "MG-1006",
+      "tags": [
+        "Kitchen",
+        "Mug",
+        "Ceramic"
+      ]
+    },
+    {
+      "id": 7,
+      "slug": "pinky",
+      "name": "Pinky",
+      "category": "Cute bed set",
+      "currency": "Rp",
+      "price": 7000000,
+      "priceOld": 14000000,
+      "badge": {
+        "type": "sale",
+        "label": "-50%"
+      },
+      "image": "images/product-pingky.jpg",
+      "alt": "Pinky cute bed set",
+      "description": "A playful bed set with a soft headboard and matching linens for a kids' room or guest space.",
+      "descriptionParagraphs": [
+        "Pinky pairs a rounded, upholstered headboard with a sturdy slatted base, so it's supportive enough for everyday sleep and soft enough to lean back and read.",
+        "The included linens are woven from breathable cotton, made to hold their color through repeated washes."
+      ],
+      "rating": 4.4,
+      "reviewCount": 6,
+      "sizes": [
+        "S",
+        "M",
+        "L"
+      ],
+      "colors": [
+        "#F3B6C4",
+        "#B88E2F",
+        "#FFFFFF"
+      ],
+      "sku": "PK-1007",
+      "tags": [
+        "Bedroom",
+        "Bed Set",
+        "Kids"
+      ]
+    },
+    {
+      "id": 8,
+      "slug": "potty",
+      "name": "Potty",
+      "category": "Minimal",
+      "currency": "Rp",
+      "price": 500000,
+      "priceOld": null,
+      "badge": {
+        "type": "new",
+        "label": "New"
+      },
+      "image": "images/product-potty.jpg",
+      "alt": "Potty minimal",
+      "description": "A minimal accent stool that works as extra seating or a plant stand.",
+      "descriptionParagraphs": [
+        "Potty strips furniture down to the essentials \u2014 a single curved form with no visible joints, finished in a matte coat that resists scuffing.",
+        "Light enough to move with one hand, it's just as happy holding a potted plant as it is holding a guest for an extra seat."
+      ],
+      "rating": 4.2,
+      "reviewCount": 4,
+      "sizes": [
+        "S",
+        "M"
+      ],
+      "colors": [
+        "#333333",
+        "#B88E2F",
+        "#9F9F9F"
+      ],
+      "sku": "PT-1008",
+      "tags": [
+        "Stool",
+        "Minimal",
+        "Accent"
+      ]
+    },
+    {
+      "id": 9,
+      "slug": "astrid",
+      "name": "Astrid",
+      "category": "Modern lounge chair",
+      "currency": "Rp",
+      "price": 3200000,
+      "priceOld": 4200000,
+      "badge": {
+        "type": "sale",
+        "label": "-24%"
+      },
+      "image": "https://picsum.photos/seed/astrid/600/600",
+      "alt": "Astrid modern lounge chair",
+      "description": "A modern lounge chair with a rounded silhouette designed for relaxed reading and quiet evenings.",
+      "descriptionParagraphs": [
+        "Astrid combines a supportive curved back with generous cushioning, creating a comfortable seat for reading or enjoying a cup of coffee.",
+        "Its compact footprint makes it easy to place beside a sofa, bookshelf, or bedroom window without overwhelming the room."
+      ],
+      "rating": 4.6,
+      "reviewCount": 8,
+      "sizes": [
+        "S",
+        "M",
+        "L"
+      ],
+      "colors": [
+        "#D8CFC2",
+        "#333333",
+        "#B88E2F"
+      ],
+      "sku": "AS-1009",
+      "tags": [
+        "Chair",
+        "Lounge",
+        "Modern"
+      ]
+    },
+    {
+      "id": 10,
+      "slug": "calista",
+      "name": "Calista",
+      "category": "Minimal coffee table",
+      "currency": "Rp",
+      "price": 1800000,
+      "priceOld": null,
+      "badge": {
+        "type": "new",
+        "label": "New"
+      },
+      "image": "https://picsum.photos/seed/calista/600/600",
+      "alt": "Calista minimal coffee table",
+      "description": "A clean-lined coffee table with a warm wooden finish and a softly rounded tabletop.",
+      "descriptionParagraphs": [
+        "Calista is designed around simple proportions, giving you enough surface for coffee, books, and everyday essentials without looking bulky.",
+        "The rounded corners add a softer touch while the sturdy wooden legs provide reliable support for daily use."
+      ],
+      "rating": 4.5,
+      "reviewCount": 11,
+      "sizes": [
+        "S",
+        "M",
+        "L"
+      ],
+      "colors": [
+        "#B88E2F",
+        "#8C7A63",
+        "#333333"
+      ],
+      "sku": "CA-1010",
+      "tags": [
+        "Table",
+        "Coffee Table",
+        "Minimal"
+      ]
+    },
+    {
+      "id": 11,
+      "slug": "elora",
+      "name": "Elora",
+      "category": "Elegant dining table",
+      "currency": "Rp",
+      "price": 5600000,
+      "priceOld": 7000000,
+      "badge": {
+        "type": "sale",
+        "label": "-20%"
+      },
+      "image": "https://picsum.photos/seed/elora/600/600",
+      "alt": "Elora elegant dining table",
+      "description": "An elegant dining table with a spacious top and refined natural wood finish.",
+      "descriptionParagraphs": [
+        "Elora provides generous space for family meals, dinner parties, and long conversations around the table.",
+        "The solid frame keeps the table stable while the natural finish highlights the character of the wood."
+      ],
+      "rating": 4.7,
+      "reviewCount": 14,
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        "#8C7A63",
+        "#B88E2F",
+        "#333333"
+      ],
+      "sku": "EL-1011",
+      "tags": [
+        "Table",
+        "Dining",
+        "Wood"
+      ]
+    },
+    {
+      "id": 12,
+      "slug": "nordic",
+      "name": "Nordic",
+      "category": "Scandinavian chair",
+      "currency": "Rp",
+      "price": 2100000,
+      "priceOld": null,
+      "badge": null,
+      "image": "https://picsum.photos/seed/nordic/600/600",
+      "alt": "Nordic Scandinavian chair",
+      "description": "A Scandinavian-inspired chair with a simple frame and comfortable upholstered seat.",
+      "descriptionParagraphs": [
+        "Nordic uses a lightweight wooden frame and softly padded seat to balance visual simplicity with everyday comfort.",
+        "Its neutral design works naturally around dining tables, desks, and small cafe spaces."
+      ],
+      "rating": 4.4,
+      "reviewCount": 6,
+      "sizes": [
+        "S",
+        "M"
+      ],
+      "colors": [
+        "#E4DED3",
+        "#333333",
+        "#8C7A63"
+      ],
+      "sku": "NO-1012",
+      "tags": [
+        "Chair",
+        "Scandinavian",
+        "Dining"
+      ]
+    },
+    {
+      "id": 13,
+      "slug": "velora",
+      "name": "Velora",
+      "category": "Luxury armchair",
+      "currency": "Rp",
+      "price": 4800000,
+      "priceOld": 6000000,
+      "badge": {
+        "type": "sale",
+        "label": "-20%"
+      },
+      "image": "https://picsum.photos/seed/velora/600/600",
+      "alt": "Velora luxury armchair",
+      "description": "A luxurious armchair featuring deep cushioning and a sophisticated rounded frame.",
+      "descriptionParagraphs": [
+        "Velora is built around a generous seat and supportive backrest, making it ideal for extended reading sessions or relaxed conversations.",
+        "The textured upholstery adds depth while the rounded silhouette keeps the design inviting and contemporary."
+      ],
+      "rating": 4.8,
+      "reviewCount": 16,
+      "sizes": [
+        "M",
+        "L"
+      ],
+      "colors": [
+        "#8C7A63",
+        "#E4DED3",
+        "#333333"
+      ],
+      "sku": "VE-1013",
+      "tags": [
+        "Chair",
+        "Luxury",
+        "Living Room"
+      ]
+    },
+    {
+      "id": 14,
+      "slug": "luna",
+      "name": "Luna",
+      "category": "Round side table",
+      "currency": "Rp",
+      "price": 1200000,
+      "priceOld": null,
+      "badge": {
+        "type": "new",
+        "label": "New"
+      },
+      "image": "https://picsum.photos/seed/luna/600/600",
+      "alt": "Luna round side table",
+      "description": "A compact round side table designed for sofas, armchairs, and bedside spaces.",
+      "descriptionParagraphs": [
+        "Luna features a circular tabletop that provides just enough space for a lamp, book, or morning coffee.",
+        "Its lightweight construction makes it easy to move between rooms whenever you want to refresh your layout."
+      ],
+      "rating": 4.3,
+      "reviewCount": 5,
+      "sizes": [
+        "S",
+        "M"
+      ],
+      "colors": [
+        "#FFFFFF",
+        "#B88E2F",
+        "#333333"
+      ],
+      "sku": "LU-1014",
+      "tags": [
+        "Table",
+        "Side Table",
+        "Minimal"
+      ]
+    },
+    {
+      "id": 15,
+      "slug": "arco",
+      "name": "Arco",
+      "category": "Floor lamp",
+      "currency": "Rp",
+      "price": 2600000,
+      "priceOld": null,
+      "badge": null,
+      "image": "https://picsum.photos/seed/arco/600/600",
+      "alt": "Arco modern floor lamp",
+      "description": "A tall floor lamp with an adjustable curved arm for focused ambient lighting.",
+      "descriptionParagraphs": [
+        "Arco directs warm light exactly where you need it, making it useful beside a sofa, reading chair, or workspace.",
+        "The weighted base keeps the lamp stable while its slim profile avoids taking up unnecessary floor space."
+      ],
+      "rating": 4.6,
+      "reviewCount": 10,
+      "sizes": [
+        "M",
+        "L"
+      ],
+      "colors": [
+        "#333333",
+        "#B88E2F",
+        "#FFFFFF"
+      ],
+      "sku": "AR-1015",
+      "tags": [
+        "Lighting",
+        "Floor Lamp",
+        "Modern"
+      ]
+    },
+    {
+      "id": 16,
+      "slug": "milo",
+      "name": "Milo",
+      "category": "Wooden bookshelf",
+      "currency": "Rp",
+      "price": 3900000,
+      "priceOld": 4500000,
+      "badge": {
+        "type": "sale",
+        "label": "-13%"
+      },
+      "image": "https://picsum.photos/seed/milo/600/600",
+      "alt": "Milo wooden bookshelf",
+      "description": "A compact wooden bookshelf with open shelves for books, plants, and decorative objects.",
+      "descriptionParagraphs": [
+        "Milo keeps everything visible with four open shelves that are easy to organize and access.",
+        "Its vertical shape makes smart use of wall space while maintaining a clean and uncluttered appearance."
+      ],
+      "rating": 4.5,
+      "reviewCount": 9,
+      "sizes": [
+        "M",
+        "L"
+      ],
+      "colors": [
+        "#8C7A63",
+        "#B88E2F",
+        "#333333"
+      ],
+      "sku": "MI-1016",
+      "tags": [
+        "Storage",
+        "Bookshelf",
+        "Wood"
+      ]
+    },
+    {
+      "id": 17,
+      "slug": "nara",
+      "name": "Nara",
+      "category": "Decorative mirror",
+      "currency": "Rp",
+      "price": 1750000,
+      "priceOld": null,
+      "badge": null,
+      "image": "https://picsum.photos/seed/nara/600/600",
+      "alt": "Nara decorative mirror",
+      "description": "A rounded decorative mirror that adds light and depth to modern interiors.",
+      "descriptionParagraphs": [
+        "Nara uses a softly curved frame to create a relaxed focal point above a console, dresser, or entryway table.",
+        "The generous reflective surface helps brighten smaller rooms while keeping the overall design understated."
+      ],
+      "rating": 4.4,
+      "reviewCount": 7,
+      "sizes": [
+        "M",
+        "L"
+      ],
+      "colors": [
+        "#B88E2F",
+        "#333333",
+        "#FFFFFF"
+      ],
+      "sku": "NA-1017",
+      "tags": [
+        "Decor",
+        "Mirror",
+        "Bedroom"
+      ]
+    },
+    {
+      "id": 18,
+      "slug": "siena",
+      "name": "Siena",
+      "category": "Soft lounge sofa",
+      "currency": "Rp",
+      "price": 6200000,
+      "priceOld": null,
+      "badge": {
+        "type": "new",
+        "label": "New"
+      },
+      "image": "https://picsum.photos/seed/siena/600/600",
+      "alt": "Siena soft lounge sofa",
+      "description": "A soft three-seat sofa with deep cushions and a relaxed contemporary shape.",
+      "descriptionParagraphs": [
+        "Siena is designed for everyday lounging with supportive cushions that stay comfortable without feeling overly firm.",
+        "Its simple silhouette pairs easily with coffee tables, rugs, and accent chairs in both modern and classic interiors."
+      ],
+      "rating": 4.7,
+      "reviewCount": 13,
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        "#E4DED3",
+        "#8C7A63",
+        "#333333"
+      ],
+      "sku": "SI-1018",
+      "tags": [
+        "Sofa",
+        "Living Room",
+        "Comfort"
+      ]
+    },
+    {
+      "id": 19,
+      "slug": "tessa",
+      "name": "Tessa",
+      "category": "Bedside cabinet",
+      "currency": "Rp",
+      "price": 1350000,
+      "priceOld": null,
+      "badge": null,
+      "image": "https://picsum.photos/seed/tessa/600/600",
+      "alt": "Tessa bedside cabinet",
+      "description": "A compact bedside cabinet with a drawer for keeping nighttime essentials organized.",
+      "descriptionParagraphs": [
+        "Tessa gives you a convenient surface for a lamp, phone, and favorite book while keeping smaller items hidden in its drawer.",
+        "The compact proportions make it suitable for bedrooms where every centimeter of floor space matters."
+      ],
+      "rating": 4.2,
+      "reviewCount": 4,
+      "sizes": [
+        "S",
+        "M"
+      ],
+      "colors": [
+        "#FFFFFF",
+        "#8C7A63",
+        "#333333"
+      ],
+      "sku": "TE-1019",
+      "tags": [
+        "Bedroom",
+        "Storage",
+        "Cabinet"
+      ]
+    },
+    {
+      "id": 20,
+      "slug": "orion",
+      "name": "Orion",
+      "category": "Modern desk",
+      "currency": "Rp",
+      "price": 3400000,
+      "priceOld": 4000000,
+      "badge": {
+        "type": "sale",
+        "label": "-15%"
+      },
+      "image": "https://picsum.photos/seed/orion/600/600",
+      "alt": "Orion modern desk",
+      "description": "A clean modern desk with a spacious work surface and slim supporting legs.",
+      "descriptionParagraphs": [
+        "Orion provides enough room for a laptop, monitor, notebooks, and everyday work accessories without feeling oversized.",
+        "The simple construction makes it easy to pair with ergonomic office chairs and minimalist home decor."
+      ],
+      "rating": 4.6,
+      "reviewCount": 12,
+      "sizes": [
+        "M",
+        "L"
+      ],
+      "colors": [
+        "#B88E2F",
+        "#333333",
+        "#FFFFFF"
+      ],
+      "sku": "OR-1020",
+      "tags": [
+        "Desk",
+        "Office",
+        "Workspace"
+      ]
+    },
+    {
+      "id": 21,
+      "slug": "cora",
+      "name": "Cora",
+      "category": "Decorative vase",
+      "currency": "Rp",
+      "price": 450000,
+      "priceOld": null,
+      "badge": {
+        "type": "new",
+        "label": "New"
+      },
+      "image": "https://picsum.photos/seed/cora/600/600",
+      "alt": "Cora decorative vase",
+      "description": "A handcrafted decorative vase with an organic silhouette and textured finish.",
+      "descriptionParagraphs": [
+        "Cora adds a subtle decorative accent to shelves, dining tables, and entryway consoles.",
+        "Its textured surface catches light softly and works beautifully with dried flowers or as a standalone piece."
+      ],
+      "rating": 4.5,
+      "reviewCount": 6,
+      "sizes": [
+        "S",
+        "M"
+      ],
+      "colors": [
+        "#E4DED3",
+        "#B88E2F",
+        "#8C7A63"
+      ],
+      "sku": "CO-1021",
+      "tags": [
+        "Decor",
+        "Vase",
+        "Home"
+      ]
+    },
+    {
+      "id": 22,
+      "slug": "elio",
+      "name": "Elio",
+      "category": "Pendant ceiling lamp",
+      "currency": "Rp",
+      "price": 1950000,
+      "priceOld": null,
+      "badge": null,
+      "image": "https://picsum.photos/seed/elio/600/600",
+      "alt": "Elio pendant ceiling lamp",
+      "description": "A minimalist pendant lamp designed to create a warm focal point above tables and counters.",
+      "descriptionParagraphs": [
+        "Elio produces a soft downward glow that works especially well above dining tables, kitchen islands, or small cafe counters.",
+        "Its simple shape keeps the fixture visually light while still adding character to the room."
+      ],
+      "rating": 4.4,
+      "reviewCount": 8,
+      "sizes": [
+        "S",
+        "M",
+        "L"
+      ],
+      "colors": [
+        "#333333",
+        "#B88E2F",
+        "#FFFFFF"
+      ],
+      "sku": "EL-1022",
+      "tags": [
+        "Lighting",
+        "Pendant",
+        "Modern"
+      ]
+    },
+    {
+      "id": 23,
+      "slug": "faye",
+      "name": "Faye",
+      "category": "Accent cushion",
+      "currency": "Rp",
+      "price": 280000,
+      "priceOld": null,
+      "badge": null,
+      "image": "https://picsum.photos/seed/faye/600/600",
+      "alt": "Faye accent cushion",
+      "description": "A soft decorative cushion with a textured cover for sofas, beds, and lounge chairs.",
+      "descriptionParagraphs": [
+        "Faye adds an easy layer of comfort without changing the character of your existing furniture.",
+        "The removable cover can be cleaned easily and the flexible filling keeps its shape after repeated use."
+      ],
+      "rating": 4.3,
+      "reviewCount": 5,
+      "sizes": [
+        "S",
+        "M"
+      ],
+      "colors": [
+        "#E4DED3",
+        "#F3B6C4",
+        "#8C7A63"
+      ],
+      "sku": "FA-1023",
+      "tags": [
+        "Decor",
+        "Cushion",
+        "Living Room"
+      ]
+    },
+    {
+      "id": 24,
+      "slug": "haven",
+      "name": "Haven",
+      "category": "Outdoor lounge chair",
+      "currency": "Rp",
+      "price": 2800000,
+      "priceOld": 3500000,
+      "badge": {
+        "type": "sale",
+        "label": "-20%"
+      },
+      "image": "https://picsum.photos/seed/haven/600/600",
+      "alt": "Haven outdoor lounge chair",
+      "description": "A weather-resistant outdoor lounge chair made for balconies, patios, and garden corners.",
+      "descriptionParagraphs": [
+        "Haven combines a durable frame with comfortable cushioning designed to handle everyday outdoor use.",
+        "Its relaxed angle makes it ideal for reading, enjoying coffee, or spending quiet afternoons outside."
+      ],
+      "rating": 4.6,
+      "reviewCount": 10,
+      "sizes": [
+        "M",
+        "L"
+      ],
+      "colors": [
+        "#8C7A63",
+        "#333333",
+        "#E4DED3"
+      ],
+      "sku": "HA-1024",
+      "tags": [
+        "Outdoor",
+        "Chair",
+        "Lounge"
+      ]
+    },
+    {
+      "id": 25,
+      "slug": "riva",
+      "name": "Riva",
+      "category": "Compact dining bench",
+      "currency": "Rp",
+      "price": 2200000,
+      "priceOld": null,
+      "badge": {
+        "type": "new",
+        "label": "New"
+      },
+      "image": "https://picsum.photos/seed/riva/600/600",
+      "alt": "Riva compact dining bench",
+      "description": "A compact dining bench that provides flexible seating around small dining tables.",
+      "descriptionParagraphs": [
+        "Riva comfortably seats two people while taking up less visual space than individual dining chairs.",
+        "The sturdy wooden construction makes it practical for everyday meals while maintaining a warm and natural appearance."
+      ],
+      "rating": 4.5,
+      "reviewCount": 7,
+      "sizes": [
+        "S",
+        "M",
+        "L"
+      ],
+      "colors": [
+        "#8C7A63",
+        "#B88E2F",
+        "#333333"
+      ],
+      "sku": "RI-1025",
+      "tags": [
+        "Bench",
+        "Dining",
+        "Wood"
+      ]
+    },
+    {
+      "id": 26,
+      "slug": "mira",
+      "name": "Mira",
+      "category": "Ceramic table lamp",
+      "currency": "Rp",
+      "price": 1100000,
+      "priceOld": null,
+      "badge": null,
+      "image": "https://picsum.photos/seed/mira/600/600",
+      "alt": "Mira ceramic table lamp",
+      "description": "A ceramic table lamp with a soft fabric shade and warm ambient glow.",
+      "descriptionParagraphs": [
+        "Mira creates a gentle pool of light that works well on bedside tables, desks, and living room consoles.",
+        "The ceramic base gives the lamp a handcrafted feel while the neutral shade keeps the overall look timeless."
+      ],
+      "rating": 4.7,
+      "reviewCount": 9,
+      "sizes": [
+        "S",
+        "M"
+      ],
+      "colors": [
+        "#FFFFFF",
+        "#E4DED3",
+        "#B88E2F"
+      ],
+      "sku": "MI-1026",
+      "tags": [
+        "Lighting",
+        "Lamp",
+        "Ceramic"
+      ]
+    },
+    {
+      "id": 27,
+      "slug": "nova",
+      "name": "Nova",
+      "category": "Storage cabinet",
+      "currency": "Rp",
+      "price": 4300000,
+      "priceOld": 5200000,
+      "badge": {
+        "type": "sale",
+        "label": "-17%"
+      },
+      "image": "https://picsum.photos/seed/nova/600/600",
+      "alt": "Nova storage cabinet",
+      "description": "A versatile storage cabinet with clean doors and generous interior space.",
+      "descriptionParagraphs": [
+        "Nova hides everyday clutter behind smooth doors while keeping your room visually clean and organized.",
+        "Adjustable interior shelving lets you customize the cabinet for books, tableware, accessories, or household items."
+      ],
+      "rating": 4.6,
+      "reviewCount": 11,
+      "sizes": [
+        "M",
+        "L"
+      ],
+      "colors": [
+        "#FFFFFF",
+        "#8C7A63",
+        "#333333"
+      ],
+      "sku": "NV-1027",
+      "tags": [
+        "Storage",
+        "Cabinet",
+        "Minimal"
+      ]
+    },
+    {
+      "id": 28,
+      "slug": "sora",
+      "name": "Sora",
+      "category": "Round dining chair",
+      "currency": "Rp",
+      "price": 1850000,
+      "priceOld": null,
+      "badge": null,
+      "image": "https://picsum.photos/seed/sora/600/600",
+      "alt": "Sora round dining chair",
+      "description": "A rounded dining chair with a supportive backrest and soft upholstered seat.",
+      "descriptionParagraphs": [
+        "Sora features a curved back that provides comfortable support while keeping the overall silhouette light and elegant.",
+        "Its neutral upholstery works with a wide range of dining tables and interior styles."
+      ],
+      "rating": 4.4,
+      "reviewCount": 8,
+      "sizes": [
+        "S",
+        "M"
+      ],
+      "colors": [
+        "#E4DED3",
+        "#333333",
+        "#B88E2F"
+      ],
+      "sku": "SO-1028",
+      "tags": [
+        "Chair",
+        "Dining",
+        "Upholstered"
+      ]
+    },
+    {
+      "id": 29,
+      "slug": "vera",
+      "name": "Vera",
+      "category": "Modern TV console",
+      "currency": "Rp",
+      "price": 3600000,
+      "priceOld": 4300000,
+      "badge": {
+        "type": "sale",
+        "label": "-16%"
+      },
+      "image": "https://picsum.photos/seed/vera/600/600",
+      "alt": "Vera modern TV console",
+      "description": "A low-profile TV console with concealed storage and a clean modern silhouette.",
+      "descriptionParagraphs": [
+        "Vera keeps entertainment equipment organized with open cable-friendly compartments and closed storage for smaller accessories.",
+        "The low profile helps maintain an open visual line across the living room while providing plenty of useful storage."
+      ],
+      "rating": 4.5,
+      "reviewCount": 13,
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        "#8C7A63",
+        "#333333",
+        "#FFFFFF"
+      ],
+      "sku": "VE-1029",
+      "tags": [
+        "Storage",
+        "TV Console",
+        "Living Room"
+      ]
+    },
+    {
+      "id": 30,
+      "slug": "zeno",
+      "name": "Zeno",
+      "category": "Minimal floor cushion",
+      "currency": "Rp",
+      "price": 380000,
+      "priceOld": null,
+      "badge": {
+        "type": "new",
+        "label": "New"
+      },
+      "image": "https://picsum.photos/seed/zeno/600/600",
+      "alt": "Zeno minimal floor cushion",
+      "description": "A comfortable floor cushion designed for casual seating, meditation, and relaxed gatherings.",
+      "descriptionParagraphs": [
+        "Zeno uses dense cushioning that provides comfortable support while sitting on the floor for extended periods.",
+        "Its understated design makes it easy to layer several cushions together around a low table or reading corner."
+      ],
+      "rating": 4.3,
+      "reviewCount": 6,
+      "sizes": [
+        "S",
+        "M"
+      ],
+      "colors": [
+        "#E4DED3",
+        "#8C7A63",
+        "#333333"
+      ],
+      "sku": "ZE-1030",
+      "tags": [
+        "Cushion",
+        "Minimal",
+        "Living Room"
+      ]
+    }
+  ]
+}

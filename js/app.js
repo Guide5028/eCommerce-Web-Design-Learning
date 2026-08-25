@@ -104,28 +104,42 @@
 
     if (!track || slides.length === 0) return;
 
-    //infinite loop slide
-    var currentIndex = 0;
+    // instead of sliding the track sideways, the next room becomes the
+    // big slide and the old big slide drops back to the small spot -
+    // .room-slide sizing already comes from :first-child / :not(:first-child)
+    // in the css, so just re-ordering the actual DOM nodes makes the new
+    // first slide grow to fill the big slot automatically
+    var order = slides.slice();
+    var bigIndex = 0;
 
-    function goToSlide(index) {
-      currentIndex = (index + slides.length) % slides.length;
-
-      var slide = slides[currentIndex];
-      var trackStyle = getComputedStyle(track);
-      var gap = parseFloat(trackStyle.columnGap || trackStyle.gap) || 0;
-      var offset = slide.offsetLeft - track.offsetLeft;
-      if (isNaN(offset)) offset = currentIndex * (slide.offsetWidth + gap);
-
-      track.style.transform = 'translateX(-' + offset + 'px)';
+    function render() {
+      order.forEach(function (slide) {
+        track.appendChild(slide);
+      });
 
       dots.forEach(function (dot, i) {
-        dot.classList.toggle('is-active', i === currentIndex);
+        dot.classList.toggle('is-active', i === bigIndex);
       });
+    }
+
+    function rotateOnce() {
+      order.push(order.shift());
+      bigIndex = (bigIndex + 1) % slides.length;
+    }
+
+    function goToSlide(index) {
+      var target = (index + slides.length) % slides.length;
+      var guard = 0;
+      while (bigIndex !== target && guard < slides.length) {
+        rotateOnce();
+        guard++;
+      }
+      render();
     }
 
     if (nextButton) {
       nextButton.addEventListener('click', function () {
-        goToSlide(currentIndex + 1);
+        goToSlide(bigIndex + 1);
       });
     }
 
@@ -133,10 +147,6 @@
       dot.addEventListener('click', function () {
         goToSlide(i);
       });
-    });
-
-    window.addEventListener('resize', function () {
-      goToSlide(currentIndex);
     });
   });
 })();
@@ -163,6 +173,51 @@
         t.classList.toggle('is-active', t === thumb);
       });
     });
+  });
+})();
+
+/* product tabs: click a header to switch which panel shows */
+
+(function () {
+  var tabButtons = document.querySelectorAll('.tab-btn[data-tab]');
+  if (!tabButtons.length) return;
+
+  document.addEventListener('click', function (event) {
+    var btn = event.target.closest('.tab-btn[data-tab]');
+    if (!btn) return;
+
+    tabButtons.forEach(function (b) {
+      var isActive = b === btn;
+      b.classList.toggle('is-active', isActive);
+      b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    });
+
+    document.querySelectorAll('.tab-panel-group').forEach(function (panel) {
+      panel.hidden = panel.id !== 'tab-panel-' + btn.dataset.tab;
+    });
+  });
+})();
+
+/* product size / color options: click to select */
+
+(function () {
+  document.addEventListener('click', function (event) {
+    var sizeBtn = event.target.closest('.size-btn');
+    if (sizeBtn) {
+      var sizeGroup = sizeBtn.closest('.size-options');
+      sizeGroup.querySelectorAll('.size-btn').forEach(function (b) {
+        b.classList.toggle('is-active', b === sizeBtn);
+      });
+      return;
+    }
+
+    var swatch = event.target.closest('.color-swatch');
+    if (swatch) {
+      var colorGroup = swatch.closest('.color-options');
+      colorGroup.querySelectorAll('.color-swatch').forEach(function (b) {
+        b.classList.toggle('is-active', b === swatch);
+      });
+    }
   });
 })();
 
@@ -231,6 +286,32 @@
   });
 })();
 
+/* favorite page */
+
+(function () {
+  var grid = document.querySelector('.favorite-grid');
+  if (!grid) return;
+
+  var emptyMessage = document.querySelector('.favorite-empty');
+  var subtitle = document.querySelector('.favorite-subtitle');
+
+  function updateCount() {
+    var count = grid.querySelectorAll('.product-card').length;
+    if (subtitle) subtitle.textContent = count + (count === 1 ? ' item saved' : ' items saved');
+    if (emptyMessage) emptyMessage.hidden = count > 0;
+    grid.hidden = count === 0;
+  }
+
+  grid.addEventListener('click', function (event) {
+    var removeBtn = event.target.closest('.btn-remove-favorite');
+    if (!removeBtn) return;
+    var card = removeBtn.closest('.product-card');
+    if (!card) return;
+    card.remove();
+    updateCount();
+  });
+})();
+
 /* checkout payment method */
 
 (function () {
@@ -273,6 +354,33 @@
       button.textContent = originalText;
       button.disabled = false;
       input.value = '';
+    }, 1500);
+  });
+})();
+
+/* contact form */
+
+(function () {
+  var form = document.querySelector('.contact-form');
+  if (!form) return;
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    var button = form.querySelector('.contact-submit');
+    var originalText = button.textContent;
+    button.textContent = 'Message sent!';
+    button.disabled = true;
+
+    window.setTimeout(function () {
+      button.textContent = originalText;
+      button.disabled = false;
+      form.reset();
     }, 1500);
   });
 })();

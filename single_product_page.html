@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Furniro - single-product</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <img src="images/logo-furniro.svg" alt="Furniro">
+      <span>Furniro</span>
+    </div>
+    <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-controls="site-nav" aria-expanded="false">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+    <nav id="site-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop_page.html">Shop</a></li>
+        <li><a href="about_page.html">About</a></li>
+        <li><a href="contact_page.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="header-icons">
+      <a href="#"><img src="images/icon/icon-account.jpg" alt="Account"></a>
+      <a href="#"><img src="images/icon/icon-search.jpg" alt="Search"></a>
+      <a href="#"><img src="images/icon/icon-wishlist.jpg" alt="Wishlist"></a>
+      <a href="cart_page.html"><img src="images/icon/icon-cart.jpg" alt="Cart"></a>
+    </div>
+  </header>
+
+  <main>
+    <nav class="product-breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="breadcrumb-sep">&rsaquo;</span>
+      <a href="shop_page.html">Shop</a>
+      <span class="breadcrumb-sep">&rsaquo;</span>
+      <span class="breadcrumb-divider"></span>
+      <span aria-current="page">Asgaard sofa</span>
+    </nav>
+
+    <section class="product-detail">
+      <div class="product-gallery">
+        <div class="product-thumbs">
+          <button type="button" class="product-thumb-item is-active" aria-label="Show image 1">
+            <img src="images/product-asgaard-sofa.jpg" alt="Asgaard sofa, navy outdoor lounge set">
+          </button>
+          <button type="button" class="product-thumb-item" aria-label="Show image 2">
+            <img src="images/product-asgaard-outdoor.jpg" alt="Asgaard sofa, outdoor set variant">
+          </button>
+          <button type="button" class="product-thumb-item" aria-label="Show image 3">
+            <img src="images/product-asgaard-pattern.jpg" alt="Asgaard sofa, patterned upholstery variant">
+          </button>
+          <button type="button" class="product-thumb-item" aria-label="Show image 4">
+            <img src="images/product-asgaard-beige.jpg" alt="Asgaard sofa, beige variant">
+          </button>
+        </div>
+
+        <div class="product-main-image">
+          <img src="images/product-asgaard-sofa.jpg" alt="Asgaard sofa, navy outdoor lounge set">
+        </div>
+      </div>
+
+      <div class="single-product-info">
+        <h1>Asgaard sofa</h1>
+        <p class="single-product-price">Rs. 250,000.00</p>
+
+        <div class="product-rating">
+          <span class="stars" style="--rating: 4.5;" aria-hidden="true"></span>
+          <span class="rating-divider"></span>
+          <span class="rating-count">5 Customer Review</span>
+        </div>
+
+        <p class="product-description">
+          Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact,
+          stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended
+          highs for a sound.
+        </p>
+
+        <div class="product-option">
+          <p class="product-option-label">Size</p>
+          <div class="size-options">
+            <button type="button" class="size-btn is-active">L</button>
+            <button type="button" class="size-btn">XL</button>
+            <button type="button" class="size-btn">XS</button>
+          </div>
+        </div>
+
+        <div class="product-option">
+          <p class="product-option-label">Color</p>
+          <div class="color-options">
+            <button type="button" class="color-swatch is-active" style="--swatch-color: #6C7BC2;"
+              aria-label="Purple"></button>
+            <button type="button" class="color-swatch" style="--swatch-color: #000000;" aria-label="Black"></button>
+            <button type="button" class="color-swatch" style="--swatch-color: #B88E2F;" aria-label="Gold"></button>
+          </div>
+        </div>
+
+        <div class="product-actions-row">
+          <div class="qty-stepper">
+            <button type="button" class="qty-btn" aria-label="Decrease quantity">&minus;</button>
+            <span class="qty-value">1</span>
+            <button type="button" class="qty-btn" aria-label="Increase quantity">+</button>
+          </div>
+          <button type="button" class="btn-add-to-cart">Add To Cart</button>
+          <button type="button" class="btn-compare">+ Compare</button>
+        </div>
+
+        <hr class="product-divider">
+
+        <dl class="product-meta">
+          <div class="product-meta-row">
+            <dt>SKU</dt>
+            <dd>: SS001</dd>
+          </div>
+          <div class="product-meta-row">
+            <dt>Category</dt>
+            <dd>: Sofas</dd>
+          </div>
+          <div class="product-meta-row">
+            <dt>Tags</dt>
+            <dd>: Sofa, Chair, Home, Shop</dd>
+          </div>
+          <div class="product-meta-row">
+            <dt>Share</dt>
+            <dd class="product-share">
+              :
+              <a href="#" aria-label="Share on Facebook">
+                <img src="images/icon/icon-facebook.jpg" alt="" width="20" height="20">
+              </a>
+              <a href="#" aria-label="Share on LinkedIn">
+                <img src="images/icon/icon-linkedin.jpg" alt="" width="20" height="20">
+              </a>
+              <a href="#" aria-label="Share on Twitter">
+                <img src="images/icon/icon-twitter.jpg" alt="" width="20" height="20">
+              </a>
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="product-tabs-section">
+      <div class="product-tabs" role="tablist">
+        <button type="button" class="tab-btn is-active" role="tab" aria-selected="true" aria-controls="tab-panel-description" data-tab="description">Description</button>
+        <button type="button" class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-panel-additional" data-tab="additional">Additional Information</button>
+        <button type="button" class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-panel-reviews" data-tab="reviews">Reviews [5]</button>
+      </div>
+
+      <div id="tab-panel-description" class="tab-panel-group" role="tabpanel">
+        <div class="tab-panel">
+          <p>
+            Embodying the raw, wayward spirit of rock &lsquo;n&rsquo; roll, the Kilburn portable active
+            stereo speaker takes the unmistakable look and sound of Marshall, unplugs the chords, and
+            takes the show on the road.
+          </p>
+          <p>
+            Weighing in under 7 pounds, the Kilburn is a lightweight piece of vintage styled
+            engineering. Setting the bar as one of the loudest speakers in its class, the Kilburn is a
+            compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and
+            extended highs for a sound that is both articulate and pronounced. The analogue knobs allow
+            you to fine tune the controls to your personal preferences while the guitar-influenced
+            leather strap enables easy and stylish travel.
+          </p>
+        </div>
+        <div class="description-gallery">
+          <div class="description-gallery-item">
+            <img src="images/product-asgaard-gallery-1.jpg" alt="Cream modular sofa, straight configuration">
+          </div>
+          <div class="description-gallery-item">
+            <img src="images/product-asgaard-gallery-2.jpg" alt="Cream modular sofa, chaise configuration">
+          </div>
+        </div>
+      </div>
+
+      <div id="tab-panel-additional" class="tab-panel-group tab-panel" role="tabpanel" hidden>
+        <table class="spec-table">
+          <tbody>
+            <tr>
+              <th scope="row">Weight</th>
+              <td class="spec-value" data-spec="weight">7 kg</td>
+            </tr>
+            <tr>
+              <th scope="row">Dimensions</th>
+              <td class="spec-value" data-spec="dimensions">120 x 80 x 75 cm</td>
+            </tr>
+            <tr>
+              <th scope="row">Material</th>
+              <td class="spec-value" data-spec="material">Solid wood frame, upholstered finish</td>
+            </tr>
+            <tr>
+              <th scope="row">Color</th>
+              <td class="spec-value" data-spec="color">Purple, Black, Gold</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="tab-panel-reviews" class="tab-panel-group tab-panel" role="tabpanel" hidden>
+        <ul class="review-list">
+          <li class="review-item">
+            <div class="review-header">
+              <span class="review-author">Alex M.</span>
+              <span class="stars" style="--rating: 5;" aria-hidden="true"></span>
+            </div>
+            <p class="review-text">Comfortable and well-made, exactly as pictured. Delivery was quick too.</p>
+          </li>
+          <li class="review-item">
+            <div class="review-header">
+              <span class="review-author">Jordan K.</span>
+              <span class="stars" style="--rating: 4;" aria-hidden="true"></span>
+            </div>
+            <p class="review-text">Really happy with the build quality. Took a star off only because assembly took longer than expected.</p>
+          </li>
+          <li class="review-item">
+            <div class="review-header">
+              <span class="review-author">Sam R.</span>
+              <span class="stars" style="--rating: 5;" aria-hidden="true"></span>
+            </div>
+            <p class="review-text">Looks even better in person. Would buy again.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="related-products">
+      <h2>Related Products</h2>
+
+      <div class="products-grid" id="related-products-grid"></div>
+
+      <button type="button" class="btn btn-outline show-more">Show More</button>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <p class="footer-logo">Funiro.</p>
+        <address>400 University Drive Suite 200 Coral Gables,<br>FL 33134 USA</address>
+      </div>
+
+      <div class="footer-col">
+        <h3>Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop_page.html">Shop</a></li>
+          <li><a href="about_page.html">About</a></li>
+          <li><a href="contact_page.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Help</h3>
+        <ul>
+          <li><a href="#">Payment Options</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Privacy Policies</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-newsletter">
+        <h3>Newsletter</h3>
+        <form class="newsletter-form">
+          <label for="newsletter-email" class="sr-only">Email address</label>
+          <input type="email" id="newsletter-email" name="email" placeholder="Enter Your Email Address" required>
+          <button type="submit">SUBSCRIBE</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>2023 furino. All rights reverved</p>
+    </div>
+  </footer>
+
+  <script src="js/products.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    (function () {
+      var id = parseInt(new URLSearchParams(window.location.search).get('id'), 10);
+
+      FurniroProducts.fetchProducts().then(function (products) {
+        // related products: up to 4 items, excluding whichever one is currently open
+        var related = products.filter(function (p) { return p.id !== id; }).slice(0, 4);
+        FurniroProducts.renderProducts(
+          document.getElementById('related-products-grid'),
+          related.length ? related : products.slice(0, 4)
+        );
+
+        var product = products.find(function (p) { return p.id === id; });
+        if (!product) return; // no/unknown id in the URL - keep the default Asgaard sofa demo content
+
+        document.title = 'Furniro - ' + product.name;
+
+        var breadcrumbCurrent = document.querySelector('.product-breadcrumb [aria-current="page"]');
+        if (breadcrumbCurrent) breadcrumbCurrent.textContent = product.name;
+
+        var heading = document.querySelector('.single-product-info h1');
+        if (heading) heading.textContent = product.name;
+
+        var price = document.querySelector('.single-product-price');
+        if (price) price.textContent = FurniroProducts.formatPrice(product);
+
+        var mainImage = document.querySelector('.product-main-image img');
+        if (mainImage) {
+          mainImage.src = product.image;
+          mainImage.alt = product.alt;
+        }
+
+        // the JSON only carries one photo per product, so every thumbnail
+        // just points at that same image for now
+        document.querySelectorAll('.product-thumb-item img').forEach(function (img) {
+          img.src = product.image;
+          img.alt = product.alt;
+        });
+
+        function metaRow(label) {
+          return Array.prototype.find.call(
+            document.querySelectorAll('.product-meta-row'),
+            function (row) { return row.querySelector('dt').textContent.trim() === label; }
+          );
+        }
+
+        var categoryRow = metaRow('Category');
+        if (categoryRow) categoryRow.querySelector('dd').textContent = ': ' + product.category;
+
+        var skuRow = metaRow('SKU');
+        if (skuRow) skuRow.querySelector('dd').textContent = ': ' + product.sku;
+
+        var tagsRow = metaRow('Tags');
+        if (tagsRow) tagsRow.querySelector('dd').textContent = ': ' + product.tags.join(', ');
+
+        var description = document.querySelector('.product-description');
+        if (description) description.textContent = product.description;
+
+        var stars = document.querySelector('.stars');
+        if (stars) stars.style.setProperty('--rating', product.rating);
+
+        var ratingCount = document.querySelector('.rating-count');
+        if (ratingCount) {
+          ratingCount.textContent = product.reviewCount + (product.reviewCount === 1 ? ' Customer Review' : ' Customer Reviews');
+        }
+
+        var sizeOptions = document.querySelector('.size-options');
+        if (sizeOptions) {
+          sizeOptions.innerHTML = product.sizes.map(function (size, i) {
+            return '<button type="button" class="size-btn' + (i === 0 ? ' is-active' : '') + '">' + size + '</button>';
+          }).join('');
+        }
+
+        var colorOptions = document.querySelector('.color-options');
+        if (colorOptions) {
+          colorOptions.innerHTML = product.colors.map(function (hex, i) {
+            return '<button type="button" class="color-swatch' + (i === 0 ? ' is-active' : '') +
+              '" style="--swatch-color: ' + hex + ';" aria-label="Color ' + hex + '"></button>';
+          }).join('');
+        }
+
+        var tabParagraphs = document.querySelectorAll('.tab-panel > p');
+        product.descriptionParagraphs.forEach(function (text, i) {
+          if (tabParagraphs[i]) tabParagraphs[i].textContent = text;
+        });
+      }).catch(function (err) {
+        console.error(err);
+      });
+    })();
+  </script>
+</body>
+
+</html>
