@@ -36,7 +36,10 @@
         "Chair",
         "Cafe",
         "Dining"
-      ]
+      ],
+      "weight": "5 kg",
+      "dimensions": "45 x 50 x 80 cm",
+      "material": "Molded plastic seat, powder-coated steel legs"
     },
     {
       "id": 2,
@@ -70,7 +73,10 @@
       "tags": [
         "Chair",
         "Cafe"
-      ]
+      ],
+      "weight": "4.5 kg",
+      "dimensions": "46 x 52 x 78 cm",
+      "material": "Molded plastic seat, powder-coated steel legs"
     },
     {
       "id": 3,
@@ -88,7 +94,7 @@
       "alt": "Lolito luxury big sofa",
       "description": "An oversized sofa built for sinking in, with deep cushions and a tufted back.",
       "descriptionParagraphs": [
-        "Lolito is sized for a real living room centerpiece \u2014 wide enough for an afternoon nap, deep enough that your feet won't touch the floor from the middle seat.",
+        "Lolito is sized for a real living room centerpiece — wide enough for an afternoon nap, deep enough that your feet won't touch the floor from the middle seat.",
         "Underneath the tufted upholstery sits a hardwood frame and high-density foam, so the shape holds up through years of movie nights."
       ],
       "rating": 4.8,
@@ -108,7 +114,10 @@
         "Sofa",
         "Living Room",
         "Luxury"
-      ]
+      ],
+      "weight": "65 kg",
+      "dimensions": "240 x 100 x 85 cm",
+      "material": "Solid wood frame, tufted fabric upholstery"
     },
     {
       "id": 4,
@@ -145,7 +154,10 @@
         "Outdoor",
         "Bar Table",
         "Stool"
-      ]
+      ],
+      "weight": "12 kg",
+      "dimensions": "60 x 60 x 110 cm",
+      "material": "Teak wood, weather-treated finish"
     },
     {
       "id": 5,
@@ -160,7 +172,7 @@
       "alt": "Grifo night lamp",
       "description": "A soft-glow night lamp with a slim silhouette that fits any bedside table.",
       "descriptionParagraphs": [
-        "Grifo uses a warm, dimmable bulb designed to wind you down before sleep rather than jolt you awake \u2014 no harsh white light here.",
+        "Grifo uses a warm, dimmable bulb designed to wind you down before sleep rather than jolt you awake — no harsh white light here.",
         "The base is weighted so the lamp stays put even on a crowded nightstand, and the cord routes discreetly through the stand itself."
       ],
       "rating": 4.6,
@@ -179,7 +191,10 @@
         "Lighting",
         "Bedroom",
         "Lamp"
-      ]
+      ],
+      "weight": "1.2 kg",
+      "dimensions": "20 x 20 x 45 cm",
+      "material": "Metal base, fabric shade"
     },
     {
       "id": 6,
@@ -197,7 +212,7 @@
       "alt": "Muggo small mug",
       "description": "A small ceramic mug with a wide handle, glazed by hand in small batches.",
       "descriptionParagraphs": [
-        "Muggo is thrown on a wheel and glazed one at a time, so no two mugs are perfectly identical \u2014 small variations in the glaze are part of the charm.",
+        "Muggo is thrown on a wheel and glazed one at a time, so no two mugs are perfectly identical — small variations in the glaze are part of the charm.",
         "It holds enough coffee to get through your morning routine without weighing your hand down, and it's safe for both the microwave and dishwasher."
       ],
       "rating": 4.7,
@@ -216,7 +231,10 @@
         "Kitchen",
         "Mug",
         "Ceramic"
-      ]
+      ],
+      "weight": "0.35 kg",
+      "dimensions": "9 x 9 x 10 cm",
+      "material": "Glazed ceramic"
     },
     {
       "id": 7,
@@ -254,7 +272,10 @@
         "Bedroom",
         "Bed Set",
         "Kids"
-      ]
+      ],
+      "weight": "40 kg",
+      "dimensions": "160 x 200 x 110 cm",
+      "material": "Upholstered headboard, pine wood slats"
     },
     {
       "id": 8,
@@ -272,7 +293,7 @@
       "alt": "Potty minimal",
       "description": "A minimal accent stool that works as extra seating or a plant stand.",
       "descriptionParagraphs": [
-        "Potty strips furniture down to the essentials \u2014 a single curved form with no visible joints, finished in a matte coat that resists scuffing.",
+        "Potty strips furniture down to the essentials — a single curved form with no visible joints, finished in a matte coat that resists scuffing.",
         "Light enough to move with one hand, it's just as happy holding a potted plant as it is holding a guest for an extra seat."
       ],
       "rating": 4.2,
@@ -291,7 +312,10 @@
         "Stool",
         "Minimal",
         "Accent"
-      ]
+      ],
+      "weight": "3 kg",
+      "dimensions": "35 x 35 x 40 cm",
+      "material": "Molded polymer"
     },
     {
       "id": 9,
@@ -305,7 +329,7 @@
         "type": "sale",
         "label": "-24%"
       },
-      "image": "https://picsum.photos/seed/astrid/600/600",
+      "image": "https://images.unsplash.com/photo-1537258420529-0c5451503199?w=600&h=600&fit=crop&q=80",
       "alt": "Astrid modern lounge chair",
       "description": "A modern lounge chair with a rounded silhouette designed for relaxed reading and quiet evenings.",
       "descriptionParagraphs": [
@@ -329,7 +353,10 @@
         "Chair",
         "Lounge",
         "Modern"
-      ]
+      ],
+      "weight": "8 kg",
+      "dimensions": "65 x 70 x 75 cm",
+      "material": "Steel frame, foam cushion"
     },
     {
       "id": 10,
@@ -343,7 +370,7 @@
         "type": "new",
         "label": "New"
       },
-      "image": "https://picsum.photos/seed/calista/600/600",
+      "image": "https://images.unsplash.com/photo-1533008093099-e2681382639a?w=600&h=600&fit=crop&q=80",
       "alt": "Calista minimal coffee table",
       "description": "A clean-lined coffee table with a warm wooden finish and a softly rounded tabletop.",
       "descriptionParagraphs": [
@@ -367,7 +394,10 @@
         "Table",
         "Coffee Table",
         "Minimal"
-      ]
+      ],
+      "weight": "15 kg",
+      "dimensions": "90 x 50 x 40 cm",
+      "material": "Solid oak wood"
     },
     {
       "id": 11,
@@ -381,7 +411,7 @@
         "type": "sale",
         "label": "-20%"
       },
-      "image": "https://picsum.photos/seed/elora/600/600",
+      "image": "https://plus.unsplash.com/premium_photo-1661427478544-a6e3a14113f7?w=600&h=600&fit=crop&q=80",
       "alt": "Elora elegant dining table",
       "description": "An elegant dining table with a spacious top and refined natural wood finish.",
       "descriptionParagraphs": [
@@ -405,7 +435,10 @@
         "Table",
         "Dining",
         "Wood"
-      ]
+      ],
+      "weight": "35 kg",
+      "dimensions": "180 x 90 x 75 cm",
+      "material": "Solid oak wood"
     },
     {
       "id": 12,
@@ -416,7 +449,7 @@
       "price": 2100000,
       "priceOld": null,
       "badge": null,
-      "image": "https://picsum.photos/seed/nordic/600/600",
+      "image": "https://images.unsplash.com/photo-1736843640230-ea1e8241ae42?w=600&h=600&fit=crop&q=80",
       "alt": "Nordic Scandinavian chair",
       "description": "A Scandinavian-inspired chair with a simple frame and comfortable upholstered seat.",
       "descriptionParagraphs": [
@@ -439,7 +472,10 @@
         "Chair",
         "Scandinavian",
         "Dining"
-      ]
+      ],
+      "weight": "4 kg",
+      "dimensions": "45 x 50 x 82 cm",
+      "material": "Beech wood, woven seat"
     },
     {
       "id": 13,
@@ -453,7 +489,7 @@
         "type": "sale",
         "label": "-20%"
       },
-      "image": "https://picsum.photos/seed/velora/600/600",
+      "image": "https://images.unsplash.com/photo-1756302555654-5e413da2d1b8?w=600&h=600&fit=crop&q=80",
       "alt": "Velora luxury armchair",
       "description": "A luxurious armchair featuring deep cushioning and a sophisticated rounded frame.",
       "descriptionParagraphs": [
@@ -476,7 +512,10 @@
         "Chair",
         "Luxury",
         "Living Room"
-      ]
+      ],
+      "weight": "22 kg",
+      "dimensions": "80 x 85 x 90 cm",
+      "material": "Hardwood frame, leather upholstery"
     },
     {
       "id": 14,
@@ -490,7 +529,7 @@
         "type": "new",
         "label": "New"
       },
-      "image": "https://picsum.photos/seed/luna/600/600",
+      "image": "https://images.unsplash.com/photo-1502921451607-29fa99d270d4?w=600&h=600&fit=crop&q=80",
       "alt": "Luna round side table",
       "description": "A compact round side table designed for sofas, armchairs, and bedside spaces.",
       "descriptionParagraphs": [
@@ -513,7 +552,10 @@
         "Table",
         "Side Table",
         "Minimal"
-      ]
+      ],
+      "weight": "6 kg",
+      "dimensions": "40 x 40 x 45 cm",
+      "material": "Solid walnut wood"
     },
     {
       "id": 15,
@@ -524,7 +566,7 @@
       "price": 2600000,
       "priceOld": null,
       "badge": null,
-      "image": "https://picsum.photos/seed/arco/600/600",
+      "image": "https://plus.unsplash.com/premium_photo-1768597134001-1665b701410b?w=600&h=600&fit=crop&q=80",
       "alt": "Arco modern floor lamp",
       "description": "A tall floor lamp with an adjustable curved arm for focused ambient lighting.",
       "descriptionParagraphs": [
@@ -547,7 +589,10 @@
         "Lighting",
         "Floor Lamp",
         "Modern"
-      ]
+      ],
+      "weight": "5 kg",
+      "dimensions": "30 x 30 x 150 cm",
+      "material": "Metal frame, fabric shade"
     },
     {
       "id": 16,
@@ -561,7 +606,7 @@
         "type": "sale",
         "label": "-13%"
       },
-      "image": "https://picsum.photos/seed/milo/600/600",
+      "image": "https://images.unsplash.com/photo-1554625170-a99bf5e957c9?w=600&h=600&fit=crop&q=80",
       "alt": "Milo wooden bookshelf",
       "description": "A compact wooden bookshelf with open shelves for books, plants, and decorative objects.",
       "descriptionParagraphs": [
@@ -584,7 +629,10 @@
         "Storage",
         "Bookshelf",
         "Wood"
-      ]
+      ],
+      "weight": "28 kg",
+      "dimensions": "80 x 30 x 180 cm",
+      "material": "Solid pine wood"
     },
     {
       "id": 17,
@@ -595,7 +643,7 @@
       "price": 1750000,
       "priceOld": null,
       "badge": null,
-      "image": "https://picsum.photos/seed/nara/600/600",
+      "image": "https://images.unsplash.com/photo-1740595362788-78bc54ea1bad?w=600&h=600&fit=crop&q=80",
       "alt": "Nara decorative mirror",
       "description": "A rounded decorative mirror that adds light and depth to modern interiors.",
       "descriptionParagraphs": [
@@ -618,7 +666,10 @@
         "Decor",
         "Mirror",
         "Bedroom"
-      ]
+      ],
+      "weight": "4 kg",
+      "dimensions": "60 x 60 x 3 cm",
+      "material": "Wood frame, glass mirror"
     },
     {
       "id": 18,
@@ -632,7 +683,7 @@
         "type": "new",
         "label": "New"
       },
-      "image": "https://picsum.photos/seed/siena/600/600",
+      "image": "https://images.unsplash.com/photo-1758448511322-8bfc73daf606?w=600&h=600&fit=crop&q=80",
       "alt": "Siena soft lounge sofa",
       "description": "A soft three-seat sofa with deep cushions and a relaxed contemporary shape.",
       "descriptionParagraphs": [
@@ -656,7 +707,10 @@
         "Sofa",
         "Living Room",
         "Comfort"
-      ]
+      ],
+      "weight": "55 kg",
+      "dimensions": "210 x 90 x 80 cm",
+      "material": "Hardwood frame, linen upholstery"
     },
     {
       "id": 19,
@@ -667,7 +721,7 @@
       "price": 1350000,
       "priceOld": null,
       "badge": null,
-      "image": "https://picsum.photos/seed/tessa/600/600",
+      "image": "https://images.unsplash.com/photo-1558211583-03ed8a0b3d5f?w=600&h=600&fit=crop&q=80",
       "alt": "Tessa bedside cabinet",
       "description": "A compact bedside cabinet with a drawer for keeping nighttime essentials organized.",
       "descriptionParagraphs": [
@@ -690,7 +744,10 @@
         "Bedroom",
         "Storage",
         "Cabinet"
-      ]
+      ],
+      "weight": "12 kg",
+      "dimensions": "45 x 40 x 55 cm",
+      "material": "Solid oak wood"
     },
     {
       "id": 20,
@@ -704,7 +761,7 @@
         "type": "sale",
         "label": "-15%"
       },
-      "image": "https://picsum.photos/seed/orion/600/600",
+      "image": "https://images.unsplash.com/photo-1758640920659-0bb864175983?w=600&h=600&fit=crop&q=80",
       "alt": "Orion modern desk",
       "description": "A clean modern desk with a spacious work surface and slim supporting legs.",
       "descriptionParagraphs": [
@@ -727,7 +784,10 @@
         "Desk",
         "Office",
         "Workspace"
-      ]
+      ],
+      "weight": "25 kg",
+      "dimensions": "120 x 60 x 75 cm",
+      "material": "Engineered wood, steel legs"
     },
     {
       "id": 21,
@@ -741,7 +801,7 @@
         "type": "new",
         "label": "New"
       },
-      "image": "https://picsum.photos/seed/cora/600/600",
+      "image": "https://images.unsplash.com/photo-1581606559586-abc4b010ad31?w=600&h=600&fit=crop&q=80",
       "alt": "Cora decorative vase",
       "description": "A handcrafted decorative vase with an organic silhouette and textured finish.",
       "descriptionParagraphs": [
@@ -764,7 +824,10 @@
         "Decor",
         "Vase",
         "Home"
-      ]
+      ],
+      "weight": "1 kg",
+      "dimensions": "15 x 15 x 30 cm",
+      "material": "Hand-glazed ceramic"
     },
     {
       "id": 22,
@@ -775,7 +838,7 @@
       "price": 1950000,
       "priceOld": null,
       "badge": null,
-      "image": "https://picsum.photos/seed/elio/600/600",
+      "image": "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=600&h=600&fit=crop&q=80",
       "alt": "Elio pendant ceiling lamp",
       "description": "A minimalist pendant lamp designed to create a warm focal point above tables and counters.",
       "descriptionParagraphs": [
@@ -799,7 +862,10 @@
         "Lighting",
         "Pendant",
         "Modern"
-      ]
+      ],
+      "weight": "2 kg",
+      "dimensions": "25 x 25 x 30 cm",
+      "material": "Metal shade, brass fitting"
     },
     {
       "id": 23,
@@ -810,7 +876,7 @@
       "price": 280000,
       "priceOld": null,
       "badge": null,
-      "image": "https://picsum.photos/seed/faye/600/600",
+      "image": "https://images.unsplash.com/photo-1629949008265-af1bcaf59786?w=600&h=600&fit=crop&q=80",
       "alt": "Faye accent cushion",
       "description": "A soft decorative cushion with a textured cover for sofas, beds, and lounge chairs.",
       "descriptionParagraphs": [
@@ -833,7 +899,10 @@
         "Decor",
         "Cushion",
         "Living Room"
-      ]
+      ],
+      "weight": "0.6 kg",
+      "dimensions": "45 x 45 x 15 cm",
+      "material": "Cotton cover, polyester fill"
     },
     {
       "id": 24,
@@ -847,7 +916,7 @@
         "type": "sale",
         "label": "-20%"
       },
-      "image": "https://picsum.photos/seed/haven/600/600",
+      "image": "https://images.unsplash.com/photo-1617859047452-8510bcf207fd?w=600&h=600&fit=crop&q=80",
       "alt": "Haven outdoor lounge chair",
       "description": "A weather-resistant outdoor lounge chair made for balconies, patios, and garden corners.",
       "descriptionParagraphs": [
@@ -870,7 +939,10 @@
         "Outdoor",
         "Chair",
         "Lounge"
-      ]
+      ],
+      "weight": "10 kg",
+      "dimensions": "70 x 75 x 85 cm",
+      "material": "Teak wood, weather-resistant rope"
     },
     {
       "id": 25,
@@ -884,7 +956,7 @@
         "type": "new",
         "label": "New"
       },
-      "image": "https://picsum.photos/seed/riva/600/600",
+      "image": "https://images.unsplash.com/photo-1660153605732-77fa8b186045?w=600&h=600&fit=crop&q=80",
       "alt": "Riva compact dining bench",
       "description": "A compact dining bench that provides flexible seating around small dining tables.",
       "descriptionParagraphs": [
@@ -908,7 +980,10 @@
         "Bench",
         "Dining",
         "Wood"
-      ]
+      ],
+      "weight": "18 kg",
+      "dimensions": "120 x 35 x 45 cm",
+      "material": "Solid oak wood"
     },
     {
       "id": 26,
@@ -919,7 +994,7 @@
       "price": 1100000,
       "priceOld": null,
       "badge": null,
-      "image": "https://picsum.photos/seed/mira/600/600",
+      "image": "https://images.unsplash.com/photo-1614635884840-85cf80d23844?w=600&h=600&fit=crop&q=80",
       "alt": "Mira ceramic table lamp",
       "description": "A ceramic table lamp with a soft fabric shade and warm ambient glow.",
       "descriptionParagraphs": [
@@ -942,7 +1017,10 @@
         "Lighting",
         "Lamp",
         "Ceramic"
-      ]
+      ],
+      "weight": "1.5 kg",
+      "dimensions": "20 x 20 x 40 cm",
+      "material": "Ceramic base, fabric shade"
     },
     {
       "id": 27,
@@ -956,7 +1034,7 @@
         "type": "sale",
         "label": "-17%"
       },
-      "image": "https://picsum.photos/seed/nova/600/600",
+      "image": "https://images.unsplash.com/photo-1605217613423-0a61bd725c8a?w=600&h=600&fit=crop&q=80",
       "alt": "Nova storage cabinet",
       "description": "A versatile storage cabinet with clean doors and generous interior space.",
       "descriptionParagraphs": [
@@ -979,7 +1057,10 @@
         "Storage",
         "Cabinet",
         "Minimal"
-      ]
+      ],
+      "weight": "32 kg",
+      "dimensions": "100 x 40 x 90 cm",
+      "material": "Engineered wood, soft-close doors"
     },
     {
       "id": 28,
@@ -990,7 +1071,7 @@
       "price": 1850000,
       "priceOld": null,
       "badge": null,
-      "image": "https://picsum.photos/seed/sora/600/600",
+      "image": "https://images.unsplash.com/photo-1736843640230-ea1e8241ae42?w=600&h=600&fit=crop&q=80",
       "alt": "Sora round dining chair",
       "description": "A rounded dining chair with a supportive backrest and soft upholstered seat.",
       "descriptionParagraphs": [
@@ -1013,7 +1094,10 @@
         "Chair",
         "Dining",
         "Upholstered"
-      ]
+      ],
+      "weight": "5 kg",
+      "dimensions": "48 x 52 x 80 cm",
+      "material": "Beech wood, upholstered seat"
     },
     {
       "id": 29,
@@ -1027,7 +1111,7 @@
         "type": "sale",
         "label": "-16%"
       },
-      "image": "https://picsum.photos/seed/vera/600/600",
+      "image": "https://images.unsplash.com/photo-1460776960860-7adc30a4e69d?w=600&h=600&fit=crop&q=80",
       "alt": "Vera modern TV console",
       "description": "A low-profile TV console with concealed storage and a clean modern silhouette.",
       "descriptionParagraphs": [
@@ -1051,7 +1135,10 @@
         "Storage",
         "TV Console",
         "Living Room"
-      ]
+      ],
+      "weight": "30 kg",
+      "dimensions": "150 x 40 x 45 cm",
+      "material": "Engineered wood, matte finish"
     },
     {
       "id": 30,
@@ -1065,7 +1152,7 @@
         "type": "new",
         "label": "New"
       },
-      "image": "https://picsum.photos/seed/zeno/600/600",
+      "image": "https://images.unsplash.com/photo-1629949008265-af1bcaf59786?w=600&h=600&fit=crop&q=80",
       "alt": "Zeno minimal floor cushion",
       "description": "A comfortable floor cushion designed for casual seating, meditation, and relaxed gatherings.",
       "descriptionParagraphs": [
@@ -1088,7 +1175,10 @@
         "Cushion",
         "Minimal",
         "Living Room"
-      ]
+      ],
+      "weight": "1.2 kg",
+      "dimensions": "60 x 60 x 20 cm",
+      "material": "Cotton cover, foam fill"
     }
   ]
 }

@@ -30,17 +30,32 @@
       </ul>
     </nav>
     <div class="header-icons">
-      <a href="#"><img src="images/icon/icon-account.jpg" alt="Account"></a>
-      <a href="#"><img src="images/icon/icon-search.jpg" alt="Search"></a>
-      <a href="#"><img src="images/icon/icon-wishlist.jpg" alt="Wishlist"></a>
-      <a href="cart_page.html"><img src="images/icon/icon-cart.jpg" alt="Cart"></a>
+      <a href="login_page.html"><img src="images/icon/icon-account.jpg" alt="Account"></a>
+      <button type="button" class="search-toggle-btn" id="search-toggle-btn" aria-expanded="false" aria-controls="search-dropdown">
+        <img src="images/icon/icon-search.jpg" alt="Search">
+      </button>
+      <a href="favorite_page.html" class="icon-link">
+        <img src="images/icon/icon-wishlist.jpg" alt="Wishlist">
+        <span class="icon-badge" data-favorite-count hidden>0</span>
+      </a>
+      <a href="cart_page.html" class="icon-link">
+        <img src="images/icon/icon-cart.jpg" alt="Cart">
+        <span class="icon-badge" data-cart-count hidden>0</span>
+      </a>
+    </div>
+    <div class="search-dropdown" id="search-dropdown" hidden>
+      <form class="search-dropdown-form" id="search-form">
+        <label for="search-input" class="sr-only">Search products</label>
+        <input type="search" id="search-input" name="search" placeholder="Search products&hellip;" autocomplete="off">
+        <button type="submit">Search</button>
+      </form>
     </div>
   </header>
 
   <main>
-    <section class="cart-hero">
-      <div class="cart-hero-content">
-        <img src="images/logo-furniro.svg" alt="" class="cart-hero-icon">
+    <section class="page-hero">
+      <div class="page-hero-content">
+        <img src="images/logo-furniro.svg" alt="" class="page-hero-icon">
         <h1>Cart</h1>
         <nav class="breadcrumb" aria-label="Breadcrumb">
           <a href="index.html">Home</a>
@@ -51,7 +66,7 @@
     </section>
 
     <section class="cart-section">
-      <div class="cart-table-wrap">
+      <div class="cart-table-wrap" id="cart-table-wrap">
         <table class="cart-table">
           <thead>
             <tr>
@@ -62,42 +77,25 @@
               <th><span class="sr-only">Remove</span></th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>
-                <div class="cart-product">
-                  <img src="images/product-asgaard-sofa.jpg" alt="Asgaard sofa, navy outdoor lounge set">
-                  <span>Asgaard sofa</span>
-                </div>
-              </td>
-              <td class="cart-price">Rs. 250,000.00</td>
-              <td class="cart-qty-cell">
-                <label class="sr-only" for="qty-1">Quantity</label>
-                <input type="number" id="qty-1" class="cart-qty-input" value="1" min="1">
-              </td>
-              <td class="cart-subtotal">Rs. 250,000.00</td>
-              <td class="cart-remove-cell">
-                <button type="button" class="cart-remove-btn" aria-label="Remove Asgaard sofa from cart">
-                  <img src="images/icon/icon-delete.jpg" alt="" width="20" height="20">
-                </button>
-              </td>
-            </tr>
-          </tbody>
+          <tbody id="cart-items-body"></tbody>
         </table>
       </div>
 
-      <aside class="cart-totals">
+      <aside class="cart-totals" id="cart-totals-wrap">
         <h2>Cart Totals</h2>
         <div class="cart-totals-row">
           <span>Subtotal</span>
-          <span class="cart-totals-value">Rs. 250,000.00</span>
+          <span class="cart-totals-value" id="cart-subtotal-value">Rp 0</span>
         </div>
         <div class="cart-totals-row cart-totals-row--total">
           <span>Total</span>
-          <span class="cart-totals-value">Rs. 250,000.00</span>
+          <span class="cart-totals-value" id="cart-total-value">Rp 0</span>
         </div>
         <a href="checkout_page.html" class="btn-checkout">Check Out</a>
       </aside>
+
+      <p class="favorite-empty" id="cart-empty-message" hidden>Your cart is empty. Add something you like from the <a
+          href="shop_page.html">shop</a>.</p>
     </section>
 
     <section class="features-bar">
@@ -126,7 +124,8 @@
       </div>
 
       <div class="feature-item">
-        <img class="feature-icon" src="images/icon/customer-support.jpg" alt="Support headset icon" width="40" height="40">
+        <img class="feature-icon" src="images/icon/customer-support.jpg" alt="Support headset icon" width="40"
+          height="40">
         <div class="feature-text">
           <h3 class="feature-title">24 / 7 Support</h3>
           <p class="feature-subtitle">Dedicated support</p>

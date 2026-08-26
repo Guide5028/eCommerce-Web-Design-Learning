@@ -30,17 +30,32 @@
       </ul>
     </nav>
     <div class="header-icons">
-      <a href="#"><img src="images/icon/icon-account.jpg" alt="Account"></a>
-      <a href="#"><img src="images/icon/icon-search.jpg" alt="Search"></a>
-      <a href="favorite_page.html"><img src="images/icon/icon-wishlist.jpg" alt="Wishlist"></a>
-      <a href="cart_page.html"><img src="images/icon/icon-cart.jpg" alt="Cart"></a>
+      <a href="login_page.html"><img src="images/icon/icon-account.jpg" alt="Account"></a>
+      <button type="button" class="search-toggle-btn" id="search-toggle-btn" aria-expanded="false" aria-controls="search-dropdown">
+        <img src="images/icon/icon-search.jpg" alt="Search">
+      </button>
+      <a href="favorite_page.html" class="icon-link">
+        <img src="images/icon/icon-wishlist.jpg" alt="Wishlist">
+        <span class="icon-badge" data-favorite-count hidden>0</span>
+      </a>
+      <a href="cart_page.html" class="icon-link">
+        <img src="images/icon/icon-cart.jpg" alt="Cart">
+        <span class="icon-badge" data-cart-count hidden>0</span>
+      </a>
+    </div>
+    <div class="search-dropdown" id="search-dropdown" hidden>
+      <form class="search-dropdown-form" id="search-form">
+        <label for="search-input" class="sr-only">Search products</label>
+        <input type="search" id="search-input" name="search" placeholder="Search products&hellip;" autocomplete="off">
+        <button type="submit">Search</button>
+      </form>
     </div>
   </header>
 
   <main>
-    <section class="cart-hero">
-      <div class="cart-hero-content">
-        <img src="images/logo-furniro.svg" alt="" class="cart-hero-icon">
+    <section class="page-hero">
+      <div class="page-hero-content">
+        <img src="images/logo-furniro.svg" alt="" class="page-hero-icon">
         <h1>Favorite</h1>
         <nav class="breadcrumb" aria-label="Breadcrumb">
           <a href="index.html">Home</a>
@@ -52,118 +67,12 @@
 
     <section class="favorite-section">
       <h2>My Wishlist</h2>
-      <p class="favorite-subtitle">4 items saved</p>
+      <p class="favorite-subtitle" id="favorite-subtitle">0 items saved</p>
 
-      <div class="products-grid favorite-grid">
+      <div class="products-grid favorite-grid" id="favorite-grid"></div>
 
-        <div class="product-card">
-          <div class="product-thumb">
-            <img src="images/product-syltherine.jpg" alt="Syltherine stylish cafe chair">
-            <span class="badge badge--sale">-30%</span>
-          </div>
-
-          <div class="product-info">
-            <h3 class="product-name">Syltherine</h3>
-            <p class="product-category">Stylish cafe chair</p>
-            <div class="product-price">
-              <span class="price">Rp 2.500.000</span>
-              <span class="price-old">Rp 3.500.000</span>
-            </div>
-          </div>
-
-          <div class="product-overlay">
-            <button class="btn-add-cart">Add to cart</button>
-            <div class="product-actions">
-              <a href="#" class="action-link"><img src="images/icon/icon-share.svg" alt="">Share</a>
-              <a href="#" class="action-link"><img src="images/icon/icon-compare.svg" alt="">Compare</a>
-              <button type="button" class="action-link btn-remove-favorite" aria-label="Remove Syltherine from favorites">
-                <img src="images/icon/icon-delete.jpg" alt="">Remove
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div class="product-thumb">
-            <img src="images/product-leviosa.jpg" alt="leviosa">
-          </div>
-
-          <div class="product-info">
-            <h3 class="product-name">Leviosa</h3>
-            <p class="product-category">Stylish cafe chair</p>
-            <div class="product-price">
-              <span class="price">Rp 2.500.000</span>
-            </div>
-          </div>
-
-          <div class="product-overlay">
-            <button class="btn-add-cart">Add to cart</button>
-            <div class="product-actions">
-              <a href="#" class="action-link"><img src="images/icon/icon-share.svg" alt="">Share</a>
-              <a href="#" class="action-link"><img src="images/icon/icon-compare.svg" alt="">Compare</a>
-              <button type="button" class="action-link btn-remove-favorite" aria-label="Remove Leviosa from favorites">
-                <img src="images/icon/icon-delete.jpg" alt="">Remove
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div class="product-thumb">
-            <img src="images/product-lolito.jpg" alt="Lolito luxury big sofa">
-            <span class="badge badge--sale">-50%</span>
-          </div>
-
-          <div class="product-info">
-            <h3 class="product-name">Lolito</h3>
-            <p class="product-category">Luxuary big sofa</p>
-            <div class="product-price">
-              <span class="price">Rp 7.000.000</span>
-              <span class="price-old">Rp 14.000.000</span>
-            </div>
-          </div>
-
-          <div class="product-overlay">
-            <button class="btn-add-cart">Add to cart</button>
-            <div class="product-actions">
-              <a href="#" class="action-link"><img src="images/icon/icon-share.svg" alt="">Share</a>
-              <a href="#" class="action-link"><img src="images/icon/icon-compare.svg" alt="">Compare</a>
-              <button type="button" class="action-link btn-remove-favorite" aria-label="Remove Lolito from favorites">
-                <img src="images/icon/icon-delete.jpg" alt="">Remove
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div class="product-thumb">
-            <img src="images/product-respira.jpg" alt="Respira outdoor bar table and stool">
-            <span class="badge badge--new">New</span>
-          </div>
-
-          <div class="product-info">
-            <h3 class="product-name">Respira</h3>
-            <p class="product-category">Outdoor bar table and stool</p>
-            <div class="product-price">
-              <span class="price">Rp 500.000</span>
-            </div>
-          </div>
-
-          <div class="product-overlay">
-            <button class="btn-add-cart">Add to cart</button>
-            <div class="product-actions">
-              <a href="#" class="action-link"><img src="images/icon/icon-share.svg" alt="">Share</a>
-              <a href="#" class="action-link"><img src="images/icon/icon-compare.svg" alt="">Compare</a>
-              <button type="button" class="action-link btn-remove-favorite" aria-label="Remove Respira from favorites">
-                <img src="images/icon/icon-delete.jpg" alt="">Remove
-              </button>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <p class="favorite-empty" hidden>Your wishlist is empty. Tap the heart icon on any product to save it here.</p>
+      <p class="favorite-empty" id="favorite-empty-message" hidden>Your wishlist is empty. Tap the heart icon on any
+        product to save it here.</p>
     </section>
 
     <section class="features-bar">
@@ -192,7 +101,8 @@
       </div>
 
       <div class="feature-item">
-        <img class="feature-icon" src="images/icon/customer-support.jpg" alt="Support headset icon" width="40" height="40">
+        <img class="feature-icon" src="images/icon/customer-support.jpg" alt="Support headset icon" width="40"
+          height="40">
         <div class="feature-text">
           <h3 class="feature-title">24 / 7 Support</h3>
           <p class="feature-subtitle">Dedicated support</p>

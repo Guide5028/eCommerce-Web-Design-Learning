@@ -30,10 +30,25 @@
       </ul>
     </nav>
     <div class="header-icons">
-      <a href="#"><img src="images/icon/icon-account.jpg" alt="Account"></a>
-      <a href="#"><img src="images/icon/icon-search.jpg" alt="Search"></a>
-      <a href="#"><img src="images/icon/icon-wishlist.jpg" alt="Wishlist"></a>
-      <a href="cart_page.html"><img src="images/icon/icon-cart.jpg" alt="Cart"></a>
+      <a href="login_page.html"><img src="images/icon/icon-account.jpg" alt="Account"></a>
+      <button type="button" class="search-toggle-btn" id="search-toggle-btn" aria-expanded="false" aria-controls="search-dropdown">
+        <img src="images/icon/icon-search.jpg" alt="Search">
+      </button>
+      <a href="favorite_page.html" class="icon-link">
+        <img src="images/icon/icon-wishlist.jpg" alt="Wishlist">
+        <span class="icon-badge" data-favorite-count hidden>0</span>
+      </a>
+      <a href="cart_page.html" class="icon-link">
+        <img src="images/icon/icon-cart.jpg" alt="Cart">
+        <span class="icon-badge" data-cart-count hidden>0</span>
+      </a>
+    </div>
+    <div class="search-dropdown" id="search-dropdown" hidden>
+      <form class="search-dropdown-form" id="search-form">
+        <label for="search-input" class="sr-only">Search products</label>
+        <input type="search" id="search-input" name="search" placeholder="Search products&hellip;" autocomplete="off">
+        <button type="submit">Search</button>
+      </form>
     </div>
   </header>
 
@@ -80,9 +95,8 @@
         </div>
 
         <p class="product-description">
-          Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact,
-          stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended
-          highs for a sound.
+          A relaxed outdoor lounge sofa with a woven rope frame and deep cushions, built for long
+          afternoons outside.
         </p>
 
         <div class="product-option">
@@ -110,7 +124,7 @@
             <span class="qty-value">1</span>
             <button type="button" class="qty-btn" aria-label="Increase quantity">+</button>
           </div>
-          <button type="button" class="btn-add-to-cart">Add To Cart</button>
+          <button type="button" class="btn-add-to-cart" data-product-id="">Add To Cart</button>
           <button type="button" class="btn-compare">+ Compare</button>
         </div>
 
@@ -150,25 +164,25 @@
 
     <section class="product-tabs-section">
       <div class="product-tabs" role="tablist">
-        <button type="button" class="tab-btn is-active" role="tab" aria-selected="true" aria-controls="tab-panel-description" data-tab="description">Description</button>
-        <button type="button" class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-panel-additional" data-tab="additional">Additional Information</button>
-        <button type="button" class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-panel-reviews" data-tab="reviews">Reviews [5]</button>
+        <button type="button" class="tab-btn is-active" role="tab" aria-selected="true"
+          aria-controls="tab-panel-description" data-tab="description">Description</button>
+        <button type="button" class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-panel-additional"
+          data-tab="additional">Additional Information</button>
+        <button type="button" class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-panel-reviews"
+          data-tab="reviews">Reviews [5]</button>
       </div>
 
       <div id="tab-panel-description" class="tab-panel-group" role="tabpanel">
         <div class="tab-panel">
           <p>
-            Embodying the raw, wayward spirit of rock &lsquo;n&rsquo; roll, the Kilburn portable active
-            stereo speaker takes the unmistakable look and sound of Marshall, unplugs the chords, and
-            takes the show on the road.
+            Asgaard pairs a sturdy teak frame with hand-woven rope detailing, so it holds its shape
+            through sun and rain while still feeling light enough to rearrange for a different layout.
           </p>
           <p>
-            Weighing in under 7 pounds, the Kilburn is a lightweight piece of vintage styled
-            engineering. Setting the bar as one of the loudest speakers in its class, the Kilburn is a
-            compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and
-            extended highs for a sound that is both articulate and pronounced. The analogue knobs allow
-            you to fine tune the controls to your personal preferences while the guitar-influenced
-            leather strap enables easy and stylish travel.
+            The cushions use quick-dry foam wrapped in weather-resistant fabric, so a sudden shower
+            won't leave you with a soggy seat — just wipe it down and it's ready to sit on again. The
+            low, wide profile makes it just as comfortable for an afternoon nap as it is for hosting
+            friends over drinks.
           </p>
         </div>
         <div class="description-gallery">
@@ -218,7 +232,8 @@
               <span class="review-author">Jordan K.</span>
               <span class="stars" style="--rating: 4;" aria-hidden="true"></span>
             </div>
-            <p class="review-text">Really happy with the build quality. Took a star off only because assembly took longer than expected.</p>
+            <p class="review-text">Really happy with the build quality. Took a star off only because assembly took
+              longer than expected.</p>
           </li>
           <li class="review-item">
             <div class="review-header">
@@ -236,7 +251,7 @@
 
       <div class="products-grid" id="related-products-grid"></div>
 
-      <button type="button" class="btn btn-outline show-more">Show More</button>
+      <button type="button" class="btn btn-outline show-more" id="related-show-more">Show More</button>
     </section>
   </main>
 
@@ -281,98 +296,7 @@
     </div>
   </footer>
 
-  <script src="js/products.js"></script>
   <script src="js/app.js"></script>
-  <script>
-    (function () {
-      var id = parseInt(new URLSearchParams(window.location.search).get('id'), 10);
-
-      FurniroProducts.fetchProducts().then(function (products) {
-        // related products: up to 4 items, excluding whichever one is currently open
-        var related = products.filter(function (p) { return p.id !== id; }).slice(0, 4);
-        FurniroProducts.renderProducts(
-          document.getElementById('related-products-grid'),
-          related.length ? related : products.slice(0, 4)
-        );
-
-        var product = products.find(function (p) { return p.id === id; });
-        if (!product) return; // no/unknown id in the URL - keep the default Asgaard sofa demo content
-
-        document.title = 'Furniro - ' + product.name;
-
-        var breadcrumbCurrent = document.querySelector('.product-breadcrumb [aria-current="page"]');
-        if (breadcrumbCurrent) breadcrumbCurrent.textContent = product.name;
-
-        var heading = document.querySelector('.single-product-info h1');
-        if (heading) heading.textContent = product.name;
-
-        var price = document.querySelector('.single-product-price');
-        if (price) price.textContent = FurniroProducts.formatPrice(product);
-
-        var mainImage = document.querySelector('.product-main-image img');
-        if (mainImage) {
-          mainImage.src = product.image;
-          mainImage.alt = product.alt;
-        }
-
-        // the JSON only carries one photo per product, so every thumbnail
-        // just points at that same image for now
-        document.querySelectorAll('.product-thumb-item img').forEach(function (img) {
-          img.src = product.image;
-          img.alt = product.alt;
-        });
-
-        function metaRow(label) {
-          return Array.prototype.find.call(
-            document.querySelectorAll('.product-meta-row'),
-            function (row) { return row.querySelector('dt').textContent.trim() === label; }
-          );
-        }
-
-        var categoryRow = metaRow('Category');
-        if (categoryRow) categoryRow.querySelector('dd').textContent = ': ' + product.category;
-
-        var skuRow = metaRow('SKU');
-        if (skuRow) skuRow.querySelector('dd').textContent = ': ' + product.sku;
-
-        var tagsRow = metaRow('Tags');
-        if (tagsRow) tagsRow.querySelector('dd').textContent = ': ' + product.tags.join(', ');
-
-        var description = document.querySelector('.product-description');
-        if (description) description.textContent = product.description;
-
-        var stars = document.querySelector('.stars');
-        if (stars) stars.style.setProperty('--rating', product.rating);
-
-        var ratingCount = document.querySelector('.rating-count');
-        if (ratingCount) {
-          ratingCount.textContent = product.reviewCount + (product.reviewCount === 1 ? ' Customer Review' : ' Customer Reviews');
-        }
-
-        var sizeOptions = document.querySelector('.size-options');
-        if (sizeOptions) {
-          sizeOptions.innerHTML = product.sizes.map(function (size, i) {
-            return '<button type="button" class="size-btn' + (i === 0 ? ' is-active' : '') + '">' + size + '</button>';
-          }).join('');
-        }
-
-        var colorOptions = document.querySelector('.color-options');
-        if (colorOptions) {
-          colorOptions.innerHTML = product.colors.map(function (hex, i) {
-            return '<button type="button" class="color-swatch' + (i === 0 ? ' is-active' : '') +
-              '" style="--swatch-color: ' + hex + ';" aria-label="Color ' + hex + '"></button>';
-          }).join('');
-        }
-
-        var tabParagraphs = document.querySelectorAll('.tab-panel > p');
-        product.descriptionParagraphs.forEach(function (text, i) {
-          if (tabParagraphs[i]) tabParagraphs[i].textContent = text;
-        });
-      }).catch(function (err) {
-        console.error(err);
-      });
-    })();
-  </script>
 </body>
 
 </html>

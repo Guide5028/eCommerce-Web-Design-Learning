@@ -30,17 +30,32 @@
       </ul>
     </nav>
     <div class="header-icons">
-      <a href="#"><img src="images/icon/icon-account.jpg" alt="Account"></a>
-      <a href="#"><img src="images/icon/icon-search.jpg" alt="Search"></a>
-      <a href="favorite_page.html"><img src="images/icon/icon-wishlist.jpg" alt="Wishlist"></a>
-      <a href="cart_page.html"><img src="images/icon/icon-cart.jpg" alt="Cart"></a>
+      <a href="login_page.html"><img src="images/icon/icon-account.jpg" alt="Account"></a>
+      <button type="button" class="search-toggle-btn" id="search-toggle-btn" aria-expanded="false" aria-controls="search-dropdown">
+        <img src="images/icon/icon-search.jpg" alt="Search">
+      </button>
+      <a href="favorite_page.html" class="icon-link">
+        <img src="images/icon/icon-wishlist.jpg" alt="Wishlist">
+        <span class="icon-badge" data-favorite-count hidden>0</span>
+      </a>
+      <a href="cart_page.html" class="icon-link">
+        <img src="images/icon/icon-cart.jpg" alt="Cart">
+        <span class="icon-badge" data-cart-count hidden>0</span>
+      </a>
+    </div>
+    <div class="search-dropdown" id="search-dropdown" hidden>
+      <form class="search-dropdown-form" id="search-form">
+        <label for="search-input" class="sr-only">Search products</label>
+        <input type="search" id="search-input" name="search" placeholder="Search products&hellip;" autocomplete="off">
+        <button type="submit">Search</button>
+      </form>
     </div>
   </header>
 
   <main>
-    <section class="cart-hero">
-      <div class="cart-hero-content">
-        <img src="images/logo-furniro.svg" alt="" class="cart-hero-icon">
+    <section class="page-hero">
+      <div class="page-hero-content">
+        <img src="images/logo-furniro.svg" alt="" class="page-hero-icon">
         <h1>About</h1>
         <nav class="breadcrumb" aria-label="Breadcrumb">
           <a href="index.html">Home</a>
@@ -115,7 +130,8 @@
       </div>
 
       <div class="feature-item">
-        <img class="feature-icon" src="images/icon/customer-support.jpg" alt="Support headset icon" width="40" height="40">
+        <img class="feature-icon" src="images/icon/customer-support.jpg" alt="Support headset icon" width="40"
+          height="40">
         <div class="feature-text">
           <h3 class="feature-title">24 / 7 Support</h3>
           <p class="feature-subtitle">Dedicated support</p>

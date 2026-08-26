@@ -30,10 +30,25 @@
       </ul>
     </nav>
     <div class="header-icons">
-      <a href="#"><img src="images/icon/icon-account.jpg" alt="Account"></a>
-      <a href="#"><img src="images/icon/icon-search.jpg" alt="Search"></a>
-      <a href="#"><img src="images/icon/icon-wishlist.jpg" alt="Wishlist"></a>
-      <a href="cart_page.html"><img src="images/icon/icon-cart.jpg" alt="Cart"></a>
+      <a href="login_page.html"><img src="images/icon/icon-account.jpg" alt="Account"></a>
+      <button type="button" class="search-toggle-btn" id="search-toggle-btn" aria-expanded="false" aria-controls="search-dropdown">
+        <img src="images/icon/icon-search.jpg" alt="Search">
+      </button>
+      <a href="favorite_page.html" class="icon-link">
+        <img src="images/icon/icon-wishlist.jpg" alt="Wishlist">
+        <span class="icon-badge" data-favorite-count hidden>0</span>
+      </a>
+      <a href="cart_page.html" class="icon-link">
+        <img src="images/icon/icon-cart.jpg" alt="Cart">
+        <span class="icon-badge" data-cart-count hidden>0</span>
+      </a>
+    </div>
+    <div class="search-dropdown" id="search-dropdown" hidden>
+      <form class="search-dropdown-form" id="search-form">
+        <label for="search-input" class="sr-only">Search products</label>
+        <input type="search" id="search-input" name="search" placeholder="Search products&hellip;" autocomplete="off">
+        <button type="submit">Search</button>
+      </form>
     </div>
   </header>
 
@@ -52,9 +67,11 @@
     <section class="filter">
       <div class="shop-toolbar">
         <div class="toolbar-left">
-          <button type="button" class="toolbar-filter">
+          <button type="button" class="toolbar-filter" id="toolbar-filter-btn" aria-expanded="false"
+            aria-controls="filter-panel">
             <img src="images/icon/icon-filter.jpg" alt="" width="20" height="20">
             Filter
+            <span class="filter-count" id="filter-count" hidden>0</span>
           </button>
           <button type="button" class="toolbar-icon-btn" aria-label="Grid view">
             <img src="images/icon/icon-grid-view.jpg" alt="" width="20" height="20">
@@ -73,19 +90,50 @@
           </label>
           <label class="toolbar-field">
             Short by
-            <select class="toolbar-sort-select">
-              <option>Default</option>
+            <select class="toolbar-sort-select" id="toolbar-sort-select">
+              <option value="default">Default</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="name-asc">Name: A to Z</option>
+              <option value="name-desc">Name: Z to A</option>
             </select>
           </label>
         </div>
       </div>
+
+      <div class="filter-panel" id="filter-panel" hidden>
+        <div class="filter-panel-group">
+          <h3>Category</h3>
+          <div class="filter-tags" id="filter-tags"></div>
+        </div>
+
+        <div class="filter-panel-group filter-panel-group--price">
+          <h3>Price Range</h3>
+          <div class="filter-price-inputs">
+            <label class="filter-price-field">
+              Min
+              <input type="number" id="filter-price-min" min="0" step="50000" placeholder="0">
+            </label>
+            <span class="filter-price-sep">&ndash;</span>
+            <label class="filter-price-field">
+              Max
+              <input type="number" id="filter-price-max" min="0" step="50000" placeholder="7000000">
+            </label>
+          </div>
+        </div>
+
+        <div class="filter-panel-actions">
+          <button type="button" class="filter-clear-btn" id="filter-clear-btn">Clear Filter</button>
+          <button type="button" class="filter-apply-btn" id="filter-apply-btn">Apply Filter</button>
+        </div>
+      </div>
     </section>
 
-    <section class="our-products">
+    <section class="shop-our-products">
 
       <div class="products-grid" id="shop-products-grid"></div>
 
-      <nav class="pagination" aria-label="Product pages">
+      <nav class="pagination" id="shop-pagination" aria-label="Product pages">
         <button type="button" class="page-btn is-active" aria-current="page">1</button>
       </nav>
 
@@ -168,20 +216,7 @@
     </div>
   </footer>
 
-  <script src="js/products.js"></script>
   <script src="js/app.js"></script>
-  <script>
-    FurniroProducts.fetchProducts().then(function (products) {
-      FurniroProducts.renderProducts(document.getElementById('shop-products-grid'), products);
-
-      var count = products.length;
-      document.getElementById('toolbar-results').textContent = 'Showing 1–' + count + ' of ' + count + ' results';
-      document.getElementById('toolbar-show-input').value = count;
-    }).catch(function (err) {
-      document.getElementById('toolbar-results').textContent = 'Could not load products.';
-      console.error(err);
-    });
-  </script>
 </body>
 
 </html>
