@@ -1,0 +1,108 @@
+/*
+  Small, deliberate overrides layered on top of styles/global.css (a straight port of
+  legacy/css/style.css). These exist only where the interaction model changed when moving
+  to AntD components (nav Drawer instead of inline collapse, AntD Menu/Badge/Rate/etc.),
+  so the ported CSS's assumptions no longer quite apply. Keep this file small.
+*/
+
+/* header: AntD Menu replaces the old <ul> nav, Drawer replaces the inline mobile collapse */
+.site-nav-desktop .ant-menu {
+  background: transparent;
+  border-bottom: none;
+  gap: 75px;
+}
+
+.site-nav-desktop .ant-menu-item {
+  font-size: 16px;
+  font-weight: 500;
+  padding: 0;
+}
+
+.site-nav-desktop .ant-menu-item::after {
+  display: none;
+}
+
+.site-nav-desktop .ant-menu-item-selected,
+.site-nav-desktop .ant-menu-item:hover {
+  color: var(--color-primary) !important;
+}
+
+.header-icons a {
+  display: inline-flex;
+  color: #333;
+}
+
+.header-icons a:hover {
+  color: var(--color-primary);
+}
+
+@media (max-width: 600px) {
+  .header-icons {
+    max-height: none;
+    overflow: visible;
+    flex-basis: auto;
+    justify-content: flex-end;
+    gap: 18px;
+    margin-top: 0;
+  }
+
+  .site-nav-desktop {
+    display: none;
+  }
+}
+
+/* product card: like button active state (AntD HeartFilled swap handles the icon itself) */
+.action-link.btn-like.is-active {
+  color: var(--color-sale);
+}
+
+.action-link {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* room carousel dots rendered by AntD Carousel */
+.room-carousel .slick-dots {
+  bottom: 16px;
+}
+
+.room-carousel .slick-dots li button {
+  background-color: var(--color-border);
+}
+
+.room-carousel .slick-dots li.slick-active button {
+  background-color: var(--color-primary);
+}
+
+/* shop toolbar / filter drawer / pagination now use AntD components */
+.shop-toolbar .ant-select-selector,
+.shop-toolbar .ant-input-number {
+  font-family: inherit;
+}
+
+.filter-panel-actions .ant-btn + .ant-btn {
+  margin-left: 16px;
+}
+
+/* cart table now rendered by AntD Table inside the same wrapper */
+.cart-table-wrap .ant-table-thead > tr > th {
+  background-color: var(--color-cream);
+}
+
+/* product detail: qty stepper is now an AntD InputNumber, not the old 3-part flex control */
+.qty-input {
+  width: 123px;
+}
+
+.product-actions-row {
+  align-items: center;
+}
+
+/* checkout / login forms now use AntD Form inside the same wrappers */
+.billing-form .ant-form-item,
+.auth-form .ant-form-item {
+  margin-bottom: 24px;
+}
