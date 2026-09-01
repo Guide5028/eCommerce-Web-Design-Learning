@@ -1,0 +1,90 @@
+.ourProducts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px 102px;
+  min-height: 1150px;
+}
+
+.ourProducts h2 {
+  font-size: 40px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.roomInspiration {
+  background-color: var(--color-cream);
+  padding: 44px 0px;
+  overflow: hidden;
+  height: 670px;
+}
+
+.roomInspirationInner {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.roomInspirationContent {
+  flex: 0 0 370px;
+}
+
+.roomInspirationContent h2 {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #333;
+}
+
+.roomInspirationContent p {
+  margin-top: 20px;
+  color: var(--color-text-muted);
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  .ourProducts {
+    height: auto;
+    padding: 0 40px 60px;
+  }
+
+  .roomInspirationInner {
+    flex-direction: column;
+    align-items: stretch;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .roomInspirationContent {
+    flex-basis: auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .ourProducts {
+    height: auto;
+    padding: 0 20px 40px;
+  }
+
+  .ourProducts h2 {
+    font-size: 22px;
+  }
+
+  .roomInspirationInner {
+    flex-direction: column;
+    align-items: stretch;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .roomInspirationContent {
+    flex-basis: auto;
+    width: 100%;
+  }
+
+  .roomInspirationContent h2 {
+    font-size: 28px;
+  }
+}

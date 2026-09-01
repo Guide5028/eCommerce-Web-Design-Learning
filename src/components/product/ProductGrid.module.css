@@ -1,0 +1,16 @@
+.showMore:global(.ant-btn) {
+  height: 48px;
+  width: 245px;
+  margin-top: 32px;
+  margin-bottom: 69px;
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.showMore:global(.ant-btn):hover {
+  background-color: var(--color-primary);
+  color: #fff;
+}

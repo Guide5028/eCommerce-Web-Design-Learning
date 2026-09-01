@@ -5,6 +5,7 @@ import BrowseRange from '../components/home/BrowseRange.jsx';
 import RoomCarousel from '../components/home/RoomCarousel.jsx';
 import ShareSetup from '../components/home/ShareSetup.jsx';
 import ProductGrid from '../components/product/ProductGrid.jsx';
+import styles from './HomePage.module.css';
 
 export default function HomePage() {
   const { products } = useProducts();
@@ -14,14 +15,14 @@ export default function HomePage() {
       <Hero />
       <BrowseRange />
 
-      <section className="our-products">
-        <h2 className="section-title">Our Products</h2>
+      <section className={styles.ourProducts}>
+        <h2>Our Products</h2>
         <ProductGrid products={products} pageSize={8} gridClassName="products-grid" />
       </section>
 
-      <section className="room-inspiration">
-        <div className="room-inspiration-inner">
-          <div className="room-inspiration-content">
+      <section className={styles.roomInspiration}>
+        <div className={styles.roomInspirationInner}>
+          <div className={styles.roomInspirationContent}>
             <h2>50+ Beautiful rooms inspiration</h2>
             <p>Our designer already made a lot of beautiful prototipe of rooms that inspire you</p>
             <Link to="/shop" className="btn btn-primary">Explore More</Link>

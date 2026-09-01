@@ -74,264 +74,17 @@ a {
 
 /* Browse-range rules moved to components/home/BrowseRange.module.css */
 
-/* Our Product */
-
-.our-products {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0px 102px;
-  min-height: 1150px;
-}
-
+/* Our Product / Room Inspiration wrapper styles moved to pages/HomePage.module.css.
+   Product card styles moved to components/product/ProductCard.module.css.
+   "Show More" button moved to components/product/ProductGrid.module.css.
+   .products-grid itself stays here — it's a shared layout primitive rendered
+   directly (as a plain string className, not a module) by ProductGrid, ShopPage,
+   and FavoritePage alike, so no single component owns it. */
 .products-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 32px;
   margin-top: 32px;
-}
-
-.our-products h2 {
-  font-size: 40px;
-  line-height: 1.2;
-  font-weight: 700;
-}
-
-/* Product Card */
-
-.product-card {
-  position: relative;
-  background-color: #F4F5F7;
-  cursor: pointer;
-}
-
-.product-thumb {
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 1 / 1;
-}
-
-.product-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.product-card:hover .product-thumb img {
-  transform: scale(1.05);
-}
-
-.badge {
-  position: absolute;
-  display: flex;
-  top: 16px;
-  right: 16px;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  align-items: center;
-  justify-content: center;
-  font-size: 13px;
-  font-weight: 600;
-  color: #fff;
-  z-index: 2;
-}
-
-.badge--sale {
-  background-color: var(--color-sale);
-}
-
-.badge--new {
-  background-color: var(--color-new);
-}
-
-.product-overlay {
-  position: absolute;
-  display: flex;
-  inset: 0;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  background-color: var(--color-overlay);
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-.product-overlay .btn-add-cart,
-.product-overlay .product-actions {
-  pointer-events: auto;
-}
-
-.product-card:hover .product-overlay,
-.product-card.is-active .product-overlay {
-  opacity: 1;
-  visibility: visible;
-}
-
-.btn-add-cart {
-  padding: 12px 28px;
-  background-color: #fff;
-  color: var(--color-primary);
-  font-size: 16px;
-  font-weight: 600;
-  font-family: inherit;
-  white-space: nowrap;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.btn-add-cart:hover {
-  background-color: var(--color-primary);
-  color: #fff;
-}
-
-.product-actions {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.action-link {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  color: #fff;
-  font-size: 14px;
-  font-weight: 600;
-  white-space: nowrap;
-  transition: color 0.2s ease;
-}
-
-.action-link img {
-  width: 16px;
-  height: 16px;
-}
-
-.action-link:hover {
-  color: var(--color-primary);
-}
-
-.product-info {
-  padding: 20px;
-  background-color: #F4F5F7;
-  transition: background-color 0.3s ease;
-}
-
-.product-card:hover .product-info,
-.product-card.is-active .product-info {
-  background-color: #3A3A3A;
-}
-
-.product-name {
-  font-size: 20px;
-  font-weight: 600;
-  color: #333;
-  transition: color 0.3s ease;
-}
-
-.product-category {
-  font-size: 14px;
-  color: #666;
-  margin-top: 4px;
-  transition: color 0.3s ease;
-}
-
-.product-price {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 12px;
-}
-
-.price {
-  font-size: 20px;
-  font-weight: 600;
-  color: #333;
-  white-space: nowrap;
-  transition: color 0.3s ease;
-}
-
-.price-old {
-  font-size: 16px;
-  color: #B0B0B0;
-  text-decoration: line-through;
-  white-space: nowrap;
-  transition: color 0.3s ease;
-}
-
-.product-card:hover .product-name,
-.product-card:hover .price,
-.product-card.is-active .product-name,
-.product-card.is-active .price {
-  color: #fff;
-}
-
-.product-card:hover .product-category,
-.product-card.is-active .product-category {
-  color: #d9d9d9;
-}
-
-.product-card:hover .price-old,
-.product-card.is-active .price-old {
-  color: #a0a0a0;
-}
-
-.show-more {
-  margin-top: 32px;
-  margin-bottom: 69px;
-  height: 48px;
-  width: 245px;
-  background-color: transparent;
-  color: var(--color-primary);
-  border: 1px solid var(--color-primary);
-  font-family: inherit;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.show-more:hover {
-  background-color: var(--color-primary);
-  color: #fff;
-}
-
-/* Room Inspiration */
-
-.room-inspiration {
-  background-color: var(--color-cream);
-  padding: 44px 0px;
-  overflow: hidden;
-  height: 670px;
-}
-
-.room-inspiration-inner {
-  display: flex;
-  align-items: center;
-  gap: 40px;
-  padding-left: 100px;
-  padding-right: 100px;
-}
-
-.room-inspiration-content {
-  flex: 0 0 370px;
-}
-
-.room-inspiration-content h2 {
-  font-size: 40px;
-  font-weight: 700;
-  line-height: 1.2;
-  color: #333;
-}
-
-.room-inspiration-content p {
-  margin-top: 20px;
-  color: var(--color-text-muted);
 }
 
 .btn-primary {
@@ -619,11 +372,6 @@ a {
   justify-content: center;
   gap: 16px;
   margin-top: 48px;
-}
-
-.page-btn--next {
-  width: auto;
-  font-weight: 300;
 }
 
 /* Page hero banner moved to components/layout/PageHero.module.css */
@@ -1351,11 +1099,6 @@ a {
   margin-top: 40px;
 }
 
-.related-products .show-more {
-  display: flex;
-  margin: 40px auto 0;
-}
-
 /* Favorite page */
 
 .favorite-section {
@@ -1549,10 +1292,7 @@ a {
 /* Tablet responsive (≤1024px) */
 @media (min-width: 601px) and (max-width: 1024px) {
 
-  .our-products {
-    height: auto;
-    padding: 0 40px 60px;
-  }
+  
 
   .shop-our-products {
     padding: 0 40px 60px;
@@ -1562,17 +1302,9 @@ a {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .room-inspiration-inner {
-    flex-direction: column;
-    align-items: stretch;
-    padding-left: 40px;
-    padding-right: 40px;
-  }
+  
 
-  .room-inspiration-content {
-    flex-basis: auto;
-    width: 100%;
-  }
+  
 
 
 
@@ -1724,14 +1456,9 @@ a {
     font-size: 14px;
   }
 
-  .our-products {
-    height: auto;
-    padding: 0 20px 40px;
-  }
+  
 
-  .our-products h2 {
-    font-size: 22px;
-  }
+  
 
   .shop-our-products {
     padding: 0 20px 40px;
@@ -1742,56 +1469,27 @@ a {
     gap: 16px;
   }
 
-  .products-grid .product-card {
-    min-width: 0;
-  }
+  
 
-  .products-grid .product-price {
-    flex-wrap: wrap;
-    gap: 6px 12px;
-  }
+  
 
-  .products-grid .product-actions {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-  }
+  
 
-  .product-name {
-    font-size: 15px;
-  }
+  
 
-  .product-category {
-    font-size: 12px;
-  }
+  
 
-  .price {
-    font-size: 15px;
-  }
+  
 
-  .price-old {
-    font-size: 12px;
-  }
+  
 
-  .product-info {
-    padding: 12px;
-  }
+  
 
-  .room-inspiration-inner {
-    flex-direction: column;
-    align-items: stretch;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
+  
 
-  .room-inspiration-content {
-    flex-basis: auto;
-    width: 100%;
-  }
+  
 
-  .room-inspiration-content h2 {
-    font-size: 28px;
-  }
+  
 
   .filter-panel-actions {
     margin-left: 0;
@@ -1858,39 +1556,21 @@ a {
     gap: 16px;
   }
 
-  .products-grid .product-card {
-    min-width: 0;
-  }
+  
 
-  .products-grid .product-actions {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-  }
+  
 
-  .products-grid .product-price {
-    flex-wrap: wrap;
-  }
+  
 
-  .products-grid .product-info {
-    padding: 12px;
-  }
+  
 
-  .products-grid .product-name {
-    font-size: 15px;
-  }
+  
 
-  .products-grid .product-category {
-    font-size: 12px;
-  }
+  
 
-  .products-grid .price {
-    font-size: 15px;
-  }
+  
 
-  .products-grid .price-old {
-    font-size: 12px;
-  }
+  
 
   
 
@@ -2125,9 +1805,7 @@ a {
     margin-top: 20px;
   }
 
-  .related-products .products-grid .product-card {
-    min-width: 0;
-  }
+  
 
   .favorite-section {
     padding: 32px 20px 20px;
