@@ -87,11 +87,6 @@
   margin-left: 16px;
 }
 
-/* cart table now rendered by AntD Table inside the same wrapper */
-.cart-table-wrap .ant-table-thead > tr > th {
-  background-color: var(--color-cream);
-}
-
 /* product detail: qty stepper is now an AntD InputNumber, not the old 3-part flex control */
 .qty-input {
   width: 123px;

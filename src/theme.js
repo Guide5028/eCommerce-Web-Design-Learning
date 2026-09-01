@@ -18,6 +18,9 @@ const theme = {
     Rate: {
       starColor: '#B88E2F',
     },
+    Table: {
+      headerBg: '#F9F1E7', // matches --color-cream; was a raw CSS override targeting .ant-table-thead
+    },
   },
 };
 
