@@ -9,15 +9,7 @@
 /* product card rules (.action-link*, .ant-btn.btn-add-cart) moved to
    components/product/ProductCard.module.css */
 
-/* shop toolbar / filter drawer / pagination now use AntD components */
-.shop-toolbar .ant-select-selector,
-.shop-toolbar .ant-input-number {
-  font-family: inherit;
-}
-
-.filter-panel-actions .ant-btn + .ant-btn {
-  margin-left: 16px;
-}
+/* shop toolbar / filter drawer rules moved to components/shop/ShopToolbar.module.css */
 
 /* product detail: qty stepper is now an AntD InputNumber, not the old 3-part flex control */
 .qty-input {
@@ -140,15 +132,3 @@
   align-items: center;
 }
 
-/* shop toolbar's compact "Show" / "Short by" controls */
-.toolbar-show-input.ant-input-number {
-  width: 48px;
-}
-.toolbar-show-input .ant-input-number-input {
-  padding: 8px;
-  text-align: center;
-}
-.toolbar-sort-select .ant-select-selector {
-  padding: 8px 16px !important;
-  min-width: 140px;
-}

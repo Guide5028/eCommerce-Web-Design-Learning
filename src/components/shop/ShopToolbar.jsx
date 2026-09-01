@@ -1,5 +1,6 @@
 import { Button, Checkbox, Drawer, InputNumber, Select, Space } from 'antd';
 import { FilterOutlined, AppstoreOutlined, BarsOutlined } from '@ant-design/icons';
+import styles from './ShopToolbar.module.css';
 
 // Ported from legacy/js/app.js:637-817 (shop toolbar filter/sort), filter panel now an AntD Drawer.
 
@@ -33,43 +34,43 @@ export default function ShopToolbar({
 }) {
   return (
     <section className="filter">
-      <div className="shop-toolbar">
-        <div className="toolbar-left">
+      <div className={styles.shopToolbar}>
+        <div className={styles.toolbarLeft}>
           <button
             type="button"
-            className={`toolbar-filter${filterCount > 0 ? ' is-active' : ''}`}
+            className={`${styles.toolbarFilter}${filterCount > 0 ? ` ${styles.isActive}` : ''}`}
             aria-expanded={filterOpen}
             onClick={onOpenFilter}
           >
             <FilterOutlined />
             Filter
-            {filterCount > 0 && <span className="filter-count">{filterCount}</span>}
+            {filterCount > 0 && <span className={styles.filterCount}>{filterCount}</span>}
           </button>
-          <button type="button" className="toolbar-icon-btn" aria-label="Grid view">
+          <button type="button" className={styles.toolbarIconBtn} aria-label="Grid view">
             <AppstoreOutlined />
           </button>
-          <button type="button" className="toolbar-icon-btn" aria-label="List view">
+          <button type="button" className={styles.toolbarIconBtn} aria-label="List view">
             <BarsOutlined />
           </button>
-          <span className="toolbar-divider" />
-          <p className="toolbar-results">{resultsText}</p>
+          <span className={styles.toolbarDivider} />
+          <p className={styles.toolbarResults}>{resultsText}</p>
         </div>
 
-        <div className="toolbar-right">
-          <label className="toolbar-field">
+        <div className={styles.toolbarRight}>
+          <label className={styles.toolbarField}>
             Show
             <InputNumber
-              className="toolbar-show-input"
+              className={styles.toolbarShowInput}
               min={1}
               value={showValue}
               onChange={onShowChange}
               controls={false}
             />
           </label>
-          <label className="toolbar-field">
+          <label className={styles.toolbarField}>
             Short by
             <Select
-              className="toolbar-sort-select"
+              className={styles.toolbarSortSelect}
               value={sortValue}
               onChange={onSortChange}
               options={SORT_OPTIONS}
@@ -80,32 +81,32 @@ export default function ShopToolbar({
       </div>
 
       <Drawer title="Filter products" placement="right" open={filterOpen} onClose={onCloseFilter} width={340}>
-        <div className="filter-panel-group">
+        <div className={styles.filterPanelGroup}>
           <h3>Category</h3>
           <Checkbox.Group
             value={draftTags}
             onChange={onDraftTagsChange}
-            className="filter-tags"
+            className={styles.filterTags}
             options={tags.map((tag) => ({ label: tag, value: tag }))}
           />
         </div>
 
-        <div className="filter-panel-group filter-panel-group--price">
+        <div className={`${styles.filterPanelGroup} ${styles.filterPanelGroupPrice}`}>
           <h3>Price Range</h3>
-          <div className="filter-price-inputs">
-            <label className="filter-price-field">
+          <div className={styles.filterPriceInputs}>
+            <label className={styles.filterPriceField}>
               Min
               <InputNumber min={0} step={50000} placeholder="0" value={draftMin} onChange={onDraftMinChange} />
             </label>
-            <span className="filter-price-sep">&ndash;</span>
-            <label className="filter-price-field">
+            <span className={styles.filterPriceSep}>&ndash;</span>
+            <label className={styles.filterPriceField}>
               Max
               <InputNumber min={0} step={50000} placeholder="7000000" value={draftMax} onChange={onDraftMaxChange} />
             </label>
           </div>
         </div>
 
-        <div className="filter-panel-actions">
+        <div className={styles.filterPanelActions}>
           <Space>
             <Button onClick={onClear}>Clear Filter</Button>
             <Button type="primary" onClick={onApply}>Apply Filter</Button>

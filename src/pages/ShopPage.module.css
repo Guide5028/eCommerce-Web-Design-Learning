@@ -1,0 +1,62 @@
+.shopHero {
+  position: relative;
+  display: flex;
+  min-height: 320px;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url('/images/shop_hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.shopHeroContent {
+  text-align: center;
+}
+
+.shopHeroContent h1 {
+  font-size: 48px;
+  font-weight: 600;
+  color: #333;
+}
+
+.shopOurProducts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 102px;
+}
+
+.pagination {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 48px;
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  .shopOurProducts {
+    padding: 0 40px 60px;
+  }
+
+  .shopHeroContent h1 {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 600px) {
+  .shopOurProducts {
+    padding: 0 20px 40px;
+  }
+
+  .shopHero {
+    min-height: 220px;
+    padding: 0 20px;
+  }
+
+  .shopHeroContent h1 {
+    font-size: 24px;
+  }
+}

@@ -7,6 +7,7 @@ import ShopToolbar from '../components/shop/ShopToolbar.jsx';
 import ProductCard from '../components/product/ProductCard.jsx';
 import FeaturesBar from '../components/layout/FeaturesBar.jsx';
 import { matchesFilters, sortProducts, buildFilterTags } from '../utils/shopFilters.js';
+import styles from './ShopPage.module.css';
 
 // Ported from legacy/js/app.js:637-817 (shop toolbar filter / sort / pagination)
 
@@ -91,8 +92,8 @@ export default function ShopPage() {
 
   return (
     <main>
-      <section className="shop-hero">
-        <div className="shop-hero-content">
+      <section className={styles.shopHero}>
+        <div className={styles.shopHeroContent}>
           <h1>Shop</h1>
           <nav className="breadcrumb" aria-label="Breadcrumb">
             <Link to="/">Home</Link>
@@ -129,7 +130,7 @@ export default function ShopPage() {
         }}
       />
 
-      <section className="shop-our-products">
+      <section className={styles.shopOurProducts}>
         <div className="products-grid">
           {pageItems.map((product) => (
             <ProductCard product={product} key={product.id} />
@@ -137,7 +138,7 @@ export default function ShopPage() {
         </div>
 
         {sorted.length > 0 && (
-          <nav className="pagination" aria-label="Product pages">
+          <nav className={styles.pagination} aria-label="Product pages">
             <Pagination
               current={currentPage}
               pageSize={pageSize}
