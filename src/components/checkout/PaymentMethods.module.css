@@ -1,0 +1,46 @@
+.paymentMethods {
+  margin-top: 22px;
+}
+
+.paymentActive {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+  font-weight: 300;
+  color: #333;
+}
+
+.paymentDot {
+  display: block;
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #333;
+}
+
+.paymentActiveDesc {
+  margin-top: 11px;
+  max-width: 370px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+
+.paymentOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+  font-weight: 500;
+}
+
+.paymentOption {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+  color: var(--color-text-muted);
+  cursor: pointer;
+}

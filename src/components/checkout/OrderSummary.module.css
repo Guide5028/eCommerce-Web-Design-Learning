@@ -1,0 +1,99 @@
+.orderSummary {
+  flex: 0 0 608px;
+  max-width: 608px;
+  padding: 87px 38px;
+}
+
+.orderSummaryHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 14px;
+  font-size: 24px;
+  font-weight: 500;
+  color: #333;
+}
+
+.orderSummaryRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 22px;
+  font-size: 16px;
+  color: #666;
+}
+
+.orderSummaryItem {
+  font-weight: 400;
+  color: #9F9F9F;
+}
+
+.orderSummaryQty {
+  color: #666;
+}
+
+.orderSummaryRowTotal {
+  border-bottom: 1px solid #D9D9D9;
+}
+
+.orderSummaryRowTotal span:last-child {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.paymentDisclaimer {
+  margin-top: 32px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #666;
+}
+
+.paymentDisclaimer a {
+  font-weight: 600;
+  color: #333;
+  text-decoration: underline;
+}
+
+/* AntD's own .ant-btn compound rule matches this same specificity (0,2,0) and its
+   CSS-in-JS is injected after this module in dev mode, so it wins ties on source
+   order alone for width/display specifically -- !important settles it */
+.btnPlaceOrder:global(.ant-btn) {
+  display: block !important;
+  width: 100% !important;
+  max-width: 318px;
+  height: auto;
+  margin: 32px auto 0;
+  padding: 16px;
+  background: none;
+  border: 1px solid #333;
+  border-radius: 10px;
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.btnPlaceOrder:global(.ant-btn):hover {
+  background-color: #333;
+  color: #fff;
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  .orderSummary {
+    flex: 1 1 auto;
+    max-width: 100%;
+    padding: 24px 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .orderSummary {
+    flex: 1 1 auto;
+    max-width: 100%;
+    padding: 20px 0;
+  }
+
+  .orderSummaryHeader {
+    font-size: 18px;
+  }
+}

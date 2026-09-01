@@ -154,18 +154,14 @@ a {
 /* Cart rules moved to components/cart/CartTable.module.css and
    pages/CartPage.module.css */
 
-/* Checkout page */
+/* Checkout page: .checkout-section, .order-summary*, .payment-*, .btn-place-order
+   moved to pages/CheckoutPage.module.css, components/checkout/OrderSummary.module.css,
+   and components/checkout/PaymentMethods.module.css.
 
-/* Two-column layout */
-
-.checkout-section {
-  display: flex;
-  justify-content: center;
-  gap: 26px;
-  padding: 60px 100px 0px;
-}
-
-/* Billing form */
+   .billing-form / .form-row stay here as plain global classes on purpose: .billing-form
+   is one of three forms (checkout, contact, login/register) that share the same "large
+   75px AntD input" look via a single selector list further down, and .form-row's
+   two-column layout is reused by both the billing form and the contact form. */
 
 .billing-form {
   padding: 35px 75px 71px;
@@ -183,141 +179,6 @@ a {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
-}
-
-/* Order summary */
-
-.order-summary {
-  flex: 0 0 608px;
-  max-width: 608px;
-  padding: 87px 38px
-}
-
-.order-summary-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 14px;
-  font-size: 24px;
-  font-weight: 500;
-  color: #333;
-}
-
-.order-summary-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 22px;
-  font-size: 16px;
-  color: #666;
-}
-
-.order-summary-item {
-  font-weight: 400;
-  color: #9F9F9F;
-}
-
-.order-summary-qty {
-  color: #666;
-}
-
-.order-summary-row--total {
-  border-bottom: 1px solid #D9D9D9;
-}
-
-.order-summary-row--total span:last-child {
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--color-primary);
-}
-
-/* Payment methods */
-
-.payment-methods {
-  margin-top: 22px;
-}
-
-.payment-active {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 16px;
-  font-weight: 300;
-  color: #333;
-}
-
-.payment-dot {
-  display: block;
-  flex-shrink: 0;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: #333;
-}
-
-.payment-active-desc {
-  margin-top: 11px;
-  max-width: 370px;
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--color-text-muted);
-}
-
-.payment-options {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 24px;
-  font-weight: 500;
-}
-
-.payment-option {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 16px;
-  color: var(--color-text-muted);
-  cursor: pointer;
-}
-
-.payment-option input[type="radio"] {
-  accent-color: #333;
-}
-
-.payment-disclaimer {
-  margin-top: 32px;
-  font-size: 14px;
-  line-height: 1.7;
-  color: #666;
-}
-
-.payment-disclaimer a {
-  font-weight: 600;
-  color: #333;
-  text-decoration: underline;
-}
-
-.btn-place-order {
-  display: block;
-  width: 100%;
-  max-width: 318px;
-  max-height: 64px;
-  margin: 32px auto 0;
-  padding: 16px;
-  background: none;
-  border: 1px solid #333;
-  border-radius: 10px;
-  color: #333;
-  font-family: inherit;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.btn-place-order:hover {
-  background-color: #333;
-  color: #fff;
 }
 
 /* Single product page */
@@ -947,24 +808,10 @@ a {
 
   
 
-  .checkout-section {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 40px;
-  }
-
-  .billing-form,
-  .order-summary {
+  .billing-form {
     flex: 1 1 auto;
     max-width: 100%;
-  }
-
-  .billing-form {
     padding: 24px 0 0;
-  }
-
-  .order-summary {
-    padding: 24px 0;
   }
 
   .product-breadcrumb {
@@ -1179,34 +1026,14 @@ a {
 
   
 
-  .checkout-section {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 24px 20px;
-  }
-
-  .billing-form,
-  .order-summary {
+  .billing-form {
     flex: 1 1 auto;
     max-width: 100%;
-  }
-
-  .billing-form {
     padding: 20px 0 0;
   }
 
   .billing-form h2 {
     font-size: 20px;
-  }
-
-  
-
-  .order-summary {
-    padding: 20px 0;
-  }
-
-  .order-summary-header {
-    font-size: 18px;
   }
 
   .form-row {
