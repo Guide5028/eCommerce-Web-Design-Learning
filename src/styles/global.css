@@ -66,82 +66,7 @@ a {
   opacity: 0.85;
 }
 
-/* nav */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 38px 54px;
-  background-color: #fff;
-  max-height: 100px;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--color-dark);
-}
-
-.logo span {
-  font-size: 34px;
-  font-weight: 700;
-}
-
-nav ul {
-  display: flex;
-  gap: 75px;
-}
-
-nav ul li a {
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--color-dark);
-  transition: color 0.2s ease;
-}
-
-nav ul li a:hover,
-nav ul li a.active {
-  color: var(--color-primary);
-}
-
-.header-icons {
-  display: flex;
-  align-items: center;
-  gap: 45px;
-  margin-right: 46px;
-}
-
-.header-icons img {
-  width: 28px;
-  height: 28px;
-  cursor: pointer;
-}
-
-.header-icons .icon-link {
-  position: relative;
-  display: inline-flex;
-}
-
-.btn-like.is-active {
-  color: var(--color-sale);
-}
-
-.nav-toggle {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  width: 40px;
-  height: 40px;
-  padding: 0;
-  border: none;
-  background: none;
-  cursor: pointer;
-}
+/* nav — moved to components/layout/SiteHeader.module.css */
 
 /* hero */
 .hero {
@@ -692,104 +617,7 @@ nav ul li a.active {
   border: 0;
 }
 
-.site-footer {
-  border-top: 1px solid var(--color-border);
-  padding: 48px 100px 38px;
-  height: 505px;
-}
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1.3fr;
-  gap: 40px;
-}
-
-.footer-logo {
-  font-size: 24px;
-  font-weight: 700;
-  color: #333;
-  margin-bottom: 24px;
-}
-
-.footer-brand address {
-  font-style: normal;
-  font-weight: 400;
-  max-width: 285px;
-  color: #9F9F9F;
-}
-
-.footer-col h3,
-.footer-newsletter h3 {
-  font-size: 16px;
-  font-weight: 400;
-  color: #9F9F9F;
-  margin-bottom: 24px;
-}
-
-.footer-col ul {
-  display: flex;
-  flex-direction: column;
-  gap: 46px;
-}
-
-.footer-col ul li a {
-  font-weight: 500;
-  color: #333;
-  transition: color 0.2s ease;
-}
-
-.footer-col ul li a:hover {
-  color: var(--color-primary);
-}
-
-.newsletter-form {
-  display: flex;
-  align-items: flex-end;
-  gap: 12px;
-}
-
-.newsletter-form input {
-  flex: 1;
-  min-width: 0;
-  border: none;
-  border-bottom: 1px solid #333;
-  outline: none;
-  padding-bottom: 8px;
-  font-family: inherit;
-  font-size: 14px;
-  color: #333;
-}
-
-.newsletter-form input::placeholder {
-  color: #9F9F9F;
-}
-
-.newsletter-form button {
-  flex-shrink: 0;
-  background: none;
-  border: none;
-  border-bottom: 1px solid #333;
-  padding-bottom: 8px;
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 600;
-  color: #333;
-  cursor: pointer;
-  white-space: nowrap;
-}
-
-.footer-bottom {
-  border-top: 1px solid var(--color-border);
-  padding: 24px 0px;
-  color: #000000;
-  margin-top: 48px;
-}
-
-.footer-bottom p {
-  bottom: 0px;
-  font-weight: 400;
-  font-size: 16px;
-}
+/* Footer rules moved to components/layout/SiteFooter.module.css */
 
 /* Page hero breadcrumb */
 
@@ -814,39 +642,7 @@ nav ul li a.active {
 
 /* Features bar */
 
-/* the 4/2/1-column grid itself is now AntD's <Row>/<Col> (see FeaturesBar.jsx) */
-.features-bar {
-  width: 100%;
-  margin-top: 85px;
-  padding: 100px 53px;
-  background-color: var(--color-cream);
-}
-
-.feature-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-}
-
-.feature-icon {
-  flex-shrink: 0;
-  width: 40px;
-  height: 40px;
-  mix-blend-mode: multiply;
-}
-
-.feature-title {
-  font-size: 20px;
-  font-weight: 600;
-  color: #242424;
-}
-
-.feature-subtitle {
-  margin-top: 4px;
-  font-size: 16px;
-  color: var(--color-text-muted);
-}
+/* Features bar rules moved to components/layout/FeaturesBar.module.css */
 
 /* Shop page */
 
@@ -2001,40 +1797,8 @@ nav ul li a.active {
   cursor: pointer;
 }
 
-/* Header search dropdown */
-
-header {
-  position: relative;
-}
-
-.search-toggle-btn {
-  display: flex;
-  align-items: center;
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-}
-
 /* Tablet responsive (≤1024px) */
 @media (min-width: 601px) and (max-width: 1024px) {
-  
-
-  header {
-    padding: 24px 32px;
-  }
-
-  nav ul {
-    gap: 32px;
-  }
-
-  .header-icons {
-    gap: 28px;
-    margin-right: 0;
-  }
-
-  
-
   .hero-content {
     max-width: 460px;
     height: auto;
@@ -2104,30 +1868,6 @@ header {
     height: auto;
   }
 
-  
-
-  .site-footer {
-    height: auto;
-    padding: 40px;
-  }
-
-  .footer-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 32px 40px;
-  }
-
-  .footer-col ul {
-    gap: 16px;
-  }
-
-  .footer-col h3,
-  .footer-newsletter h3 {
-    margin-bottom: 16px;
-  }
-
-  .features-bar {
-    padding: 48px 32px;
-  }
 
   .shop-hero-content h1 {
     font-size: 36px;
@@ -2271,55 +2011,6 @@ header {
 
 /* Phone responsive (≤600px) */
 @media (max-width: 600px) {
-  
-
-  header {
-    position: relative;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0;
-    padding: 16px 20px;
-    max-height: none;
-  }
-
-  .nav-toggle {
-    display: flex;
-    order: 2;
-  }
-
-  .header-icons {
-    order: 3;
-    flex-basis: 100%;
-    justify-content: center;
-    gap: 24px;
-    margin-right: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-  }
-
-  #site-nav {
-    order: 4;
-    flex-basis: 100%;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-  }
-
-  
-
-  
-
-  
-
-  #site-nav ul {
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    padding: 20px 0;
-  }
-
   .hero {
     min-height: auto;
     padding: 40px 20px;
@@ -2471,43 +2162,6 @@ header {
     height: 280px;
   }
 
-  
-
-  .site-footer {
-    height: auto;
-    padding: 32px 20px;
-  }
-
-  .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 28px;
-  }
-
-  .footer-logo {
-    margin-bottom: 16px;
-  }
-
-  .footer-col ul {
-    gap: 14px;
-  }
-
-  .footer-col h3,
-  .footer-newsletter h3 {
-    margin-bottom: 12px;
-  }
-
-  .footer-bottom {
-    margin-top: 32px;
-  }
-
-  .features-bar {
-    padding: 32px 20px;
-  }
-
-  .feature-item {
-    text-align: center;
-    flex-direction: column;
-  }
 
   
 

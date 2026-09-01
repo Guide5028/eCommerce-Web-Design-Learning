@@ -1,0 +1,50 @@
+/* the 4/2/1-column grid itself is AntD's <Row>/<Col> (see FeaturesBar.jsx) */
+.featuresBar {
+  width: 100%;
+  margin-top: 85px;
+  padding: 100px 53px;
+  background-color: var(--color-cream);
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.featureIcon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  mix-blend-mode: multiply;
+}
+
+.featureTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: #242424;
+}
+
+.featureSubtitle {
+  margin-top: 4px;
+  font-size: 16px;
+  color: var(--color-text-muted);
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  .featuresBar {
+    padding: 48px 32px;
+  }
+}
+
+@media (max-width: 600px) {
+  .featuresBar {
+    padding: 32px 20px;
+  }
+
+  .featureItem {
+    text-align: center;
+    flex-direction: column;
+  }
+}

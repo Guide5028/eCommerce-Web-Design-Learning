@@ -1,4 +1,5 @@
 import { Row, Col } from 'antd';
+import styles from './FeaturesBar.module.css';
 
 const FEATURES = [
   { icon: '/images/icon/trophy.jpg', alt: 'Trophy icon', title: 'High Quality', subtitle: 'crafted from top materials' },
@@ -9,18 +10,18 @@ const FEATURES = [
 
 // The grid itself (4 -> 2 -> 1 columns as the screen shrinks) is AntD's Row/Col,
 // using their built-in responsive breakpoints instead of 3 hand-written CSS
-// media-query blocks. Only the item's own look (.feature-item etc.) stays custom CSS.
+// media-query blocks. Only the item's own look (.featureItem etc.) stays custom CSS.
 export default function FeaturesBar() {
   return (
-    <section className="features-bar">
+    <section className={styles.featuresBar}>
       <Row gutter={[24, 32]}>
         {FEATURES.map((feature) => (
           <Col xs={24} sm={12} md={6} key={feature.title}>
-            <div className="feature-item">
-              <img className="feature-icon" src={feature.icon} alt={feature.alt} width="40" height="40" />
+            <div className={styles.featureItem}>
+              <img className={styles.featureIcon} src={feature.icon} alt={feature.alt} width="40" height="40" />
               <div className="feature-text">
-                <h3 className="feature-title">{feature.title}</h3>
-                <p className="feature-subtitle">{feature.subtitle}</p>
+                <h3 className={styles.featureTitle}>{feature.title}</h3>
+                <p className={styles.featureSubtitle}>{feature.subtitle}</p>
               </div>
             </div>
           </Col>

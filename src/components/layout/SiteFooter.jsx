@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import styles from './SiteFooter.module.css';
 
 // Ported from legacy/js/app.js:553-579 (newsletter submit -> transient success state)
 
@@ -22,10 +23,10 @@ export default function SiteFooter() {
   }
 
   return (
-    <footer className="site-footer">
-      <div className="footer-grid">
-        <div className="footer-brand">
-          <p className="footer-logo">Funiro.</p>
+    <footer className={styles.siteFooter}>
+      <div className={styles.footerGrid}>
+        <div className={styles.footerBrand}>
+          <p className={styles.footerLogo}>Funiro.</p>
           <address>
             400 University Drive Suite 200 Coral Gables,
             <br />
@@ -33,7 +34,7 @@ export default function SiteFooter() {
           </address>
         </div>
 
-        <div className="footer-col">
+        <div className={styles.footerCol}>
           <h3>Links</h3>
           <ul>
             <li><Link to="/">Home</Link></li>
@@ -43,7 +44,7 @@ export default function SiteFooter() {
           </ul>
         </div>
 
-        <div className="footer-col">
+        <div className={styles.footerCol}>
           <h3>Help</h3>
           <ul>
             <li><a href="#top" onClick={(e) => e.preventDefault()}>Payment Options</a></li>
@@ -52,9 +53,9 @@ export default function SiteFooter() {
           </ul>
         </div>
 
-        <div className="footer-newsletter">
+        <div className={styles.footerNewsletter}>
           <h3>Newsletter</h3>
-          <form className="newsletter-form" onSubmit={handleSubmit}>
+          <form className={styles.newsletterForm} onSubmit={handleSubmit}>
             <label htmlFor="newsletter-email" className="sr-only">Email address</label>
             <input
               type="email"
@@ -73,7 +74,7 @@ export default function SiteFooter() {
         </div>
       </div>
 
-      <div className="footer-bottom">
+      <div className={styles.footerBottom}>
         <p>2023 furino. All rights reverved</p>
       </div>
     </footer>

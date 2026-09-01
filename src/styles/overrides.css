@@ -5,51 +5,7 @@
   so the ported CSS's assumptions no longer quite apply. Keep this file small.
 */
 
-/* header: AntD Menu replaces the old <ul> nav, Drawer replaces the inline mobile collapse */
-.site-nav-desktop .ant-menu {
-  background: transparent;
-  border-bottom: none;
-  gap: 75px;
-}
-
-.site-nav-desktop .ant-menu-item {
-  font-size: 16px;
-  font-weight: 500;
-  padding: 0;
-}
-
-.site-nav-desktop .ant-menu-item::after {
-  display: none;
-}
-
-.site-nav-desktop .ant-menu-item-selected,
-.site-nav-desktop .ant-menu-item:hover {
-  color: var(--color-primary) !important;
-}
-
-.header-icons a {
-  display: inline-flex;
-  color: #333;
-}
-
-.header-icons a:hover {
-  color: var(--color-primary);
-}
-
-@media (max-width: 600px) {
-  .header-icons {
-    max-height: none;
-    overflow: visible;
-    flex-basis: auto;
-    justify-content: flex-end;
-    gap: 18px;
-    margin-top: 0;
-  }
-
-  .site-nav-desktop {
-    display: none;
-  }
-}
+/* header rules moved to components/layout/SiteHeader.module.css */
 
 /* product card: like button active state (AntD HeartFilled swap handles the icon itself) */
 .action-link.btn-like.is-active {

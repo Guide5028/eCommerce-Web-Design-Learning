@@ -9,6 +9,7 @@ import {
   ShoppingCartOutlined,
 } from '@ant-design/icons';
 import { useStore } from '../../store/StoreContext.jsx';
+import styles from './SiteHeader.module.css';
 
 const NAV_ITEMS = [
   { key: '/', label: 'Home' },
@@ -45,15 +46,15 @@ export default function SiteHeader() {
   }
 
   return (
-    <header>
-      <Link to="/" className="logo">
+    <header className={styles.header}>
+      <Link to="/" className={styles.logo}>
         <img src="/images/logo-furniro.svg" alt="Furniro" />
         <span>Furniro</span>
       </Link>
 
       <button
         type="button"
-        className="nav-toggle"
+        className={styles.navToggle}
         aria-label="Toggle menu"
         aria-controls="site-nav"
         aria-expanded={drawerOpen}
@@ -62,7 +63,7 @@ export default function SiteHeader() {
         <MenuOutlined style={{ fontSize: 20 }} />
       </button>
 
-      <nav id="site-nav" className="site-nav-desktop">
+      <nav id="site-nav" className={styles.siteNavDesktop}>
         <Menu
           mode="horizontal"
           selectedKeys={[location.pathname]}
@@ -86,7 +87,7 @@ export default function SiteHeader() {
         />
       </Drawer>
 
-      <div className="header-icons">
+      <div className={styles.headerIcons}>
         <Link to="/login" aria-label="Account">
           <UserOutlined style={{ fontSize: 22 }} />
         </Link>
@@ -109,7 +110,7 @@ export default function SiteHeader() {
         >
           <button
             type="button"
-            className="search-toggle-btn"
+            className={styles.searchToggleBtn}
             id="search-toggle-btn"
             aria-expanded={searchOpen}
             aria-label="Search"
@@ -118,13 +119,13 @@ export default function SiteHeader() {
           </button>
         </Popover>
 
-        <Link to="/favorite" className="icon-link" aria-label="Wishlist">
+        <Link to="/favorite" aria-label="Wishlist">
           <Badge count={favoriteCount} size="small" offset={[-2, 2]}>
             <HeartOutlined style={{ fontSize: 22 }} />
           </Badge>
         </Link>
 
-        <Link to="/cart" className="icon-link" aria-label="Cart">
+        <Link to="/cart" aria-label="Cart">
           <Badge count={cartCount} size="small" offset={[-2, 2]}>
             <ShoppingCartOutlined style={{ fontSize: 22 }} />
           </Badge>
