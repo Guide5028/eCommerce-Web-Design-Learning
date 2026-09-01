@@ -6,6 +6,7 @@ import { formatRp } from '../utils/format.js';
 import CartTable from '../components/cart/CartTable.jsx';
 import FeaturesBar from '../components/layout/FeaturesBar.jsx';
 import PageHero from '../components/layout/PageHero.jsx';
+import styles from './CartPage.module.css';
 
 // Ported from legacy/js/app.js:953-1038 (cart page)
 
@@ -28,22 +29,22 @@ export default function CartPage() {
     <main>
       <PageHero title="Cart" />
 
-      <section className="cart-section">
+      <section className={styles.cartSection}>
         {lines.length > 0 ? (
           <>
             <CartTable lines={lines} onQtyChange={setCartQty} onRemove={removeFromCart} />
 
-            <aside className="cart-totals">
+            <aside className={styles.cartTotals}>
               <h2>Cart Totals</h2>
-              <div className="cart-totals-row">
+              <div className={styles.cartTotalsRow}>
                 <span>Subtotal</span>
-                <span className="cart-totals-value">{formatRp(subtotal)}</span>
+                <span className={styles.cartTotalsValue}>{formatRp(subtotal)}</span>
               </div>
-              <div className="cart-totals-row cart-totals-row--total">
+              <div className={`${styles.cartTotalsRow} ${styles.cartTotalsRowTotal}`}>
                 <span>Total</span>
-                <span className="cart-totals-value">{formatRp(subtotal)}</span>
+                <span className={styles.cartTotalsValue}>{formatRp(subtotal)}</span>
               </div>
-              <Link to="/checkout" className="btn-checkout">Check Out</Link>
+              <Link to="/checkout" className={styles.btnCheckout}>Check Out</Link>
             </aside>
           </>
         ) : (

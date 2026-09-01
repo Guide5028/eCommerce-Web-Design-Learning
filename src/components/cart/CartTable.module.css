@@ -1,0 +1,161 @@
+.cartTableWrap {
+  flex: 1;
+}
+
+.cartTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.cartTable :global(thead tr) {
+  background-color: var(--color-cream);
+}
+
+.cartTable :global(th) {
+  padding: 24px 20px;
+  text-align: left;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
+
+.cartTable :global(td) {
+  padding: 24px 20px;
+  vertical-align: middle;
+  font-size: 16px;
+  color: #333;
+}
+
+.cartTable :global(tbody td) {
+  padding-top: 55px;
+}
+
+.cartProduct {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.cartProduct img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  background-color: var(--color-cream);
+}
+
+.cartPrice,
+.cartSubtotal {
+  color: #666;
+}
+
+.cartSubtotal {
+  color: #333;
+}
+
+.cartQtyInput {
+  width: 60px;
+}
+
+.cartRemoveBtn {
+  color: var(--color-primary);
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  .cartTableWrap {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .cartTable {
+    min-width: 560px;
+  }
+}
+
+@media (max-width: 600px) {
+  .cartTableWrap {
+    overflow-x: visible;
+  }
+
+  .cartTable {
+    min-width: 0;
+  }
+
+  .cartTable :global(thead) {
+    display: none;
+  }
+
+  .cartTable,
+  .cartTable :global(tbody),
+  .cartTable :global(tr),
+  .cartTable :global(td) {
+    display: block;
+    width: 100%;
+  }
+
+  .cartTable :global(tbody tr) {
+    position: relative;
+    margin-bottom: 16px;
+    padding: 16px;
+    border: 1px solid var(--color-border);
+  }
+
+  .cartTable :global(td),
+  .cartTable :global(tbody td) {
+    padding: 0;
+  }
+
+  .cartProduct {
+    padding-right: 36px;
+    margin-bottom: 12px;
+  }
+
+  .cartProduct img {
+    width: 64px;
+    height: 64px;
+  }
+
+  /* needs to out-specificity the .cartTable :global(td) { display: block } rule
+     above, same way .cart-table td.cart-price beat .cart-table td in the original */
+  .cartTable :global(td).cartPrice,
+  .cartTable :global(td).cartSubtotal,
+  .cartTable :global(td).cartQtyCell {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-top: 1px solid var(--color-border);
+    font-size: 14px;
+  }
+
+  .cartPrice::before {
+    content: "Price";
+    font-weight: 500;
+    color: #333;
+  }
+
+  .cartSubtotal::before {
+    content: "Subtotal";
+    font-weight: 500;
+    color: #333;
+  }
+
+  .cartQtyCell::before {
+    content: "Quantity";
+    font-weight: 500;
+    color: #333;
+  }
+
+  .cartQtyInput {
+    width: 70px;
+  }
+
+  /* AntD's own .ant-table-wrapper .ant-table-cell rule matches this exact
+     specificity (0,2,0) too, and its CSS-in-JS is injected after this file,
+     so it wins ties on source order alone -- !important settles it */
+  .cartRemoveCell:global(.ant-table-cell) {
+    position: absolute !important;
+    top: 16px;
+    right: 16px;
+    width: auto;
+  }
+}
