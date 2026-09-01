@@ -1,0 +1,45 @@
+.pageHero {
+  position: relative;
+  display: flex;
+  min-height: 260px;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url('/images/shop_hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.pageHeroContent {
+  text-align: center;
+}
+
+.pageHeroIcon {
+  width: 50px;
+  height: 32px;
+  margin: 0 auto;
+}
+
+.pageHeroContent h1 {
+  margin-top: 12px;
+  font-size: 48px;
+  font-weight: 600;
+  color: #333;
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  .pageHeroContent h1 {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 600px) {
+  .pageHero {
+    min-height: 220px;
+    padding: 0 20px;
+  }
+
+  .pageHeroContent h1 {
+    font-size: 24px;
+  }
+}

@@ -4,6 +4,7 @@ import { useProducts } from '../data/ProductsContext.jsx';
 import { useStore } from '../store/StoreContext.jsx';
 import ProductCard from '../components/product/ProductCard.jsx';
 import FeaturesBar from '../components/layout/FeaturesBar.jsx';
+import PageHero from '../components/layout/PageHero.jsx';
 
 // Ported from legacy/js/app.js:1040-1066 (favorite page)
 
@@ -18,17 +19,7 @@ export default function FavoritePage() {
 
   return (
     <main>
-      <section className="page-hero">
-        <div className="page-hero-content">
-          <img src="/images/logo-furniro.svg" alt="" className="page-hero-icon" />
-          <h1>Favorite</h1>
-          <nav className="breadcrumb" aria-label="Breadcrumb">
-            <Link to="/">Home</Link>
-            <span className="breadcrumb-sep">&rsaquo;</span>
-            <span aria-current="page">Favorite</span>
-          </nav>
-        </div>
-      </section>
+      <PageHero title="Favorite" />
 
       <section className="favorite-section">
         <h2>My Wishlist</h2>

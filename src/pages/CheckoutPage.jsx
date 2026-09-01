@@ -5,6 +5,7 @@ import { useStore } from '../store/StoreContext.jsx';
 import BillingForm from '../components/checkout/BillingForm.jsx';
 import OrderSummary from '../components/checkout/OrderSummary.jsx';
 import FeaturesBar from '../components/layout/FeaturesBar.jsx';
+import PageHero from '../components/layout/PageHero.jsx';
 
 export default function CheckoutPage() {
   const { products } = useProducts();
@@ -22,17 +23,7 @@ export default function CheckoutPage() {
 
   return (
     <main>
-      <section className="page-hero">
-        <div className="page-hero-content">
-          <img src="/images/logo-furniro.svg" alt="" className="page-hero-icon" />
-          <h1>Checkout</h1>
-          <nav className="breadcrumb" aria-label="Breadcrumb">
-            <Link to="/">Home</Link>
-            <span className="breadcrumb-sep">&rsaquo;</span>
-            <span aria-current="page">Checkout</span>
-          </nav>
-        </div>
-      </section>
+      <PageHero title="Checkout" />
 
       <section className="checkout-section">
         <BillingForm />

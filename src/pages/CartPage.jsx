@@ -5,6 +5,7 @@ import { useStore } from '../store/StoreContext.jsx';
 import { formatRp } from '../utils/format.js';
 import CartTable from '../components/cart/CartTable.jsx';
 import FeaturesBar from '../components/layout/FeaturesBar.jsx';
+import PageHero from '../components/layout/PageHero.jsx';
 
 // Ported from legacy/js/app.js:953-1038 (cart page)
 
@@ -25,17 +26,7 @@ export default function CartPage() {
 
   return (
     <main>
-      <section className="page-hero">
-        <div className="page-hero-content">
-          <img src="/images/logo-furniro.svg" alt="" className="page-hero-icon" />
-          <h1>Cart</h1>
-          <nav className="breadcrumb" aria-label="Breadcrumb">
-            <Link to="/">Home</Link>
-            <span className="breadcrumb-sep">&rsaquo;</span>
-            <span aria-current="page">Cart</span>
-          </nav>
-        </div>
-      </section>
+      <PageHero title="Cart" />
 
       <section className="cart-section">
         {lines.length > 0 ? (

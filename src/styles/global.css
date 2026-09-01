@@ -1081,36 +1081,7 @@ nav ul li a.active {
   font-weight: 300;
 }
 
-/* Page hero banner (cart, checkout, favorite, contact, about) */
-
-.page-hero {
-  position: relative;
-  display: flex;
-  min-height: 260px;
-  align-items: center;
-  justify-content: center;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url('/images/shop_hero.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.page-hero-content {
-  text-align: center;
-}
-
-.page-hero-icon {
-  width: 50px;
-  height: 32px;
-  margin: 0 auto;
-}
-
-.page-hero-content h1 {
-  margin-top: 12px;
-  font-size: 48px;
-  font-weight: 600;
-  color: #333;
-}
+/* Page hero banner moved to components/layout/PageHero.module.css */
 
 /* Cart table + totals */
 
@@ -2167,9 +2138,6 @@ header {
     padding: 20px;
   }
 
-  .page-hero-content h1 {
-    font-size: 36px;
-  }
 
   .cart-section {
     flex-direction: column;
@@ -2643,15 +2611,6 @@ header {
   }
 
   
-
-  .page-hero {
-    min-height: 220px;
-    padding: 0 20px;
-  }
-
-  .page-hero-content h1 {
-    font-size: 24px;
-  }
 
   .cart-totals h2 {
     font-size: 22px;

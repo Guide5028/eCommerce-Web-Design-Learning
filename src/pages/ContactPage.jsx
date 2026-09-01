@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Button, Form, Input, Row, Col } from 'antd';
 import { EnvironmentOutlined, PhoneOutlined, ClockCircleOutlined } from '@ant-design/icons';
 import FeaturesBar from '../components/layout/FeaturesBar.jsx';
+import PageHero from '../components/layout/PageHero.jsx';
 
 // Ported from legacy/js/app.js:581-606 (contact form submit -> transient success state)
 
@@ -56,17 +56,7 @@ export default function ContactPage() {
 
   return (
     <main>
-      <section className="page-hero">
-        <div className="page-hero-content">
-          <img src="/images/logo-furniro.svg" alt="" className="page-hero-icon" />
-          <h1>Contact</h1>
-          <nav className="breadcrumb" aria-label="Breadcrumb">
-            <Link to="/">Home</Link>
-            <span className="breadcrumb-sep">&rsaquo;</span>
-            <span aria-current="page">Contact</span>
-          </nav>
-        </div>
-      </section>
+      <PageHero title="Contact" />
 
       <section className="contact-section">
         <div className="contact-intro">

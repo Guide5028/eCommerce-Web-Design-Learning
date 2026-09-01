@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Row, Col } from 'antd';
 import FeaturesBar from '../components/layout/FeaturesBar.jsx';
+import PageHero from '../components/layout/PageHero.jsx';
 
 const STATS = [
   { value: '10+', label: 'Years of Experience' },
@@ -12,17 +13,7 @@ const STATS = [
 export default function AboutPage() {
   return (
     <main>
-      <section className="page-hero">
-        <div className="page-hero-content">
-          <img src="/images/logo-furniro.svg" alt="" className="page-hero-icon" />
-          <h1>About</h1>
-          <nav className="breadcrumb" aria-label="Breadcrumb">
-            <Link to="/">Home</Link>
-            <span className="breadcrumb-sep">&rsaquo;</span>
-            <span aria-current="page">About</span>
-          </nav>
-        </div>
-      </section>
+      <PageHero title="About" />
 
       <section className="about-story">
         <div className="about-story-image">
