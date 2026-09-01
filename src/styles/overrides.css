@@ -11,15 +11,6 @@
 
 /* shop toolbar / filter drawer rules moved to components/shop/ShopToolbar.module.css */
 
-/* product detail: qty stepper is now an AntD InputNumber, not the old 3-part flex control */
-.qty-input {
-  width: 123px;
-}
-
-.product-actions-row {
-  align-items: center;
-}
-
 /* checkout / login forms now use AntD Form inside the same wrappers */
 .billing-form .ant-form-item,
 .auth-form .ant-form-item {
@@ -33,39 +24,7 @@
   class (.ant-btn.btn-place-order) restores the original sizing reliably.
 */
 
-/* buttons */
-.ant-btn.btn-add-to-cart {
-  height: 64px;
-  width: 215px;
-  padding: 0 40px;
-  background-color: #fff;
-  border: 1px solid #333;
-  border-radius: 15px;
-  color: #333;
-  font-size: 16px;
-  font-weight: 500;
-}
-.ant-btn.btn-add-to-cart:hover {
-  background-color: #333;
-  color: #fff;
-}
-
-.ant-btn.btn-compare {
-  height: 64px;
-  width: 215px;
-  padding: 0 24px;
-  background: none;
-  border: 1px solid #000;
-  border-radius: 15px;
-  color: #333;
-  font-size: 16px;
-  font-weight: 500;
-}
-.ant-btn.btn-compare:hover {
-  background-color: #333;
-  color: #fff;
-}
-
+/* .ant-btn.btn-add-to-cart / .ant-btn.btn-compare moved to pages/ProductDetailPage.module.css */
 /* .ant-btn.btn-place-order moved to components/checkout/OrderSummary.module.css */
 /* .ant-btn.show-more moved to components/product/ProductGrid.module.css */
 

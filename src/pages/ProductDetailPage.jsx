@@ -7,6 +7,7 @@ import { useStore } from '../store/StoreContext.jsx';
 import { formatPrice, colorName } from '../utils/format.js';
 import StarRating from '../components/product/StarRating.jsx';
 import ProductGrid from '../components/product/ProductGrid.jsx';
+import styles from './ProductDetailPage.module.css';
 
 // Ported from legacy/js/app.js:821-951 (single product page routing)
 
@@ -73,16 +74,16 @@ export default function ProductDetailPage() {
       key: 'description',
       label: 'Description',
       children: (
-        <div className="tab-panel">
+        <div className={styles.tabPanel}>
           {product.descriptionParagraphs.map((paragraph, i) => (
             <p key={i}>{paragraph}</p>
           ))}
           {/* preserved from the legacy design: these two images are a static showcase, not product-specific */}
-          <div className="description-gallery">
-            <div className="description-gallery-item">
+          <div className={styles.descriptionGallery}>
+            <div className={styles.descriptionGalleryItem}>
               <img src="/images/product-asgaard-gallery-1.jpg" alt="Cream modular sofa, straight configuration" />
             </div>
-            <div className="description-gallery-item">
+            <div className={styles.descriptionGalleryItem}>
               <img src="/images/product-asgaard-gallery-2.jpg" alt="Cream modular sofa, chaise configuration" />
             </div>
           </div>
@@ -93,24 +94,24 @@ export default function ProductDetailPage() {
       key: 'additional',
       label: 'Additional Information',
       children: (
-        <div className="tab-panel">
-          <table className="spec-table">
+        <div className={styles.tabPanel}>
+          <table className={styles.specTable}>
             <tbody>
               <tr>
                 <th scope="row">Weight</th>
-                <td className="spec-value">{product.weight}</td>
+                <td>{product.weight}</td>
               </tr>
               <tr>
                 <th scope="row">Dimensions</th>
-                <td className="spec-value">{product.dimensions}</td>
+                <td>{product.dimensions}</td>
               </tr>
               <tr>
                 <th scope="row">Material</th>
-                <td className="spec-value">{product.material}</td>
+                <td>{product.material}</td>
               </tr>
               <tr>
                 <th scope="row">Color</th>
-                <td className="spec-value">{product.colors.map(colorName).join(', ')}</td>
+                <td>{product.colors.map(colorName).join(', ')}</td>
               </tr>
             </tbody>
           </table>
@@ -121,15 +122,15 @@ export default function ProductDetailPage() {
       key: 'reviews',
       label: `Reviews [${product.reviewCount}]`,
       children: (
-        <div className="tab-panel">
-          <ul className="review-list">
+        <div className={styles.tabPanel}>
+          <ul className={styles.reviewList}>
             {REVIEWS.map((review, i) => (
-              <li className="review-item" key={review.author}>
-                <div className="review-header">
-                  <span className="review-author">{review.author}</span>
+              <li className={styles.reviewItem} key={review.author}>
+                <div className={styles.reviewHeader}>
+                  <span className={styles.reviewAuthor}>{review.author}</span>
                   <StarRating value={reviewRatings[i]} />
                 </div>
-                <p className="review-text">{review.text}</p>
+                <p className={styles.reviewText}>{review.text}</p>
               </li>
             ))}
           </ul>
@@ -143,23 +144,23 @@ export default function ProductDetailPage() {
 
   return (
     <main>
-      <nav className="product-breadcrumb" aria-label="Breadcrumb">
+      <nav className={styles.productBreadcrumb} aria-label="Breadcrumb">
         <Link to="/">Home</Link>
         <span className="breadcrumb-sep">&rsaquo;</span>
         <Link to="/shop">Shop</Link>
         <span className="breadcrumb-sep">&rsaquo;</span>
-        <span className="breadcrumb-divider" />
+        <span className={styles.breadcrumbDivider} />
         <span aria-current="page">{product.name}</span>
       </nav>
 
-      <section className="product-detail">
-        <div className="product-gallery">
-          <div className="product-thumbs">
+      <section className={styles.productDetail}>
+        <div className={styles.productGallery}>
+          <div className={styles.productThumbs}>
             {[0, 1, 2, 3].map((i) => (
               <button
                 key={i}
                 type="button"
-                className={`product-thumb-item${selectedThumb === i ? ' is-active' : ''}`}
+                className={`${styles.productThumbItem}${selectedThumb === i ? ` ${styles.isActive}` : ''}`}
                 aria-label={`Show image ${i + 1}`}
                 onClick={() => setSelectedThumb(i)}
               >
@@ -168,33 +169,33 @@ export default function ProductDetailPage() {
             ))}
           </div>
 
-          <div className="product-main-image">
+          <div className={styles.productMainImage}>
             <img src={product.image} alt={product.alt} />
           </div>
         </div>
 
-        <div className="single-product-info">
+        <div className={styles.singleProductInfo}>
           <h1>{product.name}</h1>
-          <p className="single-product-price">{formatPrice(product)}</p>
+          <p className={styles.singleProductPrice}>{formatPrice(product)}</p>
 
-          <div className="product-rating">
+          <div className={styles.productRating}>
             <StarRating value={product.rating} />
-            <span className="rating-divider" />
-            <span className="rating-count">
+            <span className={styles.ratingDivider} />
+            <span className={styles.ratingCount}>
               {product.reviewCount} {product.reviewCount === 1 ? 'Customer Review' : 'Customer Reviews'}
             </span>
           </div>
 
-          <p className="product-description">{product.description}</p>
+          <p className={styles.productDescription}>{product.description}</p>
 
-          <div className="product-option">
-            <p className="product-option-label">Size</p>
-            <div className="size-options">
+          <div className={styles.productOption}>
+            <p className={styles.productOptionLabel}>Size</p>
+            <div className={styles.sizeOptions}>
               {product.sizes.map((size) => (
                 <button
                   key={size}
                   type="button"
-                  className={`size-btn${selectedSize === size ? ' is-active' : ''}`}
+                  className={`${styles.sizeBtn}${selectedSize === size ? ` ${styles.isActive}` : ''}`}
                   onClick={() => setSelectedSize(size)}
                 >
                   {size}
@@ -203,14 +204,14 @@ export default function ProductDetailPage() {
             </div>
           </div>
 
-          <div className="product-option">
-            <p className="product-option-label">Color</p>
-            <div className="color-options">
+          <div className={styles.productOption}>
+            <p className={styles.productOptionLabel}>Color</p>
+            <div className={styles.colorOptions}>
               {product.colors.map((hex) => (
                 <button
                   key={hex}
                   type="button"
-                  className={`color-swatch${selectedColor === hex ? ' is-active' : ''}`}
+                  className={`${styles.colorSwatch}${selectedColor === hex ? ` ${styles.isActive}` : ''}`}
                   style={{ '--swatch-color': hex }}
                   aria-label={`Color ${colorName(hex)}`}
                   onClick={() => setSelectedColor(hex)}
@@ -219,37 +220,37 @@ export default function ProductDetailPage() {
             </div>
           </div>
 
-          <div className="product-actions-row">
+          <div className={styles.productActionsRow}>
             <InputNumber
-              className="qty-input"
+              className={styles.qtyInput}
               min={1}
               value={qty}
               onChange={(value) => setQty(value || 1)}
             />
-            <Button className="btn-add-to-cart" onClick={handleAddToCart}>
+            <Button className={styles.btnAddToCart} onClick={handleAddToCart}>
               {added ? 'Added!' : 'Add To Cart'}
             </Button>
-            <Button className="btn-compare">+ Compare</Button>
+            <Button className={styles.btnCompare}>+ Compare</Button>
           </div>
 
-          <hr className="product-divider" />
+          <hr className={styles.productDivider} />
 
-          <dl className="product-meta">
-            <div className="product-meta-row">
+          <dl className={styles.productMeta}>
+            <div className={styles.productMetaRow}>
               <dt>SKU</dt>
               <dd>: {product.sku}</dd>
             </div>
-            <div className="product-meta-row">
+            <div className={styles.productMetaRow}>
               <dt>Category</dt>
               <dd>: {product.category}</dd>
             </div>
-            <div className="product-meta-row">
+            <div className={styles.productMetaRow}>
               <dt>Tags</dt>
               <dd>: {product.tags.join(', ')}</dd>
             </div>
-            <div className="product-meta-row">
+            <div className={styles.productMetaRow}>
               <dt>Share</dt>
-              <dd className="product-share">
+              <dd className={styles.productShare}>
                 :
                 <a href="#top" aria-label="Share on Facebook" onClick={(e) => e.preventDefault()}>
                   <FacebookOutlined />
@@ -266,11 +267,11 @@ export default function ProductDetailPage() {
         </div>
       </section>
 
-      <section className="product-tabs-section">
-        <Tabs defaultActiveKey="description" centered items={tabItems} className="product-tabs" />
+      <section className={styles.productTabsSection}>
+        <Tabs defaultActiveKey="description" centered items={tabItems} />
       </section>
 
-      <section className="related-products">
+      <section className={styles.relatedProducts}>
         <h2>Related Products</h2>
         <ProductGrid products={relatedProducts} pageSize={4} />
       </section>

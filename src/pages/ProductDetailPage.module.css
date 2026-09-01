@@ -1,0 +1,538 @@
+/* Breadcrumb bar */
+
+.productBreadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 24px 100px;
+  background-color: var(--color-cream);
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.productBreadcrumb a {
+  color: #666;
+}
+
+.breadcrumbDivider {
+  width: 1px;
+  height: 28px;
+  background-color: #9F9F9F;
+  margin: 0 4px;
+}
+
+.productBreadcrumb [aria-current="page"] {
+  color: #333;
+  font-weight: 500;
+}
+
+/* Product detail: gallery + info */
+
+.productDetail {
+  display: flex;
+  gap: 105px;
+  padding: 35px 100px 55px;
+}
+
+.productGallery {
+  display: flex;
+  flex: 0 0 570px;
+  gap: 31px;
+  width: 553px;
+  height: 500px;
+}
+
+.productThumbs {
+  display: flex;
+  flex: 0 0 90px;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.productThumbItem {
+  border: none;
+  padding: 0;
+  background-color: var(--color-cream);
+  cursor: pointer;
+  aspect-ratio: 1 / 1;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  transition: outline-color 0.2s ease;
+  border-radius: 10px;
+}
+
+.productThumbItem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: multiply;
+}
+
+.productThumbItem:hover,
+.productThumbItem.isActive {
+  outline-color: var(--color-primary);
+}
+
+.productMainImage {
+  display: flex;
+  flex: 1;
+  background-color: var(--color-cream);
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.productMainImage img {
+  width: 423px;
+  height: 500px;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+.singleProductInfo {
+  flex: 1;
+}
+
+.singleProductInfo h1 {
+  font-size: 48px;
+  font-weight: 500;
+  color: #333;
+}
+
+.singleProductPrice {
+  margin-top: 8px;
+  font-weight: 500;
+  font-size: 24px;
+  color: #9F9F9F;
+}
+
+.productRating {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.ratingDivider {
+  width: 1px;
+  height: 20px;
+  background-color: var(--color-border);
+}
+
+.ratingCount {
+  font-weight: 400;
+  font-size: 13px;
+  color: #9F9F9F;
+}
+
+.productDescription {
+  margin-top: 24px;
+  max-width: 440px;
+  color: #666;
+}
+
+.productOption {
+  margin-top: 32px;
+}
+
+.productOptionLabel {
+  font-size: 16px;
+  color: #666;
+}
+
+.sizeOptions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.sizeBtn {
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-color: var(--color-cream);
+  font-family: inherit;
+  font-size: 13px;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  border-radius: 5px;
+}
+
+.sizeBtn:hover,
+.sizeBtn.isActive {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+.colorOptions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.colorSwatch {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--swatch-color);
+  cursor: pointer;
+  outline: 2px solid transparent;
+  outline-offset: 3px;
+  transition: outline-color 0.2s ease;
+}
+
+.colorSwatch:hover,
+.colorSwatch.isActive {
+  outline-color: var(--swatch-color);
+}
+
+.productActionsRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 40px;
+  height: 64px;
+}
+
+.qtyInput {
+  width: 123px;
+}
+
+/* AntD's .ant-btn rule ties with these on specificity and wins in dev mode
+   (same issue as OrderSummary's btnPlaceOrder / CartTable's cartRemoveCell) */
+.btnAddToCart:global(.ant-btn) {
+  height: 64px !important;
+  width: 215px !important;
+  padding: 0 40px;
+  background-color: #fff;
+  border: 1px solid #333;
+  border-radius: 15px;
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.btnAddToCart:global(.ant-btn):hover {
+  background-color: #333;
+  color: #fff;
+}
+
+.btnCompare:global(.ant-btn) {
+  height: 64px !important;
+  width: 215px !important;
+  padding: 0 24px;
+  background: none;
+  border: 1px solid #000;
+  border-radius: 15px;
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.btnCompare:global(.ant-btn):hover {
+  background-color: #333;
+  color: #fff;
+}
+
+.productDivider {
+  margin-top: 40px;
+  border: none;
+  border-top: 1px solid var(--color-border);
+}
+
+.productMeta {
+  margin-top: 24px;
+}
+
+.productMetaRow {
+  display: flex;
+  gap: 20px;
+  margin-top: 12px;
+  font-size: 16px;
+}
+
+.productMetaRow dt {
+  flex: 0 0 90px;
+  color: #9F9F9F;
+}
+
+.productMetaRow dd {
+  color: #9F9F9F;
+}
+
+.productShare {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.productShare a {
+  display: flex;
+  color: #333;
+}
+
+/* Tabs section */
+
+.productTabsSection {
+  padding: 0 100px 65px;
+  border-top: 1px solid var(--color-border);
+}
+
+.tabPanel {
+  max-width: 900px;
+  margin: 37px 106px 0;
+  color: #666;
+}
+
+.tabPanel p + p {
+  margin-top: 30px;
+}
+
+.descriptionGallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 36px;
+}
+
+.descriptionGalleryItem {
+  display: flex;
+  background-color: var(--color-cream);
+  align-items: center;
+  justify-content: center;
+}
+
+.descriptionGalleryItem img {
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  width: 605px;
+  height: 348px;
+}
+
+.specTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.specTable th,
+.specTable td {
+  padding: 16px 0;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+  font-weight: 400;
+}
+
+.specTable th {
+  width: 200px;
+  color: #333;
+  font-weight: 500;
+}
+
+.specTable td {
+  color: #666;
+}
+
+.reviewList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.reviewItem {
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.reviewItem:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.reviewHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.reviewAuthor {
+  font-weight: 500;
+  color: #333;
+}
+
+.reviewText {
+  margin-top: 8px;
+  color: #666;
+}
+
+/* Related products */
+
+.relatedProducts {
+  padding: 0 100px 80px;
+  border-top: 1px solid var(--color-border);
+}
+
+.relatedProducts h2 {
+  margin-top: 60px;
+  text-align: center;
+  font-size: 36px;
+  font-weight: 500;
+  color: #333;
+}
+
+.relatedProducts :global(.products-grid) {
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 40px;
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  .productBreadcrumb {
+    padding: 20px 40px;
+  }
+
+  .productDetail {
+    flex-direction: column;
+    gap: 40px;
+    padding: 30px 40px;
+  }
+
+  .productGallery {
+    width: 100%;
+    height: auto;
+  }
+
+  .productMainImage img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+  }
+
+  .singleProductInfo h1 {
+    font-size: 36px;
+  }
+
+  .productTabsSection {
+    padding: 0 40px 60px;
+  }
+
+  .tabPanel {
+    margin: 37px 0 0;
+  }
+
+  .tabPanel p + p {
+    width: auto;
+  }
+
+  .descriptionGallery {
+    grid-template-columns: 1fr;
+  }
+
+  .descriptionGalleryItem img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  .relatedProducts {
+    padding: 0 40px 60px;
+  }
+
+  .relatedProducts :global(.products-grid) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .productBreadcrumb {
+    padding: 12px 20px;
+    font-size: 13px;
+    flex-wrap: wrap;
+  }
+
+  .productDetail {
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px 20px;
+  }
+
+  .productGallery {
+    flex: none;
+    flex-direction: column-reverse;
+    width: 100%;
+    height: auto;
+  }
+
+  .productMainImage img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+
+  .productThumbs {
+    flex-direction: row;
+    flex: 0 0 auto;
+    overflow-x: auto;
+  }
+
+  .productThumbItem {
+    flex: 0 0 70px;
+  }
+
+  .singleProductInfo h1 {
+    font-size: 22px;
+  }
+
+  .singleProductPrice {
+    font-size: 18px;
+  }
+
+  .productDescription {
+    font-size: 14px;
+  }
+
+  .productActionsRow {
+    flex-wrap: wrap;
+    height: auto;
+  }
+
+  .btnAddToCart:global(.ant-btn),
+  .btnCompare:global(.ant-btn) {
+    width: auto !important;
+    flex: 1 1 140px;
+  }
+
+  .productTabsSection {
+    padding: 0 20px 40px;
+  }
+
+  .tabPanel {
+    margin: 20px 0 0;
+    font-size: 14px;
+  }
+
+  .descriptionGallery {
+    grid-template-columns: 1fr;
+  }
+
+  .descriptionGalleryItem img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  .relatedProducts {
+    padding: 0 20px 40px;
+  }
+
+  .relatedProducts h2 {
+    margin-top: 32px;
+    font-size: 22px;
+  }
+
+  .relatedProducts :global(.products-grid) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 20px;
+  }
+}
