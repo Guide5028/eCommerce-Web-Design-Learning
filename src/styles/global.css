@@ -342,36 +342,8 @@ a {
   color: var(--color-text-muted);
 }
 
-/* Login page */
-
-.auth-section {
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 60px 20px 100px;
-}
-
-.auth-submit {
-  width: 100%;
-  margin-top: 32px;
-  padding: 18px;
-}
-
-.auth-switch-hint {
-  margin-top: 20px;
-  text-align: center;
-  color: var(--color-text-muted);
-}
-
-.auth-switch-link {
-  background: none;
-  border: none;
-  padding: 0;
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: 600;
-  color: var(--color-primary);
-  cursor: pointer;
-}
+/* Login page rules moved to components/auth/AuthTabs.module.css.
+   .auth-form stays here (shared "large AntD input" selector list below). */
 
 /* Tablet responsive (≤1024px) */
 @media (min-width: 601px) and (max-width: 1024px) {

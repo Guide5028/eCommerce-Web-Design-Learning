@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Form, Input, Tabs } from 'antd';
+import styles from './AuthTabs.module.css';
 
 // Ported from legacy/js/app.js:1168-1243 (login / register page)
 
@@ -31,12 +32,12 @@ function LoginForm({ onSwitchToRegister }) {
       >
         <Input.Password placeholder="Enter your password" disabled={submitting} />
       </Form.Item>
-      <Button type="primary" htmlType="submit" className="btn btn-primary auth-submit" disabled={submitting} block>
+      <Button type="primary" htmlType="submit" className={styles.authSubmit} disabled={submitting} block>
         {label}
       </Button>
-      <p className="auth-switch-hint">
+      <p className={styles.authSwitchHint}>
         Don&apos;t have an account?{' '}
-        <button type="button" className="auth-switch-link" onClick={onSwitchToRegister}>Register</button>
+        <button type="button" className={styles.authSwitchLink} onClick={onSwitchToRegister}>Register</button>
       </p>
     </Form>
   );
@@ -86,12 +87,12 @@ function RegisterForm({ onSwitchToLogin }) {
       >
         <Input.Password placeholder="Re-enter your password" disabled={submitting} />
       </Form.Item>
-      <Button type="primary" htmlType="submit" className="btn btn-primary auth-submit" disabled={submitting} block>
+      <Button type="primary" htmlType="submit" className={styles.authSubmit} disabled={submitting} block>
         {submitting ? 'Creating account...' : 'Create Account'}
       </Button>
-      <p className="auth-switch-hint">
+      <p className={styles.authSwitchHint}>
         Already have an account?{' '}
-        <button type="button" className="auth-switch-link" onClick={onSwitchToLogin}>Log In</button>
+        <button type="button" className={styles.authSwitchLink} onClick={onSwitchToLogin}>Log In</button>
       </p>
     </Form>
   );
@@ -106,13 +107,12 @@ export default function AuthTabs() {
   ];
 
   return (
-    <section className="auth-section">
+    <section className={styles.authSection}>
       <Tabs
         centered
         activeKey={activeTab}
         onChange={setActiveTab}
         items={items}
-        className="auth-tabs-wrap"
       />
     </section>
   );

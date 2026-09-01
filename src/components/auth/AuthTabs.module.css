@@ -1,0 +1,42 @@
+.authSection {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 60px 20px 100px;
+}
+
+/* AntD's own .ant-btn compound rule ties with this on specificity and wins in
+   dev mode (same pattern as OrderSummary's btnPlaceOrder / ProductDetailPage's
+   btnAddToCart) */
+.authSubmit:global(.ant-btn) {
+  width: 100% !important;
+  margin-top: 32px;
+  padding: 18px;
+  height: auto;
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: 0;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.authSubmit:global(.ant-btn):hover {
+  opacity: 0.85;
+}
+
+.authSwitchHint {
+  margin-top: 20px;
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.authSwitchLink {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 600;
+  color: var(--color-primary);
+  cursor: pointer;
+}

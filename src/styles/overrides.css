@@ -28,7 +28,7 @@
 /* .ant-btn.btn-place-order moved to components/checkout/OrderSummary.module.css */
 /* .ant-btn.show-more moved to components/product/ProductGrid.module.css */
 
-.ant-btn.auth-submit,
+/* .ant-btn.auth-submit moved to components/auth/AuthTabs.module.css */
 .ant-btn.contact-submit {
   height: auto;
   background-color: var(--color-primary);
@@ -37,19 +37,11 @@
   color: #fff;
   font-size: 16px;
   font-weight: 600;
-}
-.ant-btn.auth-submit:hover,
-.ant-btn.contact-submit:hover {
-  opacity: 0.85;
-}
-.ant-btn.auth-submit {
-  width: 100%;
-  margin-top: 32px;
-  padding: 18px;
-}
-.ant-btn.contact-submit {
   margin-top: 32px;
   padding: 18px 60px;
+}
+.ant-btn.contact-submit:hover {
+  opacity: 0.85;
 }
 
 /* the large 75px form fields on checkout / contact / login forms */
