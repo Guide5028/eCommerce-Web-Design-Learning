@@ -196,14 +196,13 @@ nav ul li a.active {
 }
 
 .browse-range img {
+  width: 100%;
   max-width: 381px;
   max-height: 480px;
 }
 
+/* the 3/2-column grid itself is now AntD's <Row>/<Col> (see BrowseRange.jsx) */
 .range-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
   margin-top: 62px;
 }
 
@@ -815,11 +814,9 @@ nav ul li a.active {
 
 /* Features bar */
 
+/* the 4/2/1-column grid itself is now AntD's <Row>/<Col> (see FeaturesBar.jsx) */
 .features-bar {
-  display: grid;
   width: 100%;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
   margin-top: 85px;
   padding: 100px 53px;
   background-color: var(--color-cream);
@@ -1896,10 +1893,8 @@ nav ul li a.active {
   color: var(--color-text-muted);
 }
 
+/* the 3/2/1-column grid itself is now AntD's <Row>/<Col> (see ContactPage.jsx) */
 .contact-info {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
   margin-top: 60px;
 }
 
@@ -1986,10 +1981,8 @@ nav ul li a.active {
   margin-top: 30px;
 }
 
+/* the 4/2-column grid itself is now AntD's <Row>/<Col> (see AboutPage.jsx) */
 .about-stats {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
   padding: 64px 100px;
   background-color: var(--color-cream);
   text-align: center;
@@ -2087,10 +2080,6 @@ header {
     padding: 48px 40px;
   }
 
-  .range-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .range-item img {
     max-width: 100%;
   }
@@ -2166,9 +2155,7 @@ header {
   }
 
   .features-bar {
-    grid-template-columns: repeat(2, 1fr);
     padding: 48px 32px;
-    gap: 32px 24px;
   }
 
   .shop-hero-content h1 {
@@ -2294,9 +2281,6 @@ header {
     font-size: 32px;
   }
 
-  .contact-info {
-    grid-template-columns: 1fr 1fr;
-  }
 
   .about-story {
     flex-direction: column;
@@ -2313,8 +2297,6 @@ header {
   }
 
   .about-stats {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 32px 24px;
     padding: 48px 40px;
   }
 }
@@ -2416,8 +2398,6 @@ header {
   }
 
   .range-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
     margin-top: 24px;
   }
 
@@ -2553,9 +2533,7 @@ header {
   }
 
   .features-bar {
-    grid-template-columns: 1fr;
     padding: 32px 20px;
-    gap: 32px;
   }
 
   .feature-item {
@@ -2931,8 +2909,6 @@ header {
   }
 
   .contact-info {
-    grid-template-columns: 1fr;
-    gap: 16px;
     margin-top: 32px;
   }
 
@@ -2959,8 +2935,6 @@ header {
   }
 
   .about-stats {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
     padding: 32px 20px;
   }
 

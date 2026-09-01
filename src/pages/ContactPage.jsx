@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Form, Input } from 'antd';
+import { Button, Form, Input, Row, Col } from 'antd';
 import { EnvironmentOutlined, PhoneOutlined, ClockCircleOutlined } from '@ant-design/icons';
 import FeaturesBar from '../components/layout/FeaturesBar.jsx';
 
@@ -78,15 +78,19 @@ export default function ContactPage() {
         </div>
 
         <div className="contact-info">
-          {CONTACT_INFO.map((item) => (
-            <div className="contact-info-item" key={item.title}>
-              <span className="contact-icon" aria-hidden="true">{item.icon}</span>
-              <div className="contact-info-text">
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </div>
-            </div>
-          ))}
+          <Row gutter={[24, 24]}>
+            {CONTACT_INFO.map((item) => (
+              <Col xs={24} sm={12} md={8} key={item.title}>
+                <div className="contact-info-item">
+                  <span className="contact-icon" aria-hidden="true">{item.icon}</span>
+                  <div className="contact-info-text">
+                    <h3>{item.title}</h3>
+                    <p>{item.text}</p>
+                  </div>
+                </div>
+              </Col>
+            ))}
+          </Row>
         </div>
 
         <Form form={form} layout="vertical" className="contact-form" requiredMark={false} onFinish={handleFinish}>

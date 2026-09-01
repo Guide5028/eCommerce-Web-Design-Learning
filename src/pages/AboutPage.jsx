@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { Row, Col } from 'antd';
 import FeaturesBar from '../components/layout/FeaturesBar.jsx';
 
 const STATS = [
@@ -44,12 +45,16 @@ export default function AboutPage() {
       </section>
 
       <section className="about-stats">
-        {STATS.map((stat) => (
-          <div className="about-stat-item" key={stat.label}>
-            <h3>{stat.value}</h3>
-            <p>{stat.label}</p>
-          </div>
-        ))}
+        <Row gutter={[24, 32]}>
+          {STATS.map((stat) => (
+            <Col xs={12} md={6} key={stat.label}>
+              <div className="about-stat-item">
+                <h3>{stat.value}</h3>
+                <p>{stat.label}</p>
+              </div>
+            </Col>
+          ))}
+        </Row>
       </section>
 
       <FeaturesBar />
