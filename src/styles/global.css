@@ -504,6 +504,14 @@ nav ul li a.active {
   overflow: hidden;
 }
 
+.room-carousel-track {
+  position: relative;
+  display: flex;
+  gap: 20px;
+  transform: translateX(0);
+  transition: transform 0.4s ease;
+}
+
 .room-slide {
   position: relative;
   flex: 0 0 372px;
@@ -603,6 +611,52 @@ nav ul li a.active {
 .room-carousel-next:hover {
   background-color: var(--color-primary);
   color: #fff;
+}
+
+.room-carousel-dots {
+  position: absolute;
+  display: flex;
+  left: 392px;
+  bottom: 23px;
+  align-items: center;
+  gap: 40px;
+}
+
+.dot {
+  position: relative;
+  appearance: none;
+  -webkit-appearance: none;
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--color-border);
+  cursor: pointer;
+  transition: background-color 0.2s ease, width 0.2s ease, height 0.2s ease, border-color 0.2s ease;
+}
+
+.dot:hover {
+  background-color: var(--color-primary);
+}
+
+.dot.is-active {
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border: 1.5px solid var(--color-primary);
+}
+
+.dot.is-active::before {
+  position: absolute;
+  content: '';
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  transform: translate(-50%, -50%);
 }
 
 /* Share Setup */
