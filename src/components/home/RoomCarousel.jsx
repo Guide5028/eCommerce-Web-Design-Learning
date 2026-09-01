@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import styles from './RoomCarousel.module.css';
 
 // Custom carousel — NOT an AntD component. AntD's <Carousel> can only show one slide
 // at a time; this design needs one big slide plus two smaller peeking slides, which
@@ -41,22 +42,22 @@ export default function RoomCarousel() {
   }
 
   return (
-    <div className="room-carousel">
-      <div className="room-carousel-viewport">
-        <div className="room-carousel-track">
+    <div className={styles.roomCarousel}>
+      <div className={styles.roomCarouselViewport}>
+        <div className={styles.roomCarouselTrack}>
           {order.map((room) => (
-            <div className="room-slide" key={room.title}>
+            <div className={styles.roomSlide} key={room.title}>
               <img src={room.image} alt={room.alt} />
-              <div className="room-caption-row">
-                <div className="room-caption">
-                  <div className="room-caption-text">
-                    <span className="room-caption-index">{room.index}</span>
+              <div className={styles.roomCaptionRow}>
+                <div className={styles.roomCaption}>
+                  <div className={styles.roomCaptionText}>
+                    <span className={styles.roomCaptionIndex}>{room.index}</span>
                     <h3>{room.title}</h3>
                   </div>
                 </div>
                 <a
                   href="#top"
-                  className="room-caption-arrow"
+                  className={styles.roomCaptionArrow}
                   aria-label={`View ${room.title} inspiration`}
                   onClick={(e) => e.preventDefault()}
                 >
@@ -69,19 +70,19 @@ export default function RoomCarousel() {
 
         <button
           type="button"
-          className="room-carousel-next"
+          className={styles.roomCarouselNext}
           aria-label="Next room"
           onClick={() => rotateTo(activeIndex + 1)}
         >
           &gt;
         </button>
 
-        <div className="room-carousel-dots">
+        <div className={styles.roomCarouselDots}>
           {ROOMS.map((room, i) => (
             <button
               key={room.title}
               type="button"
-              className={`dot${i === activeIndex ? ' is-active' : ''}`}
+              className={`${styles.dot}${i === activeIndex ? ` ${styles.isActive}` : ''}`}
               aria-label={`Go to slide ${i + 1}`}
               onClick={() => rotateTo(i)}
             />

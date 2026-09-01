@@ -1,0 +1,225 @@
+.roomCarousel {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.roomCarouselViewport {
+  position: relative;
+  height: 582px;
+  overflow: hidden;
+}
+
+.roomCarouselTrack {
+  position: relative;
+  display: flex;
+  gap: 20px;
+  transform: translateX(0);
+  transition: transform 0.4s ease;
+}
+
+.roomSlide {
+  position: relative;
+  flex: 0 0 372px;
+  overflow: hidden;
+  transition: flex-basis 0.4s ease;
+}
+
+.roomSlide img {
+  display: block;
+  width: 100%;
+  height: 582px;
+  object-fit: cover;
+  transition: height 0.4s ease;
+}
+
+.roomSlide:not(:first-child) {
+  flex: 0 0 320px;
+}
+
+.roomSlide:not(:first-child) img {
+  height: 516px;
+}
+
+.roomSlide:not(:first-child) .roomCaptionRow {
+  display: none;
+}
+
+.roomCaptionRow {
+  position: absolute;
+  display: flex;
+  left: 24px;
+  right: 24px;
+  bottom: 24px;
+  align-items: flex-end;
+}
+
+.roomCaption {
+  display: flex;
+  align-items: center;
+  max-width: 217px;
+  padding: 24px;
+  background-color: #fff;
+  backdrop-filter: blur(10px);
+}
+
+.roomCaptionIndex {
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+.roomCaptionText h3 {
+  margin-top: 8px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+}
+
+.roomCaptionArrow {
+  display: flex;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 0;
+  background-color: var(--color-primary);
+  color: #fff;
+  font-size: 20px;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease;
+}
+
+.roomCaptionArrow:hover {
+  opacity: 0.85;
+}
+
+.roomCarouselNext {
+  position: absolute;
+  display: flex;
+  top: 50%;
+  right: 55px;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background-color: #fff;
+  color: #333;
+  font-size: 20px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.2s ease, color 0.2s ease;
+  z-index: 2;
+}
+
+.roomCarouselNext:hover {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+.roomCarouselDots {
+  position: absolute;
+  display: flex;
+  left: 392px;
+  bottom: 23px;
+  align-items: center;
+  gap: 40px;
+}
+
+.dot {
+  position: relative;
+  appearance: none;
+  -webkit-appearance: none;
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--color-border);
+  cursor: pointer;
+  transition: background-color 0.2s ease, width 0.2s ease, height 0.2s ease, border-color 0.2s ease;
+}
+
+.dot:hover {
+  background-color: var(--color-primary);
+}
+
+.dot.isActive {
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border: 1.5px solid var(--color-primary);
+}
+
+.dot.isActive::before {
+  position: absolute;
+  content: '';
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  transform: translate(-50%, -50%);
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  .roomCarouselViewport {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .roomSlide {
+    flex-basis: 300px;
+  }
+
+  .roomSlide img {
+    height: 400px;
+  }
+
+  .roomSlide:not(:first-child) {
+    flex-basis: 260px;
+  }
+
+  .roomSlide:not(:first-child) img {
+    height: 340px;
+  }
+
+  .roomCarouselDots {
+    left: 320px;
+    bottom: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .roomCarouselViewport {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .roomSlide {
+    flex-basis: 260px;
+  }
+
+  .roomSlide img {
+    height: 340px;
+  }
+
+  .roomSlide:not(:first-child) {
+    flex-basis: 220px;
+  }
+
+  .roomSlide:not(:first-child) img {
+    height: 280px;
+  }
+
+  .roomCarouselDots {
+    left: 50%;
+    bottom: 20px;
+    gap: 24px;
+    transform: translateX(-50%);
+  }
+}

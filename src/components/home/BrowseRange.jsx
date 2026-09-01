@@ -1,4 +1,5 @@
 import { Row, Col } from 'antd';
+import styles from './BrowseRange.module.css';
 
 const RANGES = [
   { image: '/images/category-dining.jpg', alt: 'Dining room table styled with linen and pottery', title: 'Dining' },
@@ -8,17 +9,17 @@ const RANGES = [
 
 export default function BrowseRange() {
   return (
-    <section className="browse-range">
-      <div className="section-heading">
+    <section className={styles.browseRange}>
+      <div className={styles.sectionHeading}>
         <h2>Browse The Range</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </div>
 
-      <div className="range-grid">
+      <div className={styles.rangeGrid}>
         <Row gutter={[20, 20]}>
           {RANGES.map((range) => (
             <Col xs={12} md={8} key={range.title}>
-              <div className="range-item">
+              <div className={styles.rangeItem}>
                 <img src={range.image} alt={range.alt} />
                 <h3>{range.title}</h3>
               </div>
