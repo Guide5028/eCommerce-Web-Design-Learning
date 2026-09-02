@@ -3,6 +3,7 @@ import { Button, Form, Input, Row, Col } from 'antd';
 import { EnvironmentOutlined, PhoneOutlined, ClockCircleOutlined } from '@ant-design/icons';
 import FeaturesBar from '../components/layout/FeaturesBar.jsx';
 import PageHero from '../components/layout/PageHero.jsx';
+import LargeFieldsTheme from '../components/common/LargeFieldsTheme.jsx';
 
 // Ported from legacy/js/app.js:581-606 (contact form submit -> transient success state)
 
@@ -83,28 +84,30 @@ export default function ContactPage() {
           </Row>
         </div>
 
-        <Form form={form} layout="vertical" className="contact-form" requiredMark={false} onFinish={handleFinish}>
-          <div className="form-row">
-            <Form.Item label="Your name" name="name" rules={[{ required: true }]}>
-              <Input placeholder="Abc" disabled={submitting} />
+        <LargeFieldsTheme>
+          <Form form={form} layout="vertical" className="contact-form" requiredMark={false} onFinish={handleFinish}>
+            <div className="form-row">
+              <Form.Item label="Your name" name="name" rules={[{ required: true }]}>
+                <Input placeholder="Abc" disabled={submitting} />
+              </Form.Item>
+              <Form.Item label="Email address" name="email" rules={[{ required: true, type: 'email' }]}>
+                <Input placeholder="Abc@def.com" disabled={submitting} />
+              </Form.Item>
+            </div>
+
+            <Form.Item label="Subject" name="subject">
+              <Input placeholder="This is an optional" disabled={submitting} />
             </Form.Item>
-            <Form.Item label="Email address" name="email" rules={[{ required: true, type: 'email' }]}>
-              <Input placeholder="Abc@def.com" disabled={submitting} />
+
+            <Form.Item label="Message" name="message" rules={[{ required: true }]}>
+              <Input.TextArea rows={6} placeholder="Hi! I'd like to ask about" disabled={submitting} />
             </Form.Item>
-          </div>
 
-          <Form.Item label="Subject" name="subject">
-            <Input placeholder="This is an optional" disabled={submitting} />
-          </Form.Item>
-
-          <Form.Item label="Message" name="message" rules={[{ required: true }]}>
-            <Input.TextArea rows={6} placeholder="Hi! I'd like to ask about" disabled={submitting} />
-          </Form.Item>
-
-          <Button type="primary" htmlType="submit" className="btn btn-primary contact-submit" disabled={submitting}>
-            {submitting ? 'Message sent!' : 'Submit'}
-          </Button>
-        </Form>
+            <Button type="primary" htmlType="submit" className="btn btn-primary contact-submit" disabled={submitting}>
+              {submitting ? 'Message sent!' : 'Submit'}
+            </Button>
+          </Form>
+        </LargeFieldsTheme>
       </section>
 
       <FeaturesBar />
