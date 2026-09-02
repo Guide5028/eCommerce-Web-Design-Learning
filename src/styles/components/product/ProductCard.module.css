@@ -70,23 +70,16 @@
   visibility: visible;
 }
 
-/* AntD's own .ant-btn compound classes beat a single custom class on
-   specificity, so this is paired with AntD's own base class to win reliably */
+/*
+  Color, radius, font size, height, and horizontal padding all come from the
+  scoped Button component tokens in ProductCard.jsx now (addCartButtonTheme) --
+  including hover, since defaultHoverBg/defaultHoverColor are real tokens too.
+  `border: none` is the only thing left: AntD's default Button always renders
+  *some* border, and there's no token to remove it entirely.
+*/
 .btnAddCart:global(.ant-btn) {
-  height: auto;
-  padding: 12px 28px;
-  background-color: #fff;
-  color: var(--color-primary);
-  font-size: 16px;
-  font-weight: 600;
   border: none;
-  border-radius: 0;
   white-space: nowrap;
-}
-
-.btnAddCart:global(.ant-btn):hover {
-  background-color: var(--color-primary);
-  color: #fff;
 }
 
 .productActions {

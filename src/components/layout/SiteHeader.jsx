@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Badge, Drawer, Input, Menu, Popover } from 'antd';
+import { Badge, ConfigProvider, Drawer, Input, Menu, Popover } from 'antd';
 import {
   MenuOutlined,
   SearchOutlined,
@@ -64,12 +64,21 @@ export default function SiteHeader() {
       </button>
 
       <nav id="site-nav" className={styles.siteNavDesktop}>
-        <Menu
-          mode="horizontal"
-          selectedKeys={[location.pathname]}
-          items={NAV_ITEMS}
-          onClick={handleNavClick}
-        />
+        {/*
+          Scoped to just the desktop nav so it doesn't touch the mobile Drawer's
+          <Menu> below. itemColor/itemHoverColor/itemSelectedColor aren't set here
+          on purpose -- Menu already defaults horizontalItemHoverColor and
+          horizontalItemSelectedColor to the theme's colorPrimary (see theme.js),
+          so the selected/hover nav link is already on-brand for free.
+        */}
+        <ConfigProvider theme={{ components: { Menu: { itemPaddingInline: 0, fontSize: 16 } } }}>
+          <Menu
+            mode="horizontal"
+            selectedKeys={[location.pathname]}
+            items={NAV_ITEMS}
+            onClick={handleNavClick}
+          />
+        </ConfigProvider>
       </nav>
 
       <Drawer

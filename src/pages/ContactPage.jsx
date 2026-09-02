@@ -103,7 +103,7 @@ export default function ContactPage() {
               <Input.TextArea rows={6} placeholder="Hi! I'd like to ask about" disabled={submitting} />
             </Form.Item>
 
-            <Button type="primary" htmlType="submit" className="btn btn-primary contact-submit" disabled={submitting}>
+            <Button type="primary" htmlType="submit" className="contact-submit" disabled={submitting}>
               {submitting ? 'Message sent!' : 'Submit'}
             </Button>
           </Form>

@@ -279,10 +279,13 @@ a {
   margin: 60px auto 0;
 }
 
-.contact-submit {
-  margin-top: 32px;
-  padding: 18px 60px;
-}
+/*
+  Only the mobile width:100% override lives here (further down, in the phone
+  media query) -- margin-top and padding used to be duplicated here too, but
+  they're already covered by .ant-btn.contact-submit in overrides.css (margin)
+  and the scoped Button tokens in LargeFieldsTheme.jsx (padding/height), so this
+  desktop-width block was dead weight stacked on top of them.
+*/
 
 /* About page */
 

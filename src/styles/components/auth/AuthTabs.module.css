@@ -4,20 +4,16 @@
   padding: 60px 20px 100px;
 }
 
-/* AntD's own .ant-btn compound rule ties with this on specificity and wins in
-   dev mode (same pattern as OrderSummary's btnPlaceOrder / ProductDetailPage's
-   btnAddToCart) */
+/*
+  Radius, height, font size, and color all come from the scoped Button tokens in
+  LargeFieldsTheme.jsx now (type="primary" already pulls background/text color
+  from the theme's colorPrimary token for free, and the `block` prop -- already on
+  this Button in the JSX -- gives width:100% via AntD's own CSS, no override
+  needed). Only the layout offset and the dimming-on-hover flourish (not a Button
+  token) are left as real CSS.
+*/
 .authSubmit:global(.ant-btn) {
-  width: 100% !important;
   margin-top: 32px;
-  padding: 18px;
-  height: auto;
-  background-color: var(--color-primary);
-  border: none;
-  border-radius: 0;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 600;
 }
 
 .authSubmit:global(.ant-btn):hover {

@@ -55,22 +55,18 @@
   text-decoration: underline;
 }
 
-/* AntD's own .ant-btn compound rule matches this same specificity (0,2,0) and its
-   CSS-in-JS is injected after this module in dev mode, so it wins ties on source
-   order alone for width/display specifically -- !important settles it */
+/*
+  Color, radius, height, and horizontal padding all come from OrderSummary.jsx's
+  scoped Button tokens (placeOrderButtonTheme) now, via the `ghost` prop. Width
+  used to need `!important` to beat AntD's own tied-specificity default-width
+  rule -- the real fix was the `block` prop, which lets AntD apply its own
+  width:100% through its own class instead of us fighting it from outside. What's
+  left is a genuine page-specific size cap and the hover-fills-solid flourish
+  (not a token).
+*/
 .btnPlaceOrder:global(.ant-btn) {
-  display: block !important;
-  width: 100% !important;
   max-width: 318px;
-  height: auto;
   margin: 32px auto 0;
-  padding: 16px;
-  background: none;
-  border: 1px solid #333;
-  border-radius: 10px;
-  color: #333;
-  font-size: 16px;
-  font-weight: 500;
 }
 
 .btnPlaceOrder:global(.ant-btn):hover {

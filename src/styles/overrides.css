@@ -29,16 +29,15 @@
 /* .ant-btn.show-more moved to components/product/ProductGrid.module.css */
 
 /* .ant-btn.auth-submit moved to components/auth/AuthTabs.module.css */
+/*
+  Like .auth-submit, this button sits inside LargeFieldsTheme's scope (see
+  ContactPage.jsx), so its radius/height/font-size/color/padding all come from
+  the same shared Button component tokens -- type="primary" already pulls
+  background/text color from colorPrimary for free. Only the layout offset and
+  the dimming-on-hover flourish (not a Button token) are left as real CSS.
+*/
 .ant-btn.contact-submit {
-  height: auto;
-  background-color: var(--color-primary);
-  border: none;
-  border-radius: 0;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 600;
   margin-top: 32px;
-  padding: 18px 60px;
 }
 .ant-btn.contact-submit:hover {
   opacity: 0.85;

@@ -200,18 +200,19 @@
   width: 123px;
 }
 
-/* AntD's .ant-btn rule ties with these on specificity and wins in dev mode
-   (same issue as OrderSummary's btnPlaceOrder / CartTable's cartRemoveCell) */
+/*
+  Color, border, and radius come from ProductDetailPage.jsx's scoped Button
+  tokens (actionsRowButtonTheme) now -- btnCompare via the `ghost` prop. Height
+  is a token too (Button.controlHeight: 64) -- an earlier version of this comment
+  assumed the row's own flex alignment would stretch the buttons to fill it for
+  free, but AntD's Button always sets a literal `height` CSS property of its own
+  (button/style/index.js), which blocks flex stretch from having any effect --
+  controlHeight is the only real lever. Width and horizontal padding are left as
+  plain CSS: they're page-specific fixed numbers, not something a token expresses.
+*/
 .btnAddToCart:global(.ant-btn) {
-  height: 64px !important;
-  width: 215px !important;
+  width: 215px;
   padding: 0 40px;
-  background-color: #fff;
-  border: 1px solid #333;
-  border-radius: 15px;
-  color: #333;
-  font-size: 16px;
-  font-weight: 500;
 }
 
 .btnAddToCart:global(.ant-btn):hover {
@@ -220,15 +221,8 @@
 }
 
 .btnCompare:global(.ant-btn) {
-  height: 64px !important;
-  width: 215px !important;
+  width: 215px;
   padding: 0 24px;
-  background: none;
-  border: 1px solid #000;
-  border-radius: 15px;
-  color: #333;
-  font-size: 16px;
-  font-weight: 500;
 }
 
 .btnCompare:global(.ant-btn):hover {
@@ -498,7 +492,7 @@
 
   .btnAddToCart:global(.ant-btn),
   .btnCompare:global(.ant-btn) {
-    width: auto !important;
+    width: auto;
     flex: 1 1 140px;
   }
 

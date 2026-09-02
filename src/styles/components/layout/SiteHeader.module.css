@@ -22,7 +22,15 @@
   font-weight: 700;
 }
 
-/* the desktop <Menu> itself */
+/*
+  The desktop <Menu> itself. Font size + item padding now come from a scoped
+  ConfigProvider in SiteHeader.jsx (Menu.itemPaddingInline / Menu.fontSize) --
+  and the selected/hover link color needed no override at all, since Menu's
+  own horizontalItemHoverColor/horizontalItemSelectedColor tokens already
+  default to the theme's colorPrimary. What's left here is genuine layout
+  (flex gap) and removing AntD's default underline indicator, neither of
+  which a token controls.
+*/
 .siteNavDesktop :global(.ant-menu) {
   background: transparent;
   border-bottom: none;
@@ -30,18 +38,11 @@
 }
 
 .siteNavDesktop :global(.ant-menu-item) {
-  font-size: 16px;
   font-weight: 500;
-  padding: 0;
 }
 
 .siteNavDesktop :global(.ant-menu-item)::after {
   display: none;
-}
-
-.siteNavDesktop :global(.ant-menu-item-selected),
-.siteNavDesktop :global(.ant-menu-item):hover {
-  color: var(--color-primary) !important;
 }
 
 .headerIcons {

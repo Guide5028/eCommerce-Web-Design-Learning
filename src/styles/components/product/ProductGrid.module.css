@@ -1,13 +1,15 @@
+/*
+  Border/text color, font size come from the scoped Button tokens in
+  ProductGrid.jsx (showMoreButtonTheme) via the `ghost` prop. What's left:
+  explicit height/width (this button's size isn't derived from its padding,
+  it's a fixed box, same as the original .show-more rule) and the
+  hover-fills-solid flourish, which ghost's own hover doesn't do by default.
+*/
 .showMore:global(.ant-btn) {
   height: 48px;
   width: 245px;
   margin-top: 32px;
   margin-bottom: 69px;
-  background-color: transparent;
-  color: var(--color-primary);
-  border: 1px solid var(--color-primary);
-  font-size: 16px;
-  font-weight: 600;
 }
 
 .showMore:global(.ant-btn):hover {

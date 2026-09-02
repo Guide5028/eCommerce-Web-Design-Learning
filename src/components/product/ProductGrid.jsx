@@ -1,9 +1,25 @@
 import { useState } from 'react';
-import { Button } from 'antd';
+import { Button, ConfigProvider } from 'antd';
 import ProductCard from './ProductCard.jsx';
+import { COLOR_PRIMARY } from '../../theme.js';
 import styles from '../../styles/components/product/ProductGrid.module.css';
 
 // Paged "Show More" grid, ported from legacy/js/app.js:608-633 (home) and :819-846 (related products)
+
+// `ghost` gives the transparent-bg / colored-border-and-text look for free once the
+// ghost color tokens are pointed at the brand color -- AntD's own ghost variant is
+// built exactly for "outlined button on a plain background". The hover-fills-solid
+// flourish isn't a token (ghost's own hover just adjusts the border), so that part
+// stays a couple of lines of plain CSS in the module.
+const showMoreButtonTheme = {
+  components: {
+    Button: {
+      defaultGhostColor: COLOR_PRIMARY,
+      defaultGhostBorderColor: COLOR_PRIMARY,
+      contentFontSize: 16,
+    },
+  },
+};
 
 export default function ProductGrid({ products, pageSize = 8, gridClassName = 'products-grid' }) {
   const [visibleCount, setVisibleCount] = useState(pageSize);
@@ -18,9 +34,11 @@ export default function ProductGrid({ products, pageSize = 8, gridClassName = 'p
         ))}
       </div>
       {hasMore && (
-        <Button className={styles.showMore} onClick={() => setVisibleCount((c) => c + pageSize)}>
-          Show More
-        </Button>
+        <ConfigProvider theme={showMoreButtonTheme}>
+          <Button ghost className={styles.showMore} onClick={() => setVisibleCount((c) => c + pageSize)}>
+            Show More
+          </Button>
+        </ConfigProvider>
       )}
     </>
   );

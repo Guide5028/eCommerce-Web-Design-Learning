@@ -1,15 +1,48 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Button, InputNumber, Tabs } from 'antd';
+import { Button, ConfigProvider, InputNumber, Tabs } from 'antd';
 import { FacebookOutlined, LinkedinOutlined, TwitterOutlined } from '@ant-design/icons';
 import { useProducts } from '../data/ProductsContext.jsx';
 import { useStore } from '../store/StoreContext.jsx';
 import { formatPrice, colorName } from '../utils/format.js';
+import { COLOR_TEXT } from '../theme.js';
 import StarRating from '../components/product/StarRating.jsx';
 import ProductGrid from '../components/product/ProductGrid.jsx';
 import styles from '../styles/pages/ProductDetailPage.module.css';
 
 // Ported from legacy/js/app.js:821-951 (single product page routing)
+
+// Add To Cart (type="default", solid white bg) and Compare (`ghost`, transparent bg)
+// read different token fields, so one shared scope can carry both without conflict.
+// Both fill solid dark on hover, same target color, hence one pair of Hover tokens.
+//
+// Height: unlike Input, AntD's Button always renders a literal `height: controlHeight`
+// CSS property (button/style/index.js), not a padding-derived one -- so controlHeight
+// is a real, direct token for a button's height (same mechanism as Select), set here
+// to exactly the row's 64px. (The qty InputNumber next to these buttons uses a
+// different mechanism -- padding-driven, like Input -- see qtyInputTheme below.)
+const actionsRowButtonTheme = {
+  components: {
+    Button: {
+      defaultColor: COLOR_TEXT,
+      defaultBorderColor: COLOR_TEXT,
+      defaultHoverBg: COLOR_TEXT,
+      defaultHoverColor: '#fff',
+      defaultHoverBorderColor: COLOR_TEXT,
+      defaultGhostColor: COLOR_TEXT,
+      defaultGhostBorderColor: '#000',
+      borderRadius: 15,
+      controlHeight: 64,
+      contentFontSize: 16,
+    },
+    // InputNumber's base size *is* padding-driven (input-number/style/index.js), same
+    // as Input -- so it needs the paddingBlock formula instead of controlHeight:
+    // 64 = 2*paddingBlock + content-line-height + 2*border, solved empirically below.
+    InputNumber: {
+      paddingBlock: 20,
+    },
+  },
+};
 
 const REVIEWS = [
   { author: 'Alex M.', text: 'Comfortable and well-made, exactly as pictured. Delivery was quick too.' },
@@ -221,16 +254,18 @@ export default function ProductDetailPage() {
           </div>
 
           <div className={styles.productActionsRow}>
-            <InputNumber
-              className={styles.qtyInput}
-              min={1}
-              value={qty}
-              onChange={(value) => setQty(value || 1)}
-            />
-            <Button className={styles.btnAddToCart} onClick={handleAddToCart}>
-              {added ? 'Added!' : 'Add To Cart'}
-            </Button>
-            <Button className={styles.btnCompare}>+ Compare</Button>
+            <ConfigProvider theme={actionsRowButtonTheme}>
+              <InputNumber
+                className={styles.qtyInput}
+                min={1}
+                value={qty}
+                onChange={(value) => setQty(value || 1)}
+              />
+              <Button className={styles.btnAddToCart} onClick={handleAddToCart}>
+                {added ? 'Added!' : 'Add To Cart'}
+              </Button>
+              <Button ghost className={styles.btnCompare}>+ Compare</Button>
+            </ConfigProvider>
           </div>
 
           <hr className={styles.productDivider} />
