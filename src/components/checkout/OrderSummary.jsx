@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Button } from 'antd';
 import { formatRp } from '../../utils/format.js';
 import PaymentMethods from './PaymentMethods.jsx';
-import styles from './OrderSummary.module.css';
+import styles from '../../styles/components/checkout/OrderSummary.module.css';
 
 // Ported from legacy/js/app.js:1068-1123 (order summary render)
 

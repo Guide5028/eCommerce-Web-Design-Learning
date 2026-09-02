@@ -5,7 +5,7 @@ import BillingForm from '../components/checkout/BillingForm.jsx';
 import OrderSummary from '../components/checkout/OrderSummary.jsx';
 import FeaturesBar from '../components/layout/FeaturesBar.jsx';
 import PageHero from '../components/layout/PageHero.jsx';
-import styles from './CheckoutPage.module.css';
+import styles from '../styles/pages/CheckoutPage.module.css';
 
 export default function CheckoutPage() {
   const { products } = useProducts();

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button } from 'antd';
 import ProductCard from './ProductCard.jsx';
-import styles from './ProductGrid.module.css';
+import styles from '../../styles/components/product/ProductGrid.module.css';
 
 // Paged "Show More" grid, ported from legacy/js/app.js:608-633 (home) and :819-846 (related products)
 

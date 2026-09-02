@@ -1,5 +1,5 @@
 import { Row, Col } from 'antd';
-import styles from './FeaturesBar.module.css';
+import styles from '../../styles/components/layout/FeaturesBar.module.css';
 
 const FEATURES = [
   { icon: '/images/icon/trophy.jpg', alt: 'Trophy icon', title: 'High Quality', subtitle: 'crafted from top materials' },

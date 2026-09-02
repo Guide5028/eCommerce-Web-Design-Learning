@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import styles from './PageHero.module.css';
+import styles from '../../styles/components/layout/PageHero.module.css';
 
 // The identical "small logo + title + breadcrumb" banner that Cart, Checkout,
 // Favorite, Login, About, and Contact all used to duplicate (markup AND CSS).

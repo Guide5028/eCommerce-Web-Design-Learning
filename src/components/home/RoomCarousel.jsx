@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from './RoomCarousel.module.css';
+import styles from '../../styles/components/home/RoomCarousel.module.css';
 
 // Custom carousel — NOT an AntD component. AntD's <Carousel> can only show one slide
 // at a time; this design needs one big slide plus two smaller peeking slides, which

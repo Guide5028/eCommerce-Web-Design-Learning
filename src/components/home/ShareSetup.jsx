@@ -1,4 +1,4 @@
-import styles from './ShareSetup.module.css';
+import styles from '../../styles/components/home/ShareSetup.module.css';
 
 export default function ShareSetup() {
   return (

@@ -1,5 +1,5 @@
 import { Row, Col } from 'antd';
-import styles from './BrowseRange.module.css';
+import styles from '../../styles/components/home/BrowseRange.module.css';
 
 const RANGES = [
   { image: '/images/category-dining.jpg', alt: 'Dining room table styled with linen and pottery', title: 'Dining' },

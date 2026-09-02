@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Button, InputNumber, Table } from 'antd';
 import { DeleteOutlined } from '@ant-design/icons';
 import { formatPrice, formatRp } from '../../utils/format.js';
-import styles from './CartTable.module.css';
+import styles from '../../styles/components/cart/CartTable.module.css';
 
 // Ported from legacy/js/app.js:953-1038 (cart page render) using an AntD Table.
 

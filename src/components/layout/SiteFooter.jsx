@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import styles from './SiteFooter.module.css';
+import styles from '../../styles/components/layout/SiteFooter.module.css';
 
 // Ported from legacy/js/app.js:553-579 (newsletter submit -> transient success state)
 

@@ -6,7 +6,7 @@ import { formatRp } from '../utils/format.js';
 import CartTable from '../components/cart/CartTable.jsx';
 import FeaturesBar from '../components/layout/FeaturesBar.jsx';
 import PageHero from '../components/layout/PageHero.jsx';
-import styles from './CartPage.module.css';
+import styles from '../styles/pages/CartPage.module.css';
 
 // Ported from legacy/js/app.js:953-1038 (cart page)
 

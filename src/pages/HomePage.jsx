@@ -5,7 +5,7 @@ import BrowseRange from '../components/home/BrowseRange.jsx';
 import RoomCarousel from '../components/home/RoomCarousel.jsx';
 import ShareSetup from '../components/home/ShareSetup.jsx';
 import ProductGrid from '../components/product/ProductGrid.jsx';
-import styles from './HomePage.module.css';
+import styles from '../styles/pages/HomePage.module.css';
 
 export default function HomePage() {
   const { products } = useProducts();

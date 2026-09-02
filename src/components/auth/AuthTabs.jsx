@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Form, Input, Tabs } from 'antd';
-import styles from './AuthTabs.module.css';
+import styles from '../../styles/components/auth/AuthTabs.module.css';
 import LargeFieldsTheme from '../common/LargeFieldsTheme.jsx';
 
 // Ported from legacy/js/app.js:1168-1243 (login / register page)

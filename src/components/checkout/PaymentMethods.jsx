@@ -1,5 +1,5 @@
 import { Radio } from 'antd';
-import styles from './PaymentMethods.module.css';
+import styles from '../../styles/components/checkout/PaymentMethods.module.css';
 
 // Ported from legacy/js/app.js:538-551 (checkout payment method)
 

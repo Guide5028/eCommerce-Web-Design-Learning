@@ -1,6 +1,6 @@
 import { Button, Checkbox, Drawer, InputNumber, Select, Space } from 'antd';
 import { FilterOutlined, AppstoreOutlined, BarsOutlined } from '@ant-design/icons';
-import styles from './ShopToolbar.module.css';
+import styles from '../../styles/components/shop/ShopToolbar.module.css';
 
 // Ported from legacy/js/app.js:637-817 (shop toolbar filter/sort), filter panel now an AntD Drawer.
 

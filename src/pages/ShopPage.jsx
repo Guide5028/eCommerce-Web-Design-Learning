@@ -7,7 +7,7 @@ import ShopToolbar from '../components/shop/ShopToolbar.jsx';
 import ProductCard from '../components/product/ProductCard.jsx';
 import FeaturesBar from '../components/layout/FeaturesBar.jsx';
 import { matchesFilters, sortProducts, buildFilterTags } from '../utils/shopFilters.js';
-import styles from './ShopPage.module.css';
+import styles from '../styles/pages/ShopPage.module.css';
 
 // Ported from legacy/js/app.js:637-817 (shop toolbar filter / sort / pagination)
 

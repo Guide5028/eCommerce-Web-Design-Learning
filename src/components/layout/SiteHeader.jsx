@@ -9,7 +9,7 @@ import {
   ShoppingCartOutlined,
 } from '@ant-design/icons';
 import { useStore } from '../../store/StoreContext.jsx';
-import styles from './SiteHeader.module.css';
+import styles from '../../styles/components/layout/SiteHeader.module.css';
 
 const NAV_ITEMS = [
   { key: '/', label: 'Home' },

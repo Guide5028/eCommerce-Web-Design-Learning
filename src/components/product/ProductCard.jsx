@@ -4,7 +4,7 @@ import { Button } from 'antd';
 import { HeartOutlined, HeartFilled, ShareAltOutlined, SwapOutlined } from '@ant-design/icons';
 import { useStore } from '../../store/StoreContext.jsx';
 import { formatPrice, formatPriceOld } from '../../utils/format.js';
-import styles from './ProductCard.module.css';
+import styles from '../../styles/components/product/ProductCard.module.css';
 
 // Ported from legacy/js/app.js:200-229 (productCardHTML) + the add-to-cart/like click handlers
 // further down in legacy/js/app.js:277-322.

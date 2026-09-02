@@ -7,7 +7,7 @@ import { useStore } from '../store/StoreContext.jsx';
 import { formatPrice, colorName } from '../utils/format.js';
 import StarRating from '../components/product/StarRating.jsx';
 import ProductGrid from '../components/product/ProductGrid.jsx';
-import styles from './ProductDetailPage.module.css';
+import styles from '../styles/pages/ProductDetailPage.module.css';
 
 // Ported from legacy/js/app.js:821-951 (single product page routing)
 
