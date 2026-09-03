@@ -1,10 +1,15 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button, Form, Input, Tabs } from 'antd';
+import { Button, Form, Input, Tabs, message } from 'antd';
 import styles from '../../styles/components/auth/AuthTabs.module.css';
 import LargeFieldsTheme from '../common/LargeFieldsTheme.jsx';
+import { login } from '../../lib/authApi.js';
+import { tokens } from '../../lib/tokens.js';
 
-// Ported from legacy/js/app.js:1168-1243 (login / register page)
+// Ported from legacy/js/app.js:1168-1243 (login / register page).
+// LoginForm now hits the real pos-api backend (see lib/authApi.js) -- RegisterForm
+// below is still the original fake simulation, out of scope for this pass since
+// registering a real employee would mean matching pos-api's own register schema.
 
 function LoginForm({ onSwitchToRegister }) {
   const [form] = Form.useForm();
@@ -12,13 +17,20 @@ function LoginForm({ onSwitchToRegister }) {
   const [label, setLabel] = useState('Log In');
   const navigate = useNavigate();
 
-  function handleFinish() {
+  async function handleFinish({ email, password }) {
     setSubmitting(true);
     setLabel('Logging in...');
-    window.setTimeout(() => {
+    try {
+      const { accessToken, refreshToken, profile } = await login(email, password);
+      tokens.set(accessToken, refreshToken);
       setLabel('Logged in!');
+      message.success(`Welcome back, ${profile.name}`);
       window.setTimeout(() => navigate('/'), 600);
-    }, 600);
+    } catch (err) {
+      message.error(err.message);
+      setLabel('Log In');
+      setSubmitting(false);
+    }
   }
 
   return (
