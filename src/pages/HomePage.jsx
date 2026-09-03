@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useProducts } from '../data/ProductsContext.jsx';
+import { useProducts } from '../context/ProductsContext.jsx';
 import Hero from '../components/home/Hero.jsx';
 import BrowseRange from '../components/home/BrowseRange.jsx';
 import RoomCarousel from '../components/home/RoomCarousel.jsx';

@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { Pagination } from 'antd';
-import { useProducts } from '../data/ProductsContext.jsx';
+import { useProducts } from '../context/ProductsContext.jsx';
 import ShopToolbar from '../components/shop/ShopToolbar.jsx';
 import ProductCard from '../components/product/ProductCard.jsx';
 import FeaturesBar from '../components/layout/FeaturesBar.jsx';

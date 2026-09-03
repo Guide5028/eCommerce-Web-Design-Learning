@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, ConfigProvider } from 'antd';
 import { HeartOutlined, HeartFilled, ShareAltOutlined, SwapOutlined } from '@ant-design/icons';
-import { useStore } from '../../store/StoreContext.jsx';
+import { useStore } from '../../context/StoreContext.jsx';
 import { formatPrice, formatPriceOld } from '../../utils/format.js';
 import { COLOR_PRIMARY } from '../../theme.js';
 import styles from '../../styles/components/product/ProductCard.module.css';

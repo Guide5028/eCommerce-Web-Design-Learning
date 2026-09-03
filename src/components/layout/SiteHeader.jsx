@@ -8,7 +8,7 @@ import {
   HeartOutlined,
   ShoppingCartOutlined,
 } from '@ant-design/icons';
-import { useStore } from '../../store/StoreContext.jsx';
+import { useStore } from '../../context/StoreContext.jsx';
 import styles from '../../styles/components/layout/SiteHeader.module.css';
 
 const NAV_ITEMS = [

@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { useProducts } from '../data/ProductsContext.jsx';
-import { useStore } from '../store/StoreContext.jsx';
+import { useProducts } from '../context/ProductsContext.jsx';
+import { useStore } from '../context/StoreContext.jsx';
 import ProductCard from '../components/product/ProductCard.jsx';
 import FeaturesBar from '../components/layout/FeaturesBar.jsx';
 import PageHero from '../components/layout/PageHero.jsx';

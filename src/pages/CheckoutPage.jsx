@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
-import { useProducts } from '../data/ProductsContext.jsx';
-import { useStore } from '../store/StoreContext.jsx';
+import { useProducts } from '../context/ProductsContext.jsx';
+import { useStore } from '../context/StoreContext.jsx';
 import BillingForm from '../components/checkout/BillingForm.jsx';
 import OrderSummary from '../components/checkout/OrderSummary.jsx';
 import FeaturesBar from '../components/layout/FeaturesBar.jsx';
