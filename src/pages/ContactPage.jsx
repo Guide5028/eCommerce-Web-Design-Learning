@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { Button, Form, Input, Row, Col } from 'antd';
 import { EnvironmentOutlined, PhoneOutlined, ClockCircleOutlined } from '@ant-design/icons';
-import FeaturesBar from '../components/layout/FeaturesBar.jsx';
-import PageHero from '../components/layout/PageHero.jsx';
-import LargeFieldsTheme from '../components/common/LargeFieldsTheme.jsx';
+import FeaturesBar from '../components/FeaturesBar.jsx';
+import PageHero from '../components/PageHero.jsx';
+import LargeFieldsTheme from '../components/LargeFieldsTheme.jsx';
 
-// Ported from legacy/js/app.js:581-606 (contact form submit -> transient success state)
+// Contact page: info blocks plus a contact form with a transient success state.
 
 const CONTACT_INFO = [
   {

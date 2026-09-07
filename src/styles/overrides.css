@@ -1,15 +1,4 @@
-/*
-  Small, deliberate overrides layered on top of styles/global.css (a straight port of
-  legacy/css/style.css). These exist only where the interaction model changed when moving
-  to AntD components (nav Drawer instead of inline collapse, AntD Menu/Badge/Rate/etc.),
-  so the ported CSS's assumptions no longer quite apply. Keep this file small.
-*/
-
-/* header rules moved to components/layout/SiteHeader.module.css */
-/* product card rules (.action-link*, .ant-btn.btn-add-cart) moved to
-   components/product/ProductCard.module.css */
-
-/* shop toolbar / filter drawer rules moved to components/shop/ShopToolbar.module.css */
+/* Small overrides on top of global.css for spots where AntD's own CSS wins on specificity. */
 
 /* checkout / login forms now use AntD Form inside the same wrappers */
 .billing-form .ant-form-item,
@@ -17,25 +6,7 @@
   margin-bottom: 24px;
 }
 
-/*
-  AntD's own Button/Input/Select styles come from compound class selectors
-  (e.g. .ant-btn.ant-btn-default), which beat a single custom class like
-  .btn-place-order on specificity. Pairing our class with AntD's own base
-  class (.ant-btn.btn-place-order) restores the original sizing reliably.
-*/
-
-/* .ant-btn.btn-add-to-cart / .ant-btn.btn-compare moved to pages/ProductDetailPage.module.css */
-/* .ant-btn.btn-place-order moved to components/checkout/OrderSummary.module.css */
-/* .ant-btn.show-more moved to components/product/ProductGrid.module.css */
-
-/* .ant-btn.auth-submit moved to components/auth/AuthTabs.module.css */
-/*
-  Like .auth-submit, this button sits inside LargeFieldsTheme's scope (see
-  ContactPage.jsx), so its radius/height/font-size/color/padding all come from
-  the same shared Button component tokens -- type="primary" already pulls
-  background/text color from colorPrimary for free. Only the layout offset and
-  the dimming-on-hover flourish (not a Button token) are left as real CSS.
-*/
+/* pairing with AntD's own base class beats its compound-selector specificity */
 .ant-btn.contact-submit {
   margin-top: 32px;
 }
@@ -43,17 +14,8 @@
   opacity: 0.85;
 }
 
-/*
-  The large 75px input/select look on the checkout/contact/login forms now comes from
-  AntD component tokens (paddingBlock/controlHeight/borderRadius), scoped to just these
-  3 forms via components/common/LargeFieldsTheme.jsx -- see that file for the height math.
-
-  One thing tokens genuinely can't reach: a <textarea rows="4"> sizes itself from `rows`
-  natively, so padding tokens alone would make it *taller* than 75px (rows * line-height +
-  padding), not force it down to 75px. That still needs a literal CSS height override.
-*/
+/* textarea sizes itself from `rows`, so it needs a literal height override to hit 75px */
 .billing-form textarea.ant-input,
 .contact-form textarea.ant-input {
   height: 75px;
 }
-

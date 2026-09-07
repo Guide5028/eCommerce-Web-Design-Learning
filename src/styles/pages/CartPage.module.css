@@ -1,6 +1,5 @@
+/* gap/flex-direction stay here since they change at the breakpoints below */
 .cartSection {
-  display: flex;
-  align-items: flex-start;
   gap: 32px;
   padding: 60px 100px 0px;
 }
@@ -18,10 +17,8 @@
   color: #333;
 }
 
+/* display/align-items/justify-content now come from <Flex> in CartPage.jsx */
 .cartTotalsRow {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   margin-top: 28px;
   font-size: 16px;
   color: #333;

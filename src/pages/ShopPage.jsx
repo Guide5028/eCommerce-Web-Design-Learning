@@ -1,98 +1,96 @@
 import { useEffect, useMemo, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import { Pagination } from 'antd';
+import { useSearchParams, Link } from 'react-router-dom';
+import { Flex, Pagination, Spin } from 'antd';
 import { useProducts } from '../context/ProductsContext.jsx';
-import ShopToolbar from '../components/shop/ShopToolbar.jsx';
-import ProductCard from '../components/product/ProductCard.jsx';
-import FeaturesBar from '../components/layout/FeaturesBar.jsx';
-import { matchesFilters, sortProducts, buildFilterTags } from '../utils/shopFilters.js';
+import ShopToolbar from '../components/ShopToolbar.jsx';
+import ProductCard from '../components/ProductCard.jsx';
+import FeaturesBar from '../components/FeaturesBar.jsx';
 import styles from '../styles/pages/ShopPage.module.css';
 
-// Ported from legacy/js/app.js:637-817 (shop toolbar filter / sort / pagination)
-
 export default function ShopPage() {
-  const { products: allProducts } = useProducts();
+  const { products, loading } = useProducts(); // filter/sort/paginate client-side, no extra fetch
   const [searchParams] = useSearchParams();
   const searchQuery = searchParams.get('search') || '';
 
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(8);
   const [sort, setSort] = useState('default');
-  const [selectedTags, setSelectedTags] = useState([]);
-  const [minPrice, setMinPrice] = useState(null);
-  const [maxPrice, setMaxPrice] = useState(null);
 
+  // จัดเตรียมสำหรับระบบดรอว์เวอร์ฟิลเตอร์
   const [filterOpen, setFilterOpen] = useState(false);
-  const [draftTags, setDraftTags] = useState([]);
-  const [draftMin, setDraftMin] = useState(null);
-  const [draftMax, setDraftMax] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(undefined);
+  const [draftCategory, setDraftCategory] = useState(undefined);
 
-  // a new search from the header always starts back on page 1
+  // หากมีการ Search ตัวใหม่จากแถบค้นหาด้านบน ให้ดึงระบบกลับมาที่หน้า 1 เสมอ
   useEffect(() => {
     setPage(1);
   }, [searchQuery]);
 
-  const filterTags = useMemo(() => buildFilterTags(allProducts), [allProducts]);
+  // ฟิลเตอร์ + ค้นหา ทำฝั่ง client จาก products ก้อนเดียวที่โหลดมาแล้ว
+  const filtered = useMemo(() => {
+    let list = products;
+    if (searchQuery) {
+      const q = searchQuery.toLowerCase();
+      list = list.filter((p) => `${p.name} ${p.category}`.toLowerCase().includes(q));
+    }
+    if (selectedCategory) {
+      list = list.filter((p) => p.category === selectedCategory);
+    }
+    return list;
+  }, [products, searchQuery, selectedCategory]);
 
-  const filters = useMemo(
-    () => ({ tags: selectedTags, minPrice, maxPrice, search: searchQuery }),
-    [selectedTags, minPrice, maxPrice, searchQuery]
-  );
+  // เรียงลำดับ -- ค่า sort ต้องตรงกับ SORT_OPTIONS ใน ShopToolbar.jsx (ใช้ขีดกลาง ไม่ใช่ underscore)
+  const sorted = useMemo(() => {
+    const list = filtered.slice();
+    if (sort === 'price-asc') list.sort((a, b) => Number(a.price) - Number(b.price));
+    else if (sort === 'price-desc') list.sort((a, b) => Number(b.price) - Number(a.price));
+    else if (sort === 'name-desc') list.sort((a, b) => b.name.localeCompare(a.name));
+    else list.sort((a, b) => a.name.localeCompare(b.name)); // 'default' และ 'name-asc' เรียงผลเหมือนกัน
+    return list;
+  }, [filtered, sort]);
 
-  const filtered = useMemo(
-    () => allProducts.filter((product) => matchesFilters(product, filters)),
-    [allProducts, filters]
-  );
-  const sorted = useMemo(() => sortProducts(filtered, sort), [filtered, sort]);
+  const totalProducts = sorted.length;
+  const pageCount = Math.max(1, Math.ceil(totalProducts / (pageSize || 8)));
+  const currentPage = Math.min(page, pageCount);
+  const pageStart = (currentPage - 1) * (pageSize || 8);
+  const pageItems = sorted.slice(pageStart, pageStart + (pageSize || 8));
 
-  const totalPages = Math.max(1, Math.ceil(sorted.length / pageSize));
-  const currentPage = Math.min(page, totalPages);
-  const start = (currentPage - 1) * pageSize;
-  const pageItems = sorted.slice(start, start + pageSize);
+  const shownStart = pageItems.length ? pageStart + 1 : 0;
+  const shownEnd = pageStart + pageItems.length;
+  const searchNote = searchQuery ? ` for "${searchQuery}"` : '';
 
-  const shownStart = pageItems.length ? start + 1 : 0;
-  const shownEnd = start + pageItems.length;
-  const searchNote = filters.search ? ` for "${filters.search}"` : '';
-  const resultsText = sorted.length
-    ? `Showing ${shownStart}–${shownEnd} of ${sorted.length} results${searchNote}`
+  const resultsText = pageItems.length
+    ? `Showing ${shownStart}–${shownEnd} of ${totalProducts} results${searchNote}`
     : `No products match${searchNote || ' this filter'}`;
 
-  const filterCount = selectedTags.length + (minPrice != null || maxPrice != null ? 1 : 0);
+  const filterCount = selectedCategory ? 1 : 0;
 
   function openFilterDrawer() {
-    setDraftTags(selectedTags);
-    setDraftMin(minPrice);
-    setDraftMax(maxPrice);
+    setDraftCategory(selectedCategory);
     setFilterOpen(true);
   }
 
   function applyFilters() {
-    setSelectedTags(draftTags);
-    setMinPrice(draftMin ?? null);
-    setMaxPrice(draftMax ?? null);
-    setPage(1);
+    setSelectedCategory(draftCategory);
+    setPage(1); // ย้อนกลับหน้าแรกเมื่อกดฟิลเตอร์หมวดหมู่ใหม่
     setFilterOpen(false);
   }
 
   function clearFilters() {
-    setDraftTags([]);
-    setDraftMin(null);
-    setDraftMax(null);
-    setSelectedTags([]);
-    setMinPrice(null);
-    setMaxPrice(null);
+    setDraftCategory(undefined);
+    setSelectedCategory(undefined);
     setPage(1);
   }
 
   function handlePageChange(nextPage) {
     setPage(nextPage);
-    document.querySelector('.filter')?.scrollIntoView({ block: 'start' });
+    // ดันหน้าจอกลับขึ้นไปด้านบนเมื่อทำการเปลี่ยนหน้าสินค้า
+    document.querySelector(`.${styles.shopOurProducts}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   return (
     <main>
-      <section className={styles.shopHero}>
+      <Flex align="center" justify="center" component="section" className={styles.shopHero}>
         <div className={styles.shopHeroContent}>
           <h1>Shop</h1>
           <nav className="breadcrumb" aria-label="Breadcrumb">
@@ -101,7 +99,7 @@ export default function ShopPage() {
             <span aria-current="page">Shop</span>
           </nav>
         </div>
-      </section>
+      </Flex>
 
       <ShopToolbar
         resultsText={resultsText}
@@ -109,19 +107,18 @@ export default function ShopPage() {
         filterOpen={filterOpen}
         onOpenFilter={openFilterDrawer}
         onCloseFilter={() => setFilterOpen(false)}
-        tags={filterTags}
-        draftTags={draftTags}
-        onDraftTagsChange={setDraftTags}
-        draftMin={draftMin}
-        draftMax={draftMax}
-        onDraftMinChange={setDraftMin}
-        onDraftMaxChange={setDraftMax}
+        tags={['Living Room', 'Bedroom', 'Dining', 'Workspace', 'Lighting', 'Storage', 'Outdoor', 'Decor']}
+        draftTags={draftCategory ? [draftCategory] : []}
+        onDraftTagsChange={(tags) => setDraftCategory(tags[0] || undefined)} // เลือกได้ทีละ 1 หมวดหมู่หลัก
         onApply={applyFilters}
         onClear={clearFilters}
         showValue={pageSize}
         onShowChange={(value) => {
-          setPageSize(value && value > 0 ? value : allProducts.length);
+          setPageSize(value);
           setPage(1);
+        }}
+        onShowBlur={() => {
+          if (!pageSize || pageSize <= 0) setPageSize(8);
         }}
         sortValue={sort}
         onSortChange={(value) => {
@@ -130,25 +127,31 @@ export default function ShopPage() {
         }}
       />
 
-      <section className={styles.shopOurProducts}>
-        <div className="products-grid">
-          {pageItems.map((product) => (
-            <ProductCard product={product} key={product.id} />
-          ))}
-        </div>
+      <Flex vertical align="center" component="section" className={styles.shopOurProducts}>
+        {loading ? (
+          <div style={{ padding: '80px 0' }}>
+            <Spin size="large" tip="กำลังเลือกสรรเฟอร์นิเจอร์ส่งตรงจากคลังหลังบ้าน..." />
+          </div>
+        ) : (
+          <div className="products-grid">
+            {pageItems.map((product) => (
+              <ProductCard product={product} key={product.productId ?? product.id} />
+            ))}
+          </div>
+        )}
 
-        {sorted.length > 0 && (
-          <nav className={styles.pagination} aria-label="Product pages">
+        {!loading && pageItems.length > 0 && (
+          <Flex align="center" justify="center" gap={16} component="nav" className={styles.pagination} aria-label="Product pages">
             <Pagination
               current={currentPage}
               pageSize={pageSize}
-              total={sorted.length}
+              total={totalProducts}
               onChange={handlePageChange}
               showSizeChanger={false}
             />
-          </nav>
+          </Flex>
         )}
-      </section>
+      </Flex>
 
       <FeaturesBar />
     </main>

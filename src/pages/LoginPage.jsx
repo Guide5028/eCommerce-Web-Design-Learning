@@ -1,6 +1,6 @@
-import AuthTabs from '../components/auth/AuthTabs.jsx';
-import FeaturesBar from '../components/layout/FeaturesBar.jsx';
-import PageHero from '../components/layout/PageHero.jsx';
+import AuthTabs from '../components/AuthTabs.jsx';
+import FeaturesBar from '../components/FeaturesBar.jsx';
+import PageHero from '../components/PageHero.jsx';
 
 export default function LoginPage() {
   return (

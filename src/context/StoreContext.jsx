@@ -1,6 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 
-// Ported from legacy/js/app.js:1-144 (FurniroStore)
+// Cart and wishlist state, persisted to localStorage and synced across tabs.
 
 const CART_KEY = 'furniro-cart';
 const FAVORITES_KEY = 'furniro-favorites';

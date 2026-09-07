@@ -2,18 +2,18 @@ import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { useProducts } from '../context/ProductsContext.jsx';
 import { useStore } from '../context/StoreContext.jsx';
-import ProductCard from '../components/product/ProductCard.jsx';
-import FeaturesBar from '../components/layout/FeaturesBar.jsx';
-import PageHero from '../components/layout/PageHero.jsx';
+import ProductCard from '../components/ProductCard.jsx';
+import FeaturesBar from '../components/FeaturesBar.jsx';
+import PageHero from '../components/PageHero.jsx';
 
-// Ported from legacy/js/app.js:1040-1066 (favorite page)
+// Wishlist page: the products the user has liked.
 
 export default function FavoritePage() {
   const { products } = useProducts();
   const { favorites } = useStore();
 
   const favoriteProducts = useMemo(
-    () => products.filter((p) => favorites.indexOf(p.id) !== -1),
+    () => products.filter((p) => favorites.indexOf(p.productId ?? p.id) !== -1),
     [products, favorites]
   );
 
@@ -30,7 +30,7 @@ export default function FavoritePage() {
         {favoriteProducts.length > 0 ? (
           <div className="products-grid favorite-grid">
             {favoriteProducts.map((product) => (
-              <ProductCard product={product} key={product.id} />
+              <ProductCard product={product} key={product.productId ?? product.id} />
             ))}
           </div>
         ) : (

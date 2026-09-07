@@ -1,0 +1,46 @@
+/* Shared layout for every /admin/* page (Employees, Categories, Products). */
+
+.adminSection {
+  padding: 40px 100px 100px;
+}
+
+.adminLoading {
+  padding: 80px 0;
+  text-align: center;
+}
+
+.adminToolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.adminTable :global(.ant-table-cell) {
+  vertical-align: middle;
+}
+
+.rowActions {
+  display: flex;
+  gap: 8px;
+}
+
+.productThumb {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 4px;
+  background-color: var(--color-cream);
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  .adminSection {
+    padding: 32px 40px 80px;
+  }
+}
+
+@media (max-width: 600px) {
+  .adminSection {
+    padding: 24px 20px 60px;
+    overflow-x: auto;
+  }
+}

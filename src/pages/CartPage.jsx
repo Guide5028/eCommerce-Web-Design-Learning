@@ -1,14 +1,15 @@
 import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
+import { Flex } from 'antd';
 import { useProducts } from '../context/ProductsContext.jsx';
 import { useStore } from '../context/StoreContext.jsx';
 import { formatRp } from '../utils/format.js';
-import CartTable from '../components/cart/CartTable.jsx';
-import FeaturesBar from '../components/layout/FeaturesBar.jsx';
-import PageHero from '../components/layout/PageHero.jsx';
+import CartTable from '../components/CartTable.jsx';
+import FeaturesBar from '../components/FeaturesBar.jsx';
+import PageHero from '../components/PageHero.jsx';
 import styles from '../styles/pages/CartPage.module.css';
 
-// Ported from legacy/js/app.js:953-1038 (cart page)
+// Cart page: line items, quantity editing, and subtotal.
 
 export default function CartPage() {
   const { products } = useProducts();
@@ -17,7 +18,7 @@ export default function CartPage() {
   const lines = useMemo(() => {
     return cart
       .map((item) => {
-        const product = products.find((p) => p.id === item.id);
+        const product = products.find((p) => (p.productId ?? p.id) === item.id);
         return product ? { product, qty: item.qty } : null;
       })
       .filter(Boolean);
@@ -29,21 +30,21 @@ export default function CartPage() {
     <main>
       <PageHero title="Cart" />
 
-      <section className={styles.cartSection}>
+      <Flex align="flex-start" component="section" className={styles.cartSection}>
         {lines.length > 0 ? (
           <>
             <CartTable lines={lines} onQtyChange={setCartQty} onRemove={removeFromCart} />
 
             <aside className={styles.cartTotals}>
               <h2>Cart Totals</h2>
-              <div className={styles.cartTotalsRow}>
+              <Flex align="center" justify="space-between" className={styles.cartTotalsRow}>
                 <span>Subtotal</span>
                 <span className={styles.cartTotalsValue}>{formatRp(subtotal)}</span>
-              </div>
-              <div className={`${styles.cartTotalsRow} ${styles.cartTotalsRowTotal}`}>
+              </Flex>
+              <Flex align="center" justify="space-between" className={`${styles.cartTotalsRow} ${styles.cartTotalsRowTotal}`}>
                 <span>Total</span>
                 <span className={styles.cartTotalsValue}>{formatRp(subtotal)}</span>
-              </div>
+              </Flex>
               <Link to="/checkout" className={styles.btnCheckout}>Check Out</Link>
             </aside>
           </>
@@ -52,7 +53,7 @@ export default function CartPage() {
             Your cart is empty. Add something you like from the <Link to="/shop">shop</Link>.
           </p>
         )}
-      </section>
+      </Flex>
 
       <FeaturesBar />
     </main>

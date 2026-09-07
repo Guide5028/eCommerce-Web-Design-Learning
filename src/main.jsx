@@ -6,6 +6,7 @@ import 'antd/dist/reset.css';
 import theme from './theme.js';
 import { StoreProvider } from './context/StoreContext.jsx';
 import { ProductsProvider } from './context/ProductsContext.jsx';
+import { AuthProvider } from './context/AuthContext.jsx';
 import App from './App.jsx';
 import './styles/global.css';
 import './styles/overrides.css';
@@ -14,11 +15,13 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ConfigProvider theme={theme}>
       <BrowserRouter>
-        <StoreProvider>
-          <ProductsProvider>
-            <App />
-          </ProductsProvider>
-        </StoreProvider>
+        <AuthProvider>
+          <StoreProvider>
+            <ProductsProvider>
+              <App />
+            </ProductsProvider>
+          </StoreProvider>
+        </AuthProvider>
       </BrowserRouter>
     </ConfigProvider>
   </StrictMode>

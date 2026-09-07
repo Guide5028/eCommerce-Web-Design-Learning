@@ -1,10 +1,8 @@
-// Brand colors reused by the scoped per-button ConfigProvider token overrides
-// dotted around components/ -- keeps every consumer in sync with the same hex
-// values used here instead of re-typing them.
+// Shared brand colors, reused by scoped per-button ConfigProvider overrides elsewhere.
 export const COLOR_PRIMARY = '#B88E2F';
 export const COLOR_TEXT = '#333333';
 
-// AntD ConfigProvider theme tokens, mapped from legacy/css/style.css:1-9 (--color-* custom properties)
+// Global AntD ConfigProvider theme tokens.
 const theme = {
   token: {
     colorPrimary: COLOR_PRIMARY,

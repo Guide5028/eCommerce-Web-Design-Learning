@@ -1,0 +1,170 @@
+.header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 38px 54px;
+  background-color: #fff;
+  max-height: 100px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+}
+
+.logo span {
+  font-size: 34px;
+  font-weight: 700;
+}
+
+/* desktop nav: flex gap and removing AntD's default underline indicator */
+.siteNavDesktop :global(.ant-menu) {
+  background: transparent;
+  border-bottom: none;
+  gap: 75px;
+}
+
+.siteNavDesktop :global(.ant-menu-item) {
+  font-weight: 500;
+}
+
+.siteNavDesktop :global(.ant-menu-item)::after {
+  display: none;
+}
+
+/* gap/justify-content stay here since they change at the breakpoints below */
+.headerIcons {
+  gap: 45px;
+  margin-right: 46px;
+}
+
+.headerIcons a {
+  position: relative;
+  display: inline-flex;
+  color: #333;
+}
+
+.headerIcons a:hover {
+  color: var(--color-primary);
+}
+
+.navToggle {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* display/align-items now come from <Flex> in SiteHeader.jsx */
+.searchToggleBtn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* Account icon button for the signed-in state (signed-out uses a plain <Link>). */
+.accountToggleBtn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: #333;
+}
+
+.accountToggleBtn:hover {
+  color: var(--color-primary);
+}
+
+.accountPopover {
+  min-width: 160px;
+}
+
+.accountName {
+  margin: 0;
+  font-weight: 600;
+  color: #333;
+}
+
+.accountRole {
+  margin: 4px 0 12px;
+  color: var(--color-text-muted);
+  font-size: 13px;
+  text-transform: capitalize;
+}
+
+.logoutBtn {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 8px 0;
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* also used on the admin-only "Manage employees" Link that can precede Log out */
+.logoutBtn + .logoutBtn {
+  margin-top: 8px;
+}
+
+.logoutBtn:hover {
+  background-color: var(--color-cream);
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  .header {
+    padding: 24px 32px;
+  }
+
+  .headerIcons {
+    gap: 28px;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0;
+    padding: 16px 20px;
+    max-height: none;
+  }
+
+  .navToggle {
+    display: flex;
+    order: 2;
+  }
+
+  .siteNavDesktop {
+    display: none;
+  }
+
+  .headerIcons {
+    order: 3;
+    flex-basis: auto;
+    justify-content: flex-end;
+    gap: 18px;
+    margin-right: 0;
+  }
+}

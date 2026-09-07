@@ -1,0 +1,187 @@
+/* align-items/gap stay here since they change at the mobile breakpoint below */
+.shopToolbar {
+  width: 100%;
+  height: 100px;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 40px;
+  margin-bottom: 31px;
+  background-color: var(--color-cream);
+}
+
+/* align-items now comes from <Flex>; gap stays here (changes at mobile below). */
+.toolbarLeft {
+  gap: 24px;
+}
+
+/* display/align-items/gap now come from <Flex> in ShopToolbar.jsx */
+.toolbarFilter {
+  position: relative;
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+}
+
+.toolbarFilter.isActive {
+  color: var(--color-primary);
+}
+
+/* display/align-items/justify-content now come from <Flex> in ShopToolbar.jsx */
+.toolbarIconBtn {
+  background: none;
+  border: none;
+  color: #333;
+  cursor: pointer;
+}
+
+.toolbarDivider {
+  width: 1px;
+  height: 30px;
+  background-color: #9F9F9F;
+}
+
+.toolbarResults {
+  font-size: 16px;
+  color: #333;
+}
+
+/* align-items now comes from <Flex>; gap stays here (changes at mobile below). */
+.toolbarRight {
+  gap: 40px;
+}
+
+/* display/align-items/gap now come from <Flex> in ShopToolbar.jsx */
+.toolbarField {
+  font-size: 16px;
+  color: #333;
+}
+
+.filterCount {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background-color: var(--color-primary);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* AntD input/select controls inside the toolbar and filter drawer */
+.toolbarShowInput:global(.ant-input-number) {
+  width: 48px;
+}
+
+.toolbarShowInput :global(.ant-input-number-input) {
+  padding: 8px;
+  text-align: center;
+}
+
+.toolbarSortSelect :global(.ant-select-selector) {
+  padding: 8px 16px !important;
+  min-width: 140px;
+}
+
+.filterPanelGroup {
+  min-width: 280px;
+}
+
+.filterPanelGroupPrice {
+  min-width: 220px;
+}
+
+.filterPanelGroup h3 {
+  margin-bottom: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.filterTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 560px;
+}
+
+.filterPriceField {
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+.filterPriceSep {
+  align-self: flex-end;
+  margin-bottom: 10px;
+  color: var(--color-text-muted);
+}
+
+/* display/align-items/gap now come from <Flex> in ShopToolbar.jsx */
+.filterPanelActions {
+  margin-left: auto;
+}
+
+.filterPanelActions :global(.ant-btn) + :global(.ant-btn) {
+  margin-left: 16px;
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  .shopToolbar {
+    height: auto;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .filterPanelActions {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .shopToolbar {
+    height: auto;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+  }
+
+  .toolbarLeft,
+  .toolbarRight {
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 14px;
+  }
+
+  .toolbarFilter,
+  .toolbarResults,
+  .toolbarField {
+    font-size: 13px;
+  }
+
+  .toolbarDivider {
+    height: 18px;
+  }
+
+  .toolbarShowInput:global(.ant-input-number) {
+    width: 36px;
+  }
+
+  .toolbarShowInput :global(.ant-input-number-input) {
+    padding: 6px;
+    font-size: 13px;
+  }
+
+  .toolbarSortSelect :global(.ant-select-selector) {
+    padding: 6px 10px !important;
+    min-width: 110px;
+    font-size: 13px;
+  }
+}

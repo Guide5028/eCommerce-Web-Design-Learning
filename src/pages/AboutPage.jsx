@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import { Row, Col } from 'antd';
-import FeaturesBar from '../components/layout/FeaturesBar.jsx';
-import PageHero from '../components/layout/PageHero.jsx';
+import FeaturesBar from '../components/FeaturesBar.jsx';
+import PageHero from '../components/PageHero.jsx';
+import roomLiving from '../assets/images/room-living.jpg';
 
 const STATS = [
   { value: '10+', label: 'Years of Experience' },
@@ -17,7 +18,7 @@ export default function AboutPage() {
 
       <section className="about-story">
         <div className="about-story-image">
-          <img src="/images/room-living.jpg" alt="Living room styled with a wooden dresser, lamp and hanging vase" />
+          <img src={roomLiving} alt="Living room styled with a wooden dresser, lamp and hanging vase" />
         </div>
         <div className="about-story-content">
           <h2>Our Story</h2>

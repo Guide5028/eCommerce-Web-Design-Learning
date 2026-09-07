@@ -66,20 +66,7 @@ a {
   opacity: 0.85;
 }
 
-/* nav — moved to components/layout/SiteHeader.module.css */
-
-/* hero rules moved to components/home/Hero.module.css */
-
-/* Browse */
-
-/* Browse-range rules moved to components/home/BrowseRange.module.css */
-
-/* Our Product / Room Inspiration wrapper styles moved to pages/HomePage.module.css.
-   Product card styles moved to components/product/ProductCard.module.css.
-   "Show More" button moved to components/product/ProductGrid.module.css.
-   .products-grid itself stays here — it's a shared layout primitive rendered
-   directly (as a plain string className, not a module) by ProductGrid, ShopPage,
-   and FavoritePage alike, so no single component owns it. */
+/* Shared product grid layout, used by ProductGrid, ShopPage, and FavoritePage. */
 .products-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -101,12 +88,7 @@ a {
   opacity: 0.85;
 }
 
-/* Room carousel rules moved to components/home/RoomCarousel.module.css */
-
-/* Share Setup rules moved to components/home/ShareSetup.module.css */
-
-/* Footer */
-
+/* Visually-hidden but screen-reader-accessible text. */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -119,10 +101,7 @@ a {
   border: 0;
 }
 
-/* Footer rules moved to components/layout/SiteFooter.module.css */
-
-/* Page hero breadcrumb */
-
+/* Breadcrumb nav shown under each page's hero banner. */
 .breadcrumb {
   display: flex;
   margin-top: 16px;
@@ -142,27 +121,7 @@ a {
   font-weight: 300;
 }
 
-/* Features bar */
-
-/* Features bar rules moved to components/layout/FeaturesBar.module.css */
-
-/* Shop page rules moved to pages/ShopPage.module.css and
-   components/shop/ShopToolbar.module.css */
-
-/* Page hero banner moved to components/layout/PageHero.module.css */
-
-/* Cart rules moved to components/cart/CartTable.module.css and
-   pages/CartPage.module.css */
-
-/* Checkout page: .checkout-section, .order-summary*, .payment-*, .btn-place-order
-   moved to pages/CheckoutPage.module.css, components/checkout/OrderSummary.module.css,
-   and components/checkout/PaymentMethods.module.css.
-
-   .billing-form / .form-row stay here as plain global classes on purpose: .billing-form
-   is one of three forms (checkout, contact, login/register) that share the same "large
-   75px AntD input" look via a single selector list further down, and .form-row's
-   two-column layout is reused by both the billing form and the contact form. */
-
+/* Checkout billing form, shared with the contact/login forms' "large field" look. */
 .billing-form {
   padding: 35px 75px 71px;
   flex: 1;
@@ -181,10 +140,7 @@ a {
   gap: 24px;
 }
 
-/* Single product page rules moved to pages/ProductDetailPage.module.css */
-
-/* Favorite page */
-
+/* Shared "centered heading + empty state" layout for the Favorite/NotFound pages. */
 .favorite-section {
   padding: 60px 100px 20px;
   text-align: center;
@@ -212,8 +168,7 @@ a {
   color: var(--color-text-muted);
 }
 
-/* Contact page */
-
+/* Contact page layout. */
 .contact-section {
   padding: 60px 100px 100px;
 }
@@ -279,16 +234,7 @@ a {
   margin: 60px auto 0;
 }
 
-/*
-  Only the mobile width:100% override lives here (further down, in the phone
-  media query) -- margin-top and padding used to be duplicated here too, but
-  they're already covered by .ant-btn.contact-submit in overrides.css (margin)
-  and the scoped Button tokens in LargeFieldsTheme.jsx (padding/height), so this
-  desktop-width block was dead weight stacked on top of them.
-*/
-
-/* About page */
-
+/* About page layout. */
 .about-story {
   display: flex;
   align-items: center;
@@ -345,33 +291,11 @@ a {
   color: var(--color-text-muted);
 }
 
-/* Login page rules moved to components/auth/AuthTabs.module.css.
-   .auth-form stays here (shared "large AntD input" selector list below). */
-
 /* Tablet responsive (≤1024px) */
 @media (min-width: 601px) and (max-width: 1024px) {
-
-  
-
-  
-
   .products-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 
   .billing-form {
     flex: 1 1 auto;
@@ -422,119 +346,10 @@ a {
     font-size: 14px;
   }
 
-  
-
-  
-
-  
-
   .products-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
   }
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  .toolbar-filter img,
-  .toolbar-icon-btn img {
-    width: 16px;
-    height: 16px;
-  }
-
-  
-
-  
-
-  
-
-  .products-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-  }
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 
   .billing-form {
     flex: 1 1 auto;

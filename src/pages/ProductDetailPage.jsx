@@ -1,26 +1,21 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Button, ConfigProvider, InputNumber, Tabs } from 'antd';
+import { Button, ConfigProvider, Flex, InputNumber, Tabs } from 'antd';
 import { FacebookOutlined, LinkedinOutlined, TwitterOutlined } from '@ant-design/icons';
 import { useProducts } from '../context/ProductsContext.jsx';
 import { useStore } from '../context/StoreContext.jsx';
 import { formatPrice, colorName } from '../utils/format.js';
+import { resolveImage } from '../utils/resolveImage.js';
 import { COLOR_TEXT } from '../theme.js';
-import StarRating from '../components/product/StarRating.jsx';
-import ProductGrid from '../components/product/ProductGrid.jsx';
+import StarRating from '../components/StarRating.jsx';
+import ProductGrid from '../components/ProductGrid.jsx';
+import asgaardGallery1 from '../assets/images/product-asgaard-gallery-1.jpg';
+import asgaardGallery2 from '../assets/images/product-asgaard-gallery-2.jpg';
 import styles from '../styles/pages/ProductDetailPage.module.css';
 
-// Ported from legacy/js/app.js:821-951 (single product page routing)
+// Single product page: gallery, options, add-to-cart, tabs, and related products.
 
-// Add To Cart (type="default", solid white bg) and Compare (`ghost`, transparent bg)
-// read different token fields, so one shared scope can carry both without conflict.
-// Both fill solid dark on hover, same target color, hence one pair of Hover tokens.
-//
-// Height: unlike Input, AntD's Button always renders a literal `height: controlHeight`
-// CSS property (button/style/index.js), not a padding-derived one -- so controlHeight
-// is a real, direct token for a button's height (same mechanism as Select), set here
-// to exactly the row's 64px. (The qty InputNumber next to these buttons uses a
-// different mechanism -- padding-driven, like Input -- see qtyInputTheme below.)
+// Scoped AntD tokens for the Add To Cart / Compare buttons and qty input on this page.
 const actionsRowButtonTheme = {
   components: {
     Button: {
@@ -35,9 +30,7 @@ const actionsRowButtonTheme = {
       controlHeight: 64,
       contentFontSize: 16,
     },
-    // InputNumber's base size *is* padding-driven (input-number/style/index.js), same
-    // as Input -- so it needs the paddingBlock formula instead of controlHeight:
-    // 64 = 2*paddingBlock + content-line-height + 2*border, solved empirically below.
+    // InputNumber's height is padding-driven, unlike Button's controlHeight
     InputNumber: {
       paddingBlock: 20,
     },
@@ -55,7 +48,7 @@ export default function ProductDetailPage() {
   const { products, loading } = useProducts();
   const { addToCart } = useStore();
 
-  const product = products.find((p) => p.id === Number(id));
+  const product = products.find((p) => (p.productId ?? p.id) === Number(id));
 
   const [selectedThumb, setSelectedThumb] = useState(0);
   const [selectedSize, setSelectedSize] = useState(null);
@@ -68,8 +61,8 @@ export default function ProductDetailPage() {
     if (!product) return;
     document.title = `Furniro - ${product.name}`;
     setSelectedThumb(0);
-    setSelectedSize(product.sizes[0]);
-    setSelectedColor(product.colors[0]);
+    setSelectedSize(product.sizes?.[0] ?? null); // not every product has size/color variants
+    setSelectedColor(product.colors?.[0] ?? null);
     setQty(1);
   }, [product]);
 
@@ -91,7 +84,7 @@ export default function ProductDetailPage() {
   function handleAddToCart() {
     if (busyRef.current) return;
     busyRef.current = true;
-    addToCart(product.id, qty);
+    addToCart(product.productId ?? product.id, qty);
     setAdded(true);
     window.setTimeout(() => {
       setAdded(false);
@@ -99,7 +92,7 @@ export default function ProductDetailPage() {
     }, 1200);
   }
 
-  const baseRating = Math.round(product.rating);
+  const baseRating = Math.round(product.rating ?? 0);
   const reviewRatings = [Math.min(5, baseRating), Math.max(1, baseRating - 1), Math.min(5, baseRating)];
 
   const tabItems = [
@@ -108,16 +101,17 @@ export default function ProductDetailPage() {
       label: 'Description',
       children: (
         <div className={styles.tabPanel}>
-          {product.descriptionParagraphs.map((paragraph, i) => (
+          {/* falls back to the plain description string if there's no paragraph array */}
+          {(product.descriptionParagraphs ?? [product.description]).filter(Boolean).map((paragraph, i) => (
             <p key={i}>{paragraph}</p>
           ))}
           {/* preserved from the legacy design: these two images are a static showcase, not product-specific */}
           <div className={styles.descriptionGallery}>
             <div className={styles.descriptionGalleryItem}>
-              <img src="/images/product-asgaard-gallery-1.jpg" alt="Cream modular sofa, straight configuration" />
+              <img src={asgaardGallery1} alt="Cream modular sofa, straight configuration" />
             </div>
             <div className={styles.descriptionGalleryItem}>
-              <img src="/images/product-asgaard-gallery-2.jpg" alt="Cream modular sofa, chaise configuration" />
+              <img src={asgaardGallery2} alt="Cream modular sofa, chaise configuration" />
             </div>
           </div>
         </div>
@@ -144,7 +138,7 @@ export default function ProductDetailPage() {
               </tr>
               <tr>
                 <th scope="row">Color</th>
-                <td>{product.colors.map(colorName).join(', ')}</td>
+                <td>{(product.colors ?? []).map(colorName).join(', ') || '—'}</td>
               </tr>
             </tbody>
           </table>
@@ -153,7 +147,7 @@ export default function ProductDetailPage() {
     },
     {
       key: 'reviews',
-      label: `Reviews [${product.reviewCount}]`,
+      label: `Reviews [${product.reviewCount ?? 0}]`,
       children: (
         <div className={styles.tabPanel}>
           <ul className={styles.reviewList}>
@@ -172,7 +166,7 @@ export default function ProductDetailPage() {
     },
   ];
 
-  const related = products.filter((p) => p.id !== product.id);
+  const related = products.filter((p) => (p.productId ?? p.id) !== (product.productId ?? product.id));
   const relatedProducts = related.length ? related : products;
 
   return (
@@ -197,13 +191,13 @@ export default function ProductDetailPage() {
                 aria-label={`Show image ${i + 1}`}
                 onClick={() => setSelectedThumb(i)}
               >
-                <img src={product.image} alt={product.alt} />
+                <img src={resolveImage(product.imageUrl || product.image)} alt={product.alt || product.name} />
               </button>
             ))}
           </div>
 
           <div className={styles.productMainImage}>
-            <img src={product.image} alt={product.alt} />
+            <img src={resolveImage(product.imageUrl || product.image)} alt={product.alt || product.name} />
           </div>
         </div>
 
@@ -212,19 +206,19 @@ export default function ProductDetailPage() {
           <p className={styles.singleProductPrice}>{formatPrice(product)}</p>
 
           <div className={styles.productRating}>
-            <StarRating value={product.rating} />
+            <StarRating value={product.rating ?? 0} />
             <span className={styles.ratingDivider} />
             <span className={styles.ratingCount}>
-              {product.reviewCount} {product.reviewCount === 1 ? 'Customer Review' : 'Customer Reviews'}
+              {product.reviewCount ?? 0} {(product.reviewCount ?? 0) === 1 ? 'Customer Review' : 'Customer Reviews'}
             </span>
           </div>
 
           <p className={styles.productDescription}>{product.description}</p>
 
-          <div className={styles.productOption}>
+          <div className={styles.productOption} hidden={!product.sizes?.length}>
             <p className={styles.productOptionLabel}>Size</p>
             <div className={styles.sizeOptions}>
-              {product.sizes.map((size) => (
+              {(product.sizes ?? []).map((size) => (
                 <button
                   key={size}
                   type="button"
@@ -237,10 +231,10 @@ export default function ProductDetailPage() {
             </div>
           </div>
 
-          <div className={styles.productOption}>
+          <div className={styles.productOption} hidden={!product.colors?.length}>
             <p className={styles.productOptionLabel}>Color</p>
             <div className={styles.colorOptions}>
-              {product.colors.map((hex) => (
+              {(product.colors ?? []).map((hex) => (
                 <button
                   key={hex}
                   type="button"
@@ -279,9 +273,9 @@ export default function ProductDetailPage() {
               <dt>Category</dt>
               <dd>: {product.category}</dd>
             </div>
-            <div className={styles.productMetaRow}>
+            <div className={styles.productMetaRow} hidden={!product.tags?.length}>
               <dt>Tags</dt>
-              <dd>: {product.tags.join(', ')}</dd>
+              <dd>: {(product.tags ?? []).join(', ')}</dd>
             </div>
             <div className={styles.productMetaRow}>
               <dt>Share</dt>
@@ -306,10 +300,10 @@ export default function ProductDetailPage() {
         <Tabs defaultActiveKey="description" centered items={tabItems} />
       </section>
 
-      <section className={styles.relatedProducts}>
+      <Flex vertical align="center" component="section" className={styles.relatedProducts}>
         <h2>Related Products</h2>
         <ProductGrid products={relatedProducts} pageSize={4} />
-      </section>
+      </Flex>
     </main>
   );
 }

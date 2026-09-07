@@ -1,0 +1,12 @@
+/* fixed size and hover-fill; color/font come from ProductGrid.jsx's Button tokens */
+.showMore:global(.ant-btn) {
+  height: 48px;
+  width: 245px;
+  margin-top: 32px;
+  margin-bottom: 69px;
+}
+
+.showMore:global(.ant-btn):hover {
+  background-color: var(--color-primary);
+  color: #fff;
+}

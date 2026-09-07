@@ -1,10 +1,11 @@
 import { useMemo, useState } from 'react';
+import { Flex } from 'antd';
 import { useProducts } from '../context/ProductsContext.jsx';
 import { useStore } from '../context/StoreContext.jsx';
-import BillingForm from '../components/checkout/BillingForm.jsx';
-import OrderSummary from '../components/checkout/OrderSummary.jsx';
-import FeaturesBar from '../components/layout/FeaturesBar.jsx';
-import PageHero from '../components/layout/PageHero.jsx';
+import BillingForm from '../components/BillingForm.jsx';
+import OrderSummary from '../components/OrderSummary.jsx';
+import FeaturesBar from '../components/FeaturesBar.jsx';
+import PageHero from '../components/PageHero.jsx';
 import styles from '../styles/pages/CheckoutPage.module.css';
 
 export default function CheckoutPage() {
@@ -15,7 +16,7 @@ export default function CheckoutPage() {
   const lines = useMemo(() => {
     return cart
       .map((item) => {
-        const product = products.find((p) => p.id === item.id);
+        const product = products.find((p) => (p.productId ?? p.id) === item.id);
         return product ? { product, qty: item.qty } : null;
       })
       .filter(Boolean);
@@ -25,10 +26,10 @@ export default function CheckoutPage() {
     <main>
       <PageHero title="Checkout" />
 
-      <section className={styles.checkoutSection}>
+      <Flex justify="center" gap={26} component="section" className={styles.checkoutSection}>
         <BillingForm />
         <OrderSummary lines={lines} paymentMethod={paymentMethod} onPaymentMethodChange={setPaymentMethod} />
-      </section>
+      </Flex>
 
       <FeaturesBar />
     </main>

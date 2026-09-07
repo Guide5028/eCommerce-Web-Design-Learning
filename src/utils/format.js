@@ -1,11 +1,12 @@
-// Ported from legacy/js/app.js:164-189
+// Price, Rupiah, and color-name formatting helpers.
 
+// price/priceOld come from pos-api as numeric strings, coerced here and shown as ฿
 export function formatPrice(product) {
-  return product.currency + ' ' + product.price.toLocaleString('id-ID');
+  return '฿' + Number(product.price).toLocaleString(undefined, { maximumFractionDigits: 0 });
 }
 
 export function formatPriceOld(product) {
-  return product.priceOld ? product.currency + ' ' + product.priceOld.toLocaleString('id-ID') : '';
+  return product.priceOld ? '฿' + Number(product.priceOld).toLocaleString(undefined, { maximumFractionDigits: 0 }) : '';
 }
 
 export function formatRp(amount) {
