@@ -103,17 +103,9 @@ export default function SiteHeader() {
                 <p className={styles.accountName}>{profile.name}</p>
                 <p className={styles.accountRole}>{profile.role}</p>
                 {profile.role === 'admin' && (
-                  <>
-                    <Link to="/admin/employees" className={styles.logoutBtn}>
-                      Employees
-                    </Link>
-                    <Link to="/admin/products" className={styles.logoutBtn}>
-                      Products
-                    </Link>
-                    <Link to="/admin/categories" className={styles.logoutBtn}>
-                      Categories
-                    </Link>
-                  </>
+                  <Link to="/admin" className={styles.logoutBtn}>
+                    Admin Console
+                  </Link>
                 )}
                 <button type="button" className={styles.logoutBtn} onClick={logout}>
                   Log out
