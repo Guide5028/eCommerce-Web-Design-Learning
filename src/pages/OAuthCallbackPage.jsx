@@ -30,9 +30,10 @@ export default function OAuthCallbackPage() {
     }
 
     loginWithTokens(accessToken, refreshToken)
-      .then(() => {
+      .then((profile) => {
         setState('done');
-        window.setTimeout(() => navigate('/'), 600);
+        const destination = profile.role === 'admin' ? '/admin' : '/';
+        window.setTimeout(() => navigate(destination), 600);
       })
       .catch(() => setState('error'));
   }, [searchParams, loginWithTokens, navigate]);

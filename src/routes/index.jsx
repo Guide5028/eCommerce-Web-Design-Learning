@@ -13,6 +13,7 @@ import OAuthCallbackPage from '../pages/OAuthCallbackPage.jsx';
 import AboutPage from '../pages/AboutPage.jsx';
 import ContactPage from '../pages/ContactPage.jsx';
 import AdminDashboardPage from '../pages/AdminDashboardPage.jsx';
+import AdminEmployeesPage from '../pages/AdminEmployeesPage.jsx';
 import NotFoundPage from '../pages/NotFoundPage.jsx';
 
 export default function AppRoutes() {
@@ -41,6 +42,7 @@ export default function AppRoutes() {
         }
       >
         <Route index element={<AdminDashboardPage />} />
+        <Route path="employees" element={<AdminEmployeesPage />} />
       </Route>
     </Routes>
   );

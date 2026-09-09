@@ -48,7 +48,8 @@ function LoginForm({ onSwitchToRegister }) {
       const profile = await login(email, password);
       setLabel('Logged in!');
       message.success(`Welcome back, ${profile.name}`);
-      window.setTimeout(() => navigate('/'), 600); // give the "Logged in!" label a beat to show
+      const destination = profile.role === 'admin' ? '/admin' : '/';
+      window.setTimeout(() => navigate(destination), 600); // give the "Logged in!" label a beat to show
     } catch (err) {
       message.error(err.message);
       setLabel('Log In');

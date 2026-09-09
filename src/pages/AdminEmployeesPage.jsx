@@ -1,0 +1,118 @@
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { Alert, Select, Spin, Switch, Table, Tag } from 'antd';
+import { useAuth } from '../context/AuthContext.jsx';
+import { employeeService } from '../services/employeeService.js';
+
+const ROLE_OPTIONS = [
+  { value: 'cashier', label: 'Cashier' },
+  { value: 'admin', label: 'Admin' },
+];
+
+function accountType(employee) {
+  if (employee.googleId) return 'Google';
+  if (employee.facebookId) return 'Facebook';
+  return 'Local';
+}
+
+export default function AdminEmployeesPage() {
+  const { profile } = useAuth();
+  const [employees, setEmployees] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  // employeeId -> the field currently being saved for that row ('role' | 'isActive'),
+  // so only that row's control shows a spinner instead of the whole table.
+  const [savingField, setSavingField] = useState({});
+
+  const loadEmployees = useCallback(() => {
+    setLoading(true);
+    setError(null);
+    employeeService
+      .getAllEmployees()
+      .then(setEmployees)
+      .catch((err) => setError(err.message))
+      .finally(() => setLoading(false));
+  }, []);
+
+  useEffect(() => {
+    loadEmployees();
+  }, [loadEmployees]);
+
+  async function handleFieldChange(employeeId, field, value) {
+    const previous = employees;
+    setSavingField((s) => ({ ...s, [employeeId]: field }));
+    setEmployees((rows) => rows.map((row) => (row.employeeId === employeeId ? { ...row, [field]: value } : row)));
+
+    try {
+      await employeeService.updateEmployee(employeeId, { [field]: value });
+    } catch {
+      setEmployees(previous); // the axios interceptor already toasted the error
+    } finally {
+      setSavingField((s) => {
+        const next = { ...s };
+        delete next[employeeId];
+        return next;
+      });
+    }
+  }
+
+  const columns = useMemo(
+    () => [
+      { title: 'Name', dataIndex: 'name', key: 'name' },
+      { title: 'Email', dataIndex: 'email', key: 'email' },
+      {
+        title: 'Account',
+        key: 'account',
+        render: (_, row) => <Tag>{accountType(row)}</Tag>,
+      },
+      {
+        title: 'Role',
+        key: 'role',
+        render: (_, row) => (
+          <Select
+            value={row.role}
+            options={ROLE_OPTIONS}
+            style={{ width: 120 }}
+            disabled={row.employeeId === profile?.employeeId}
+            loading={savingField[row.employeeId] === 'role'}
+            onChange={(value) => handleFieldChange(row.employeeId, 'role', value)}
+          />
+        ),
+      },
+      {
+        title: 'Status',
+        key: 'status',
+        render: (_, row) => (
+          <Switch
+            checked={row.isActive}
+            checkedChildren="Active"
+            unCheckedChildren="Pending"
+            disabled={row.employeeId === profile?.employeeId}
+            loading={savingField[row.employeeId] === 'isActive'}
+            onChange={(checked) => handleFieldChange(row.employeeId, 'isActive', checked)}
+          />
+        ),
+      },
+      {
+        title: '',
+        key: 'self',
+        render: (_, row) =>
+          row.employeeId === profile?.employeeId ? <Tag color="gold">This is you</Tag> : null,
+      },
+    ],
+    [profile, savingField, employees],
+  );
+
+  if (loading) {
+    return (
+      <div style={{ padding: '80px 0', textAlign: 'center' }}>
+        <Spin size="large" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return <Alert type="error" showIcon message="Couldn't load employees" description={error} />;
+  }
+
+  return <Table rowKey="employeeId" dataSource={employees} columns={columns} pagination={false} />;
+}
