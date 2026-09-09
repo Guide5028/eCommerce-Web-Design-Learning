@@ -1,4 +1,4 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 import {
   DashboardOutlined,
   ShoppingOutlined,
@@ -9,7 +9,7 @@ import {
 import { useAuth } from '../context/AuthContext.jsx';
 import styles from '../styles/components/AdminLayout.module.css';
 
-// Sidebar nav groups for the admin shell; targets are placeholders until the admin routes exist.
+// Sidebar nav groups for the admin shell -- also the single source of truth for the topbar title below.
 const NAV_SECTIONS = [
   {
     title: 'Overview',
@@ -28,9 +28,13 @@ const NAV_SECTIONS = [
   },
 ];
 
-// Fixed dark sidebar + topbar shell for the admin area. Not wired into routing yet (see routes/index.jsx).
+const ALL_NAV_ITEMS = NAV_SECTIONS.flatMap((section) => section.items);
+
+// Fixed dark sidebar + topbar shell for the admin area (see the /admin routes in routes/index.jsx).
 export default function AdminLayout() {
   const { profile, logout } = useAuth();
+  const { pathname } = useLocation();
+  const pageTitle = ALL_NAV_ITEMS.find((item) => item.to === pathname)?.label ?? 'Admin';
 
   return (
     <div className={styles.shell}>
@@ -47,10 +51,14 @@ export default function AdminLayout() {
               <ul className={styles.navList}>
                 {section.items.map((item) => (
                   <li key={item.to}>
-                    <Link to={item.to} className={styles.navLink}>
+                    <NavLink
+                      to={item.to}
+                      end={item.to === '/admin'}
+                      className={({ isActive }) => (isActive ? `${styles.navLink} ${styles.navLinkActive}` : styles.navLink)}
+                    >
                       {item.icon}
                       <span>{item.label}</span>
-                    </Link>
+                    </NavLink>
                   </li>
                 ))}
               </ul>
@@ -71,8 +79,7 @@ export default function AdminLayout() {
 
       <div className={styles.main}>
         <header className={styles.topbar}>
-          {/* placeholder until pages report their own titles (e.g. via route context) */}
-          <h1 className={styles.pageTitle}>Dashboard</h1>
+          <h1 className={styles.pageTitle}>{pageTitle}</h1>
 
           {profile && (
             <div className={styles.adminChip}>
