@@ -15,6 +15,7 @@ import ContactPage from '../pages/ContactPage.jsx';
 import AdminDashboardPage from '../pages/AdminDashboardPage.jsx';
 import AdminEmployeesPage from '../pages/AdminEmployeesPage.jsx';
 import AdminCategoriesPage from '../pages/AdminCategoriesPage.jsx';
+import AdminProductsPage from '../pages/AdminProductsPage.jsx';
 import NotFoundPage from '../pages/NotFoundPage.jsx';
 
 export default function AppRoutes() {
@@ -45,6 +46,7 @@ export default function AppRoutes() {
         <Route index element={<AdminDashboardPage />} />
         <Route path="employees" element={<AdminEmployeesPage />} />
         <Route path="categories" element={<AdminCategoriesPage />} />
+        <Route path="products" element={<AdminProductsPage />} />
       </Route>
     </Routes>
   );
