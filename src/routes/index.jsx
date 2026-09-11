@@ -20,6 +20,8 @@ import AdminCategoriesPage from '../pages/AdminCategoriesPage.jsx';
 import AdminProductsPage from '../pages/AdminProductsPage.jsx';
 import AdminStockPage from '../pages/AdminStockPage.jsx';
 import AdminCustomersPage from '../pages/AdminCustomersPage.jsx';
+import AdminPromotionsPage from '../pages/AdminPromotionsPage.jsx';
+import AdminRefundsPage from '../pages/AdminRefundsPage.jsx';
 import AccountPage from '../pages/AccountPage.jsx';
 import NotFoundPage from '../pages/NotFoundPage.jsx';
 
@@ -62,6 +64,8 @@ export default function AppRoutes() {
         <Route path="categories" element={<AdminCategoriesPage />} />
         <Route path="products" element={<AdminProductsPage />} />
         <Route path="stock" element={<AdminStockPage />} />
+        <Route path="promotions" element={<AdminPromotionsPage />} />
+        <Route path="refunds" element={<AdminRefundsPage />} />
         <Route path="customers" element={<AdminCustomersPage />} />
       </Route>
     </Routes>

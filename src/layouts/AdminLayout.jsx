@@ -9,6 +9,8 @@ import {
   TeamOutlined,
   UserOutlined,
   LogoutOutlined,
+  PercentageOutlined,
+  RollbackOutlined,
 } from '@ant-design/icons';
 import { useAuth } from '../context/AuthContext.jsx';
 import styles from '../styles/components/AdminLayout.module.css';
@@ -32,7 +34,14 @@ const NAV_ITEMS = [
       { key: '/admin/products', icon: <ShoppingOutlined />, label: 'Products' },
       { key: '/admin/categories', icon: <AppstoreOutlined />, label: 'Categories' },
       { key: '/admin/stock', icon: <DatabaseOutlined />, label: 'Stock' },
+      { key: '/admin/promotions', icon: <PercentageOutlined />, label: 'Promotions' },
     ],
+  },
+  {
+    key: 'sales',
+    type: 'group',
+    label: 'Sales',
+    children: [{ key: '/admin/refunds', icon: <RollbackOutlined />, label: 'Refunds' }],
   },
   {
     key: 'people',
