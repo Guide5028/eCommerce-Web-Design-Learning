@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import MainLayout from '../layouts/MainLayout.jsx';
 import AdminLayout from '../layouts/AdminLayout.jsx';
 import RequireAdmin from '../components/RequireAdmin.jsx';
+import RequireCustomer from '../components/RequireCustomer.jsx';
 import HomePage from '../pages/HomePage.jsx';
 import ShopPage from '../pages/ShopPage.jsx';
 import ProductDetailPage from '../pages/ProductDetailPage.jsx';
@@ -19,6 +20,7 @@ import AdminCategoriesPage from '../pages/AdminCategoriesPage.jsx';
 import AdminProductsPage from '../pages/AdminProductsPage.jsx';
 import AdminStockPage from '../pages/AdminStockPage.jsx';
 import AdminCustomersPage from '../pages/AdminCustomersPage.jsx';
+import AccountPage from '../pages/AccountPage.jsx';
 import NotFoundPage from '../pages/NotFoundPage.jsx';
 
 export default function AppRoutes() {
@@ -31,6 +33,14 @@ export default function AppRoutes() {
         <Route path="/cart" element={<CartPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/favorite" element={<FavoritePage />} />
+        <Route
+          path="/account"
+          element={
+            <RequireCustomer>
+              <AccountPage />
+            </RequireCustomer>
+          }
+        />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/staff/login" element={<StaffLoginPage />} />
         <Route path="/oauth-callback" element={<OAuthCallbackPage />} />

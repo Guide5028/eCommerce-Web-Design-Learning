@@ -12,6 +12,11 @@ export const saleService = {
     return await client.get('/sales');
   },
 
+  // Customer-only: the signed-in shopper's own orders, items already joined in.
+  getMySales: async () => {
+    return await client.get('/sales/mine');
+  },
+
   // Admin-only: one sale with its line items -- there's no bulk "all sale items"
   // endpoint yet, so the dashboard's top-sellers stat fetches these per sale.
   getSaleById: async (id) => {

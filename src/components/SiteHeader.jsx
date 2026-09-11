@@ -107,6 +107,11 @@ export default function SiteHeader() {
                     Admin Console
                   </Link>
                 )}
+                {profile.role === 'customer' && (
+                  <Link to="/account" className={styles.logoutBtn}>
+                    My Account
+                  </Link>
+                )}
                 <button type="button" className={styles.logoutBtn} onClick={logout}>
                   Log out
                 </button>
