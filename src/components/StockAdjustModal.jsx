@@ -22,7 +22,10 @@ export default function StockAdjustModal({ open, product, submitting, onCancel, 
       onSubmit({
         changeAmount: values.reason === 'damage' ? -Math.abs(values.changeAmount) : values.changeAmount,
         reason: values.reason,
-        costPrice: values.reason === 'restock' ? values.costPrice : undefined,
+        // antd's InputNumber leaves an untouched/cleared field as null, not undefined -- the
+        // backend's zod schema only accepts a number or a missing key (optional()), so a bare
+        // `null` here fails validation with "expected number, received null". Coalesce it away.
+        costPrice: values.reason === 'restock' && values.costPrice != null ? values.costPrice : undefined,
       });
     });
   }

@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react';
-import { Button, List, Tag, message } from 'antd';
+import { useEffect, useMemo, useState } from 'react';
+import { Button, List, Switch, Tag, Typography, message } from 'antd';
 import { productService } from '../services/productService.js';
+import { categoryService } from '../services/categoryService.js';
 import { resolveImage } from '../utils/resolveImage.js';
 import StockAdjustModal from '../components/StockAdjustModal.jsx';
 import AdminItemCard from '../components/AdminItemCard.jsx';
+import AdminFilterBar from '../components/AdminFilterBar.jsx';
 
 // Below this, a product's stock gets flagged so admins can restock before it hits 0.
 const LOW_STOCK_THRESHOLD = 5;
@@ -12,7 +14,11 @@ const LOW_STOCK_THRESHOLD = 5;
 // AdminProductsPage, which owns the catalog details (name/category/price/barcode/SKU).
 export default function AdminStockPage() {
   const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
+  // defaults match the page's old hardcoded behavior (lowest stock first) -- now adjustable
+  const [filters, setFilters] = useState({ sortBy: 'stockQuantity', order: 'asc' });
+  const [lowStockOnly, setLowStockOnly] = useState(false);
   const [stockModalOpen, setStockModalOpen] = useState(false);
   const [stockProduct, setStockProduct] = useState(null);
   const [submitting, setSubmitting] = useState(false);
@@ -21,7 +27,7 @@ export default function AdminStockPage() {
     setLoading(true);
     try {
       // no activeOnly -- disabled products can still hold stock that needs tracking
-      const data = await productService.getProducts({ limit: 100, sortBy: 'stockQuantity', order: 'asc' });
+      const data = await productService.getProducts({ ...filters, limit: 100 });
       setProducts(data.items);
     } catch {
       // interceptor already toasted it
@@ -31,8 +37,19 @@ export default function AdminStockPage() {
   }
 
   useEffect(() => {
-    load();
+    categoryService.getCategories().then(setCategories).catch(() => {});
   }, []);
+
+  useEffect(() => {
+    load();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filters]);
+
+  // client-side on top of the server-sorted page -- pos-api has no "stock <= N" query param
+  const visibleProducts = useMemo(
+    () => (lowStockOnly ? products.filter((p) => Number(p.stockQuantity) <= LOW_STOCK_THRESHOLD) : products),
+    [products, lowStockOnly],
+  );
 
   function openStockAdjust(product) {
     setStockProduct(product);
@@ -57,10 +74,24 @@ export default function AdminStockPage() {
 
   return (
     <>
+      <div style={{ marginBottom: 16 }}>
+        <AdminFilterBar
+          categories={categories}
+          filters={filters}
+          onChange={setFilters}
+          extra={
+            <label style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer' }}>
+              <Switch checked={lowStockOnly} onChange={setLowStockOnly} size="small" />
+              <Typography.Text>Low stock only (≤{LOW_STOCK_THRESHOLD})</Typography.Text>
+            </label>
+          }
+        />
+      </div>
+
       <List
         loading={loading}
         grid={{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 4, xl: 4 }}
-        dataSource={products}
+        dataSource={visibleProducts}
         rowKey="productId"
         renderItem={(product) => {
           const quantity = Number(product.stockQuantity);

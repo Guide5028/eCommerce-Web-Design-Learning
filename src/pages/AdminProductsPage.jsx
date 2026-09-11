@@ -2,15 +2,19 @@ import { useEffect, useState } from 'react';
 import { Button, Flex, List, Popconfirm, Tag, message } from 'antd';
 import { PlusOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import { productService } from '../services/productService.js';
+import { categoryService } from '../services/categoryService.js';
 import { resolveImage } from '../utils/resolveImage.js';
 import ProductFormModal from '../components/ProductFormModal.jsx';
 import AdminItemCard from '../components/AdminItemCard.jsx';
+import AdminFilterBar from '../components/AdminFilterBar.jsx';
 
 // Admin page for listing, creating, editing, and deleting product catalog details.
 // Stock levels live on their own page (AdminStockPage) -- see /admin/stock.
 export default function AdminProductsPage() {
   const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [filters, setFilters] = useState({ sortBy: 'name', order: 'asc' });
   const [productModalOpen, setProductModalOpen] = useState(false);
   const [editingProduct, setEditingProduct] = useState(null);
   const [submitting, setSubmitting] = useState(false);
@@ -19,7 +23,7 @@ export default function AdminProductsPage() {
     setLoading(true);
     try {
       // no activeOnly -- the admin view needs to see disabled products too
-      const data = await productService.getProducts({ limit: 100 });
+      const data = await productService.getProducts({ ...filters, limit: 100 });
       setProducts(data.items);
     } catch {
       // interceptor already toasted it
@@ -29,8 +33,13 @@ export default function AdminProductsPage() {
   }
 
   useEffect(() => {
-    load();
+    categoryService.getCategories().then(setCategories).catch(() => {});
   }, []);
+
+  useEffect(() => {
+    load();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filters]);
 
   function openCreate() {
     setEditingProduct(null);
@@ -76,7 +85,8 @@ export default function AdminProductsPage() {
 
   return (
     <>
-      <Flex justify="flex-end" style={{ marginBottom: 16 }}>
+      <Flex justify="space-between" align="center" wrap="wrap" gap={12} style={{ marginBottom: 16 }}>
+        <AdminFilterBar categories={categories} filters={filters} onChange={setFilters} />
         <Button type="primary" icon={<PlusOutlined />} onClick={openCreate}>
           Add product
         </Button>
