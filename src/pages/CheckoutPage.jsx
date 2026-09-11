@@ -1,10 +1,13 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Flex, message } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { useProducts } from '../context/ProductsContext.jsx';
 import { useStore } from '../context/StoreContext.jsx';
 import { useAuth } from '../context/AuthContext.jsx';
 import { saleService } from '../services/saleService.js';
+import { promotionService } from '../services/promotionService.js';
+import { categoryService } from '../services/categoryService.js';
+import { computeDiscountAmount, pickBestPromotion } from '../utils/promotions.js';
 import { ONLINE_STORE_EMPLOYEE_ID } from '../config/constants.js';
 import BillingForm from '../components/BillingForm.jsx';
 import OrderSummary from '../components/OrderSummary.jsx';
@@ -19,17 +22,40 @@ export default function CheckoutPage() {
   const navigate = useNavigate();
   const [paymentMethod, setPaymentMethod] = useState('cash');
   const [placingOrder, setPlacingOrder] = useState(false);
+  const [promotions, setPromotions] = useState([]);
+  const [categoryIdByName, setCategoryIdByName] = useState(new Map());
+
+  // Preview only -- pos-api decides the real discount server-side at POST /sales.
+  // Loaded once; a promo starting/ending mid-checkout is rare enough not to poll for.
+  useEffect(() => {
+    promotionService
+      .getPromotions({ activeOnly: true })
+      .then(setPromotions)
+      .catch(() => {});
+    categoryService
+      .getCategories()
+      .then((cats) => setCategoryIdByName(new Map(cats.map((c) => [c.name, c.categoryId]))))
+      .catch(() => {});
+  }, []);
 
   const lines = useMemo(() => {
     return cart
       .map((item) => {
         const product = products.find((p) => (p.productId ?? p.id) === item.id);
-        return product ? { product, qty: item.qty } : null;
+        if (!product) return null;
+
+        const lineSubtotal = product.price * item.qty;
+        const promotion = pickBestPromotion(promotions, product, categoryIdByName);
+        const discount = promotion ? computeDiscountAmount(promotion, lineSubtotal) : 0;
+
+        return { product, qty: item.qty, promotion, discount };
       })
       .filter(Boolean);
-  }, [cart, products]);
+  }, [cart, products, promotions, categoryIdByName]);
 
-  const total = lines.reduce((sum, line) => sum + line.product.price * line.qty, 0);
+  const subtotal = lines.reduce((sum, line) => sum + line.product.price * line.qty, 0);
+  const totalDiscount = lines.reduce((sum, line) => sum + line.discount, 0);
+  const total = subtotal - totalDiscount;
 
   async function handlePlaceOrder() {
     // pos-api's /sales requires an authenticated account (it attributes every sale
