@@ -19,7 +19,7 @@ const placeOrderButtonTheme = {
   },
 };
 
-export default function OrderSummary({ lines, paymentMethod, onPaymentMethodChange }) {
+export default function OrderSummary({ lines, paymentMethod, onPaymentMethodChange, onPlaceOrder, placingOrder }) {
   const subtotal = lines.reduce((sum, line) => sum + line.product.price * line.qty, 0);
   const hasItems = lines.length > 0;
 
@@ -66,7 +66,14 @@ export default function OrderSummary({ lines, paymentMethod, onPaymentMethodChan
       </p>
 
       <ConfigProvider theme={placeOrderButtonTheme}>
-        <Button ghost block className={styles.btnPlaceOrder} disabled={!hasItems}>
+        <Button
+          ghost
+          block
+          className={styles.btnPlaceOrder}
+          disabled={!hasItems}
+          loading={placingOrder}
+          onClick={onPlaceOrder}
+        >
           Place order
         </Button>
       </ConfigProvider>

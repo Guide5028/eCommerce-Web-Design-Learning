@@ -1,19 +1,13 @@
 import { Radio } from 'antd';
 import styles from '../styles/components/PaymentMethods.module.css';
 
-// Ported from legacy/js/app.js:538-551 (checkout payment method)
-
+// Matches pos-api's real payment_method enum exactly (cash | card | e-wallet) --
+// the previous options here ("Direct Bank Transfer", "Cash On Delivery") were never
+// valid values the backend would accept.
 const PAYMENT_OPTIONS = [
-  {
-    value: 'Direct Bank Transfer',
-    desc:
-      'Make your payment directly into our bank account. Please use your Order ID as the payment reference. ' +
-      'Your order will not be shipped until the funds have cleared in our account.',
-  },
-  {
-    value: 'Cash On Delivery',
-    desc: 'Pay with cash upon delivery.',
-  },
+  { value: 'cash', label: 'Cash', desc: 'Pay with cash. No card or app needed.' },
+  { value: 'card', label: 'Card', desc: 'Pay by debit or credit card.' },
+  { value: 'e-wallet', label: 'E-Wallet', desc: 'Pay with a mobile wallet app.' },
 ];
 
 export default function PaymentMethods({ value, onChange }) {
@@ -23,7 +17,7 @@ export default function PaymentMethods({ value, onChange }) {
     <div className={styles.paymentMethods}>
       <div className={styles.paymentActive}>
         <span className={styles.paymentDot} />
-        <span>{active.value}</span>
+        <span>{active.label}</span>
       </div>
       <p className={styles.paymentActiveDesc}>{active.desc}</p>
 
@@ -34,7 +28,7 @@ export default function PaymentMethods({ value, onChange }) {
       >
         {PAYMENT_OPTIONS.map((option) => (
           <Radio className={styles.paymentOption} value={option.value} key={option.value}>
-            {option.value}
+            {option.label}
           </Radio>
         ))}
       </Radio.Group>

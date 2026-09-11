@@ -1,31 +1,58 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button, Form, Input, Tabs, message } from 'antd';
+import { Button, Divider, Form, Input, Tabs, message } from 'antd';
+import { GoogleOutlined, FacebookOutlined } from '@ant-design/icons';
 import styles from '../styles/components/AuthTabs.module.css';
 import LargeFieldsTheme from './LargeFieldsTheme.jsx';
 import { useAuth } from '../context/AuthContext.jsx';
-import { customerService } from '../services/customerService.js';
+import { register as apiRegister } from '../services/authService.js';
 
-// Login/Register tabs for shoppers (customer accounts). No OAuth here -- Google/Facebook
-// sign-in only ever creates employee accounts on the backend (see auth.service.ts), so
-// showing those buttons here would silently sign someone up as staff instead of a customer.
-// Staff accounts self-onboard through StaffAuthTabs at /staff/login instead.
+// Staff self-onboarding: new employee/cashier accounts register here (not on the public
+// storefront login at /login, which is customer-only). Not linked from the main nav --
+// share this URL directly with new hires. Identical UX to the old combined AuthTabs,
+// just pointed at the employee endpoints and kept separate from the customer flow.
+const API_ORIGIN = import.meta.env.VITE_API_URL;
+
+function SocialLoginButtons() {
+  return (
+    <>
+      <Divider className={styles.authDivider}>or continue with</Divider>
+      <div className={styles.socialButtons}>
+        <Button
+          icon={<GoogleOutlined />}
+          block
+          href={`${API_ORIGIN}/auth/google`}
+        >
+          Google
+        </Button>
+        <Button
+          icon={<FacebookOutlined />}
+          block
+          href={`${API_ORIGIN}/auth/facebook`}
+        >
+          Facebook
+        </Button>
+      </div>
+    </>
+  );
+}
 
 function LoginForm({ onSwitchToRegister }) {
   const [form] = Form.useForm();
   const [submitting, setSubmitting] = useState(false);
   const [label, setLabel] = useState('Log In');
-  const { loginCustomer } = useAuth();
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   async function handleFinish({ email, password }) {
     setSubmitting(true);
     setLabel('Logging in...');
     try {
-      const profile = await loginCustomer(email, password);
+      const profile = await login(email, password);
       setLabel('Logged in!');
       message.success(`Welcome back, ${profile.name}`);
-      window.setTimeout(() => navigate('/'), 600); // give the "Logged in!" label a beat to show
+      const destination = profile.role === 'admin' ? '/admin' : '/';
+      window.setTimeout(() => navigate(destination), 600); // give the "Logged in!" label a beat to show
     } catch (err) {
       message.error(err.message);
       setLabel('Log In');
@@ -54,6 +81,7 @@ function LoginForm({ onSwitchToRegister }) {
           <button type="button" className={styles.authSwitchLink} onClick={onSwitchToRegister}>Register</button>
         </p>
       </Form>
+      <SocialLoginButtons />
     </LargeFieldsTheme>
   );
 }
@@ -65,7 +93,7 @@ function RegisterForm({ onSwitchToLogin }) {
   async function handleFinish({ name, email, password }) {
     setSubmitting(true);
     try {
-      await customerService.register(email, password, name);
+      await apiRegister(email, password, name);
       message.success('Account created — log in to continue.');
       form.resetFields();
       onSwitchToLogin();
@@ -117,11 +145,12 @@ function RegisterForm({ onSwitchToLogin }) {
           <button type="button" className={styles.authSwitchLink} onClick={onSwitchToLogin}>Log In</button>
         </p>
       </Form>
+      <SocialLoginButtons />
     </LargeFieldsTheme>
   );
 }
 
-export default function AuthTabs() {
+export default function StaffAuthTabs() {
   const [activeTab, setActiveTab] = useState('login');
 
   const items = [

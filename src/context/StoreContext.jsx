@@ -64,6 +64,11 @@ export function StoreProvider({ children }) {
     });
   }, []);
 
+  // used after a real checkout completes -- the order is placed, so the cart resets
+  const clearCart = useCallback(() => {
+    saveCart([]);
+  }, [saveCart]);
+
   const removeFromCart = useCallback((id) => {
     id = Number(id);
     setCart((prev) => {
@@ -116,12 +121,24 @@ export function StoreProvider({ children }) {
       addToCart,
       removeFromCart,
       setCartQty,
+      clearCart,
       toggleFavorite,
       isFavorite,
       cartCount,
       favoriteCount,
     }),
-    [cart, favorites, addToCart, removeFromCart, setCartQty, toggleFavorite, isFavorite, cartCount, favoriteCount]
+    [
+      cart,
+      favorites,
+      addToCart,
+      removeFromCart,
+      setCartQty,
+      clearCart,
+      toggleFavorite,
+      isFavorite,
+      cartCount,
+      favoriteCount,
+    ]
   );
 
   return <StoreContext.Provider value={value}>{children}</StoreContext.Provider>;
