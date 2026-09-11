@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Button, Flex, Popconfirm, Spin, Switch, Table, Tag, message } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
+import { Button, Card, Flex, List, Popconfirm, Switch, Typography, message } from 'antd';
+import { PlusOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import { categoryService } from '../services/categoryService.js';
 import CategoryFormModal from '../components/CategoryFormModal.jsx';
 
@@ -82,49 +82,6 @@ export default function AdminCategoriesPage() {
     }
   }
 
-  const columns = [
-    { title: 'Name', dataIndex: 'name', key: 'name' },
-    {
-      title: 'Description',
-      dataIndex: 'description',
-      key: 'description',
-      render: (value) => value || <Tag>—</Tag>,
-    },
-    {
-      title: 'Active',
-      key: 'isActive',
-      render: (_, row) => (
-        <Switch
-          checked={row.isActive}
-          loading={savingId === row.categoryId}
-          onChange={(checked) => handleToggleActive(row, checked)}
-        />
-      ),
-    },
-    {
-      title: 'Actions',
-      key: 'actions',
-      render: (_, row) => (
-        <Flex gap={8}>
-          <Button size="small" onClick={() => openEdit(row)}>
-            Edit
-          </Button>
-          <Popconfirm
-            title="Delete this category?"
-            description="Products still using it must be reassigned or disabled first."
-            onConfirm={() => handleDelete(row)}
-            okText="Delete"
-            okButtonProps={{ danger: true }}
-          >
-            <Button size="small" danger>
-              Delete
-            </Button>
-          </Popconfirm>
-        </Flex>
-      ),
-    },
-  ];
-
   return (
     <>
       <Flex justify="flex-end" style={{ marginBottom: 16 }}>
@@ -133,13 +90,47 @@ export default function AdminCategoriesPage() {
         </Button>
       </Flex>
 
-      {loading ? (
-        <div style={{ padding: '80px 0', textAlign: 'center' }}>
-          <Spin size="large" />
-        </div>
-      ) : (
-        <Table columns={columns} dataSource={categories} rowKey="categoryId" pagination={false} />
-      )}
+      <List
+        loading={loading}
+        grid={{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 4, xl: 4 }}
+        dataSource={categories}
+        rowKey="categoryId"
+        renderItem={(category) => (
+          <List.Item>
+            <Card
+              hoverable
+              actions={[
+                <EditOutlined key="edit" onClick={() => openEdit(category)} />,
+                <Popconfirm
+                  key="delete"
+                  title="Delete this category?"
+                  description="Products still using it must be reassigned or disabled first."
+                  onConfirm={() => handleDelete(category)}
+                  okText="Delete"
+                  okButtonProps={{ danger: true }}
+                >
+                  <DeleteOutlined />
+                </Popconfirm>,
+              ]}
+            >
+              <Flex justify="space-between" align="flex-start" gap={8}>
+                <Typography.Text strong ellipsis style={{ fontSize: 16 }}>
+                  {category.name}
+                </Typography.Text>
+                <Switch
+                  checked={category.isActive}
+                  loading={savingId === category.categoryId}
+                  onChange={(checked) => handleToggleActive(category, checked)}
+                />
+              </Flex>
+
+              <Typography.Paragraph type="secondary" style={{ marginTop: 8, marginBottom: 0, minHeight: 44 }}>
+                {category.description || 'No description'}
+              </Typography.Paragraph>
+            </Card>
+          </List.Item>
+        )}
+      />
 
       <CategoryFormModal
         open={modalOpen}

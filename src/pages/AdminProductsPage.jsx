@@ -1,19 +1,18 @@
 import { useEffect, useState } from 'react';
-import { Button, Flex, Popconfirm, Spin, Table, Tag, message } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
+import { Button, Flex, List, Popconfirm, Tag, message } from 'antd';
+import { PlusOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import { productService } from '../services/productService.js';
 import { resolveImage } from '../utils/resolveImage.js';
 import ProductFormModal from '../components/ProductFormModal.jsx';
-import StockAdjustModal from '../components/StockAdjustModal.jsx';
+import AdminItemCard from '../components/AdminItemCard.jsx';
 
-// Admin page for listing, creating, editing, adjusting stock, and deleting products.
+// Admin page for listing, creating, editing, and deleting product catalog details.
+// Stock levels live on their own page (AdminStockPage) -- see /admin/stock.
 export default function AdminProductsPage() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [productModalOpen, setProductModalOpen] = useState(false);
   const [editingProduct, setEditingProduct] = useState(null);
-  const [stockModalOpen, setStockModalOpen] = useState(false);
-  const [stockProduct, setStockProduct] = useState(null);
   const [submitting, setSubmitting] = useState(false);
 
   async function load() {
@@ -65,27 +64,6 @@ export default function AdminProductsPage() {
     }
   }
 
-  function openStockAdjust(product) {
-    setStockProduct(product);
-    setStockModalOpen(true);
-  }
-
-  async function handleStockSubmit(values) {
-    setSubmitting(true);
-    try {
-      const updated = await productService.updateStock(stockProduct.productId, values);
-      setProducts((prev) =>
-        prev.map((p) => (p.productId === updated.productId ? { ...p, stockQuantity: updated.stockQuantity } : p)),
-      );
-      message.success(`Stock updated for ${stockProduct.name}`);
-      setStockModalOpen(false);
-    } catch {
-      // e.g. "Stock cannot go below 0" -- interceptor already toasted it
-    } finally {
-      setSubmitting(false);
-    }
-  }
-
   async function handleDelete(product) {
     try {
       await productService.deleteProduct(product.productId);
@@ -96,68 +74,6 @@ export default function AdminProductsPage() {
     }
   }
 
-  const columns = [
-    {
-      title: '',
-      key: 'image',
-      width: 64,
-      render: (_, row) =>
-        row.imageUrl ? (
-          <img
-            src={resolveImage(row.imageUrl)}
-            alt=""
-            style={{ width: 40, height: 40, objectFit: 'cover', borderRadius: 4 }}
-          />
-        ) : (
-          <div style={{ width: 40, height: 40, borderRadius: 4, background: 'var(--color-border)' }} />
-        ),
-    },
-    { title: 'Name', dataIndex: 'name', key: 'name' },
-    {
-      title: 'Category',
-      dataIndex: 'category',
-      key: 'category',
-      render: (value) => value || <Tag>—</Tag>,
-    },
-    {
-      title: 'Price',
-      dataIndex: 'price',
-      key: 'price',
-      render: (value) => `฿${Number(value).toLocaleString(undefined, { maximumFractionDigits: 0 })}`,
-    },
-    { title: 'Stock', dataIndex: 'stockQuantity', key: 'stockQuantity' },
-    {
-      title: 'Status',
-      key: 'isActive',
-      render: (_, row) => (row.isActive ? <Tag color="success">Active</Tag> : <Tag>Disabled</Tag>),
-    },
-    {
-      title: 'Actions',
-      key: 'actions',
-      render: (_, row) => (
-        <Flex gap={8}>
-          <Button size="small" onClick={() => openEdit(row)}>
-            Edit
-          </Button>
-          <Button size="small" onClick={() => openStockAdjust(row)}>
-            Adjust stock
-          </Button>
-          <Popconfirm
-            title="Delete this product?"
-            description="Fails if it has sale or stock history -- disable it instead in that case."
-            onConfirm={() => handleDelete(row)}
-            okText="Delete"
-            okButtonProps={{ danger: true }}
-          >
-            <Button size="small" danger>
-              Delete
-            </Button>
-          </Popconfirm>
-        </Flex>
-      ),
-    },
-  ];
-
   return (
     <>
       <Flex justify="flex-end" style={{ marginBottom: 16 }}>
@@ -166,13 +82,48 @@ export default function AdminProductsPage() {
         </Button>
       </Flex>
 
-      {loading ? (
-        <div style={{ padding: '80px 0', textAlign: 'center' }}>
-          <Spin size="large" />
-        </div>
-      ) : (
-        <Table columns={columns} dataSource={products} rowKey="productId" pagination={false} scroll={{ x: true }} />
-      )}
+      <List
+        loading={loading}
+        grid={{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 4, xl: 4 }}
+        dataSource={products}
+        rowKey="productId"
+        renderItem={(product) => (
+          <List.Item>
+            <AdminItemCard
+              image={product.imageUrl ? resolveImage(product.imageUrl) : null}
+              title={product.name}
+              tags={[
+                <Tag key="category">{product.category || '—'}</Tag>,
+                product.isActive ? (
+                  <Tag color="success" key="status">
+                    Active
+                  </Tag>
+                ) : (
+                  <Tag key="status">Disabled</Tag>
+                ),
+              ]}
+              highlight={`฿${Number(product.price).toLocaleString(undefined, { maximumFractionDigits: 0 })}`}
+              fields={[
+                { label: 'Barcode', value: product.barcode || '—' },
+                { label: 'SKU', value: product.sku || '—' },
+              ]}
+              actions={[
+                <EditOutlined key="edit" onClick={() => openEdit(product)} />,
+                <Popconfirm
+                  key="delete"
+                  title="Delete this product?"
+                  description="Fails if it has sale or stock history -- disable it instead in that case."
+                  onConfirm={() => handleDelete(product)}
+                  okText="Delete"
+                  okButtonProps={{ danger: true }}
+                >
+                  <DeleteOutlined />
+                </Popconfirm>,
+              ]}
+            />
+          </List.Item>
+        )}
+      />
 
       <ProductFormModal
         open={productModalOpen}
@@ -180,14 +131,6 @@ export default function AdminProductsPage() {
         submitting={submitting}
         onCancel={() => setProductModalOpen(false)}
         onSubmit={handleProductSubmit}
-      />
-
-      <StockAdjustModal
-        open={stockModalOpen}
-        product={stockProduct}
-        submitting={submitting}
-        onCancel={() => setStockModalOpen(false)}
-        onSubmit={handleStockSubmit}
       />
     </>
   );

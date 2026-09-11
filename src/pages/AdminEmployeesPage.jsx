@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { Alert, Select, Spin, Switch, Table, Tag } from 'antd';
+import { Alert, Flex, Select, Spin, Switch, Table, Typography } from 'antd';
 import { useAuth } from '../context/AuthContext.jsx';
 import { employeeService } from '../services/employeeService.js';
 
@@ -57,12 +57,30 @@ export default function AdminEmployeesPage() {
 
   const columns = useMemo(
     () => [
-      { title: 'Name', dataIndex: 'name', key: 'name' },
+      {
+        title: 'Name',
+        dataIndex: 'name',
+        key: 'name',
+        render: (name, row) => (
+          <Flex align="center" gap={8}>
+            <Typography.Text>{name}</Typography.Text>
+            {row.employeeId === profile?.employeeId && (
+              <Typography.Text type="secondary" style={{ fontSize: 12 }}>
+                (you)
+              </Typography.Text>
+            )}
+          </Flex>
+        ),
+      },
       { title: 'Email', dataIndex: 'email', key: 'email' },
       {
         title: 'Account',
         key: 'account',
-        render: (_, row) => <Tag>{accountType(row)}</Tag>,
+        render: (_, row) => (
+          <Typography.Text type="secondary" style={{ fontSize: 13 }}>
+            {accountType(row)}
+          </Typography.Text>
+        ),
       },
       {
         title: 'Role',
@@ -71,7 +89,8 @@ export default function AdminEmployeesPage() {
           <Select
             value={row.role}
             options={ROLE_OPTIONS}
-            style={{ width: 120 }}
+            variant="borderless"
+            style={{ width: 110 }}
             disabled={row.employeeId === profile?.employeeId}
             loading={savingField[row.employeeId] === 'role'}
             onChange={(value) => handleFieldChange(row.employeeId, 'role', value)}
@@ -82,24 +101,22 @@ export default function AdminEmployeesPage() {
         title: 'Status',
         key: 'status',
         render: (_, row) => (
-          <Switch
-            checked={row.isActive}
-            checkedChildren="Active"
-            unCheckedChildren="Pending"
-            disabled={row.employeeId === profile?.employeeId}
-            loading={savingField[row.employeeId] === 'isActive'}
-            onChange={(checked) => handleFieldChange(row.employeeId, 'isActive', checked)}
-          />
+          <Flex align="center" gap={8}>
+            <Switch
+              size="small"
+              checked={row.isActive}
+              disabled={row.employeeId === profile?.employeeId}
+              loading={savingField[row.employeeId] === 'isActive'}
+              onChange={(checked) => handleFieldChange(row.employeeId, 'isActive', checked)}
+            />
+            <Typography.Text type="secondary" style={{ fontSize: 13 }}>
+              {row.isActive ? 'Active' : 'Pending'}
+            </Typography.Text>
+          </Flex>
         ),
       },
-      {
-        title: '',
-        key: 'self',
-        render: (_, row) =>
-          row.employeeId === profile?.employeeId ? <Tag color="gold">This is you</Tag> : null,
-      },
     ],
-    [profile, savingField, employees],
+    [profile, savingField],
   );
 
   if (loading) {
@@ -114,5 +131,5 @@ export default function AdminEmployeesPage() {
     return <Alert type="error" showIcon message="Couldn't load employees" description={error} />;
   }
 
-  return <Table rowKey="employeeId" dataSource={employees} columns={columns} pagination={false} />;
+  return <Table size="small" rowKey="employeeId" dataSource={employees} columns={columns} pagination={false} />;
 }
