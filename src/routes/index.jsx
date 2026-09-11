@@ -9,6 +9,7 @@ import CartPage from '../pages/CartPage.jsx';
 import CheckoutPage from '../pages/CheckoutPage.jsx';
 import FavoritePage from '../pages/FavoritePage.jsx';
 import LoginPage from '../pages/LoginPage.jsx';
+import StaffLoginPage from '../pages/StaffLoginPage.jsx';
 import OAuthCallbackPage from '../pages/OAuthCallbackPage.jsx';
 import AboutPage from '../pages/AboutPage.jsx';
 import ContactPage from '../pages/ContactPage.jsx';
@@ -16,6 +17,8 @@ import AdminDashboardPage from '../pages/AdminDashboardPage.jsx';
 import AdminEmployeesPage from '../pages/AdminEmployeesPage.jsx';
 import AdminCategoriesPage from '../pages/AdminCategoriesPage.jsx';
 import AdminProductsPage from '../pages/AdminProductsPage.jsx';
+import AdminStockPage from '../pages/AdminStockPage.jsx';
+import AdminCustomersPage from '../pages/AdminCustomersPage.jsx';
 import NotFoundPage from '../pages/NotFoundPage.jsx';
 
 export default function AppRoutes() {
@@ -29,6 +32,7 @@ export default function AppRoutes() {
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/favorite" element={<FavoritePage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/staff/login" element={<StaffLoginPage />} />
         <Route path="/oauth-callback" element={<OAuthCallbackPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
@@ -47,6 +51,8 @@ export default function AppRoutes() {
         <Route path="employees" element={<AdminEmployeesPage />} />
         <Route path="categories" element={<AdminCategoriesPage />} />
         <Route path="products" element={<AdminProductsPage />} />
+        <Route path="stock" element={<AdminStockPage />} />
+        <Route path="customers" element={<AdminCustomersPage />} />
       </Route>
     </Routes>
   );
