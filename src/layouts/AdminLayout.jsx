@@ -75,7 +75,16 @@ export default function AdminLayout() {
         collapsed={collapsed}
         onCollapse={setCollapsed}
         width={260}
-        style={{ background: '#211D17' }}
+        style={{
+          background: '#211D17',
+          // pin to the viewport instead of stretching with main-content height, so the
+          // logo/logout footer never scrolls out of view on a tall page -- only the nav
+          // list itself scrolls internally (see .nav's overflow-y in the CSS module)
+          position: 'sticky',
+          top: 0,
+          height: '100vh',
+          overflow: 'hidden',
+        }}
       >
         <div className={styles.sidebarInner}>
           <div className={styles.brand}>
