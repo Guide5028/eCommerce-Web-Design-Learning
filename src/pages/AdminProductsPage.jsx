@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Button, Flex, List, Popconfirm, Tag, message } from 'antd';
+import { Button, Flex, List, Popconfirm, Table, Tag, message } from 'antd';
 import { PlusOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import { productService } from '../services/productService.js';
 import { categoryService } from '../services/categoryService.js';
@@ -7,6 +7,8 @@ import { resolveImage } from '../utils/resolveImage.js';
 import ProductFormModal from '../components/ProductFormModal.jsx';
 import AdminItemCard from '../components/AdminItemCard.jsx';
 import AdminFilterBar from '../components/AdminFilterBar.jsx';
+import ViewToggle from '../components/ViewToggle.jsx';
+import useViewMode from '../hooks/useViewMode.js';
 
 // Admin page for listing, creating, editing, and deleting product catalog details.
 // Stock levels live on their own page (AdminStockPage) -- see /admin/stock.
@@ -15,6 +17,7 @@ export default function AdminProductsPage() {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState({ sortBy: 'name', order: 'asc' });
+  const [view, setView] = useViewMode('admin-products-view');
   const [productModalOpen, setProductModalOpen] = useState(false);
   const [editingProduct, setEditingProduct] = useState(null);
   const [submitting, setSubmitting] = useState(false);
@@ -83,57 +86,123 @@ export default function AdminProductsPage() {
     }
   }
 
+  const columns = [
+    {
+      title: '',
+      dataIndex: 'imageUrl',
+      width: 56,
+      render: (imageUrl) =>
+        imageUrl ? (
+          <img
+            src={resolveImage(imageUrl)}
+            alt=""
+            style={{ width: 40, height: 40, objectFit: 'cover', borderRadius: 6 }}
+          />
+        ) : (
+          <div style={{ width: 40, height: 40, borderRadius: 6, background: '#F9F1E7' }} />
+        ),
+    },
+    { title: 'Name', dataIndex: 'name', sorter: (a, b) => a.name.localeCompare(b.name) },
+    { title: 'Category', dataIndex: 'category', render: (c) => c || '—' },
+    {
+      title: 'Status',
+      dataIndex: 'isActive',
+      render: (isActive) => (isActive ? <Tag color="success">Active</Tag> : <Tag>Disabled</Tag>),
+    },
+    {
+      title: 'Price',
+      dataIndex: 'price',
+      align: 'right',
+      sorter: (a, b) => Number(a.price) - Number(b.price),
+      render: (price) => `฿${Number(price).toLocaleString(undefined, { maximumFractionDigits: 0 })}`,
+    },
+    { title: 'Barcode', dataIndex: 'barcode', render: (v) => v || '—' },
+    { title: 'SKU', dataIndex: 'sku', render: (v) => v || '—' },
+    {
+      title: '',
+      key: 'actions',
+      width: 80,
+      render: (_, product) => (
+        <Flex gap={12}>
+          <EditOutlined onClick={() => openEdit(product)} />
+          <Popconfirm
+            title="Delete this product?"
+            description="Fails if it has sale or stock history -- disable it instead in that case."
+            onConfirm={() => handleDelete(product)}
+            okText="Delete"
+            okButtonProps={{ danger: true }}
+          >
+            <DeleteOutlined />
+          </Popconfirm>
+        </Flex>
+      ),
+    },
+  ];
+
   return (
     <>
       <Flex justify="space-between" align="center" wrap="wrap" gap={12} style={{ marginBottom: 16 }}>
         <AdminFilterBar categories={categories} filters={filters} onChange={setFilters} />
-        <Button type="primary" icon={<PlusOutlined />} onClick={openCreate}>
-          Add product
-        </Button>
+        <Flex gap={12} align="center">
+          <ViewToggle value={view} onChange={setView} />
+          <Button type="primary" icon={<PlusOutlined />} onClick={openCreate}>
+            Add product
+          </Button>
+        </Flex>
       </Flex>
 
-      <List
-        loading={loading}
-        grid={{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 4, xl: 4 }}
-        dataSource={products}
-        rowKey="productId"
-        renderItem={(product) => (
-          <List.Item>
-            <AdminItemCard
-              image={product.imageUrl ? resolveImage(product.imageUrl) : null}
-              title={product.name}
-              tags={[
-                <Tag key="category">{product.category || '—'}</Tag>,
-                product.isActive ? (
-                  <Tag color="success" key="status">
-                    Active
-                  </Tag>
-                ) : (
-                  <Tag key="status">Disabled</Tag>
-                ),
-              ]}
-              highlight={`฿${Number(product.price).toLocaleString(undefined, { maximumFractionDigits: 0 })}`}
-              fields={[
-                { label: 'Barcode', value: product.barcode || '—' },
-                { label: 'SKU', value: product.sku || '—' },
-              ]}
-              actions={[
-                <EditOutlined key="edit" onClick={() => openEdit(product)} />,
-                <Popconfirm
-                  key="delete"
-                  title="Delete this product?"
-                  description="Fails if it has sale or stock history -- disable it instead in that case."
-                  onConfirm={() => handleDelete(product)}
-                  okText="Delete"
-                  okButtonProps={{ danger: true }}
-                >
-                  <DeleteOutlined />
-                </Popconfirm>,
-              ]}
-            />
-          </List.Item>
-        )}
-      />
+      {view === 'list' ? (
+        <Table
+          loading={loading}
+          columns={columns}
+          dataSource={products}
+          rowKey="productId"
+          pagination={{ pageSize: 20 }}
+        />
+      ) : (
+        <List
+          loading={loading}
+          grid={{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 4, xl: 4 }}
+          dataSource={products}
+          rowKey="productId"
+          renderItem={(product) => (
+            <List.Item>
+              <AdminItemCard
+                image={product.imageUrl ? resolveImage(product.imageUrl) : null}
+                title={product.name}
+                tags={[
+                  <Tag key="category">{product.category || '—'}</Tag>,
+                  product.isActive ? (
+                    <Tag color="success" key="status">
+                      Active
+                    </Tag>
+                  ) : (
+                    <Tag key="status">Disabled</Tag>
+                  ),
+                ]}
+                highlight={`฿${Number(product.price).toLocaleString(undefined, { maximumFractionDigits: 0 })}`}
+                fields={[
+                  { label: 'Barcode', value: product.barcode || '—' },
+                  { label: 'SKU', value: product.sku || '—' },
+                ]}
+                actions={[
+                  <EditOutlined key="edit" onClick={() => openEdit(product)} />,
+                  <Popconfirm
+                    key="delete"
+                    title="Delete this product?"
+                    description="Fails if it has sale or stock history -- disable it instead in that case."
+                    onConfirm={() => handleDelete(product)}
+                    okText="Delete"
+                    okButtonProps={{ danger: true }}
+                  >
+                    <DeleteOutlined />
+                  </Popconfirm>,
+                ]}
+              />
+            </List.Item>
+          )}
+        />
+      )}
 
       <ProductFormModal
         open={productModalOpen}
