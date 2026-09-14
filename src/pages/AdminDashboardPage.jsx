@@ -138,12 +138,11 @@ export default function AdminDashboardPage() {
           .sort((a, b) => b[1] - a[1])
           .map(([name, count]) => ({ name, count, percent: Math.round((count / products.length) * 100) }));
 
-        // no bulk "sale items" endpoint yet, so pull each sale's line items and
-        // aggregate quantity/revenue per product client-side -- fine at today's volume
-        const saleDetails = await Promise.all(sales.map((s) => saleService.getSaleById(s.saleId)));
+        // GET /sales now returns each sale's line items already joined in --
+        // aggregate quantity/revenue per product client-side from that one response.
         const productsById = new Map(products.map((p) => [p.productId, p]));
         const soldTotals = new Map();
-        saleDetails.forEach((sale) => {
+        sales.forEach((sale) => {
           sale.items?.forEach((item) => {
             const existing = soldTotals.get(item.productId) ?? { quantity: 0, revenue: 0 };
             existing.quantity += item.quantity;
