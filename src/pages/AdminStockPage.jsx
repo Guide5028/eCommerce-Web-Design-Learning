@@ -1,11 +1,13 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Button, List, Switch, Tag, Typography, message } from 'antd';
+import { Button, Flex, List, Switch, Table, Tag, Typography, message } from 'antd';
 import { productService } from '../services/productService.js';
 import { categoryService } from '../services/categoryService.js';
 import { resolveImage } from '../utils/resolveImage.js';
 import StockAdjustModal from '../components/StockAdjustModal.jsx';
 import AdminItemCard from '../components/AdminItemCard.jsx';
 import AdminFilterBar from '../components/AdminFilterBar.jsx';
+import ViewToggle from '../components/ViewToggle.jsx';
+import useViewMode from '../hooks/useViewMode.js';
 
 // Below this, a product's stock gets flagged so admins can restock before it hits 0.
 const LOW_STOCK_THRESHOLD = 5;
@@ -18,6 +20,7 @@ export default function AdminStockPage() {
   const [loading, setLoading] = useState(true);
   // defaults match the page's old hardcoded behavior (lowest stock first) -- now adjustable
   const [filters, setFilters] = useState({ sortBy: 'stockQuantity', order: 'asc' });
+  const [view, setView] = useViewMode('admin-stock-view');
   const [lowStockOnly, setLowStockOnly] = useState(false);
   const [stockModalOpen, setStockModalOpen] = useState(false);
   const [stockProduct, setStockProduct] = useState(null);
@@ -72,9 +75,62 @@ export default function AdminStockPage() {
     }
   }
 
+  const columns = [
+    {
+      title: '',
+      dataIndex: 'imageUrl',
+      width: 56,
+      render: (imageUrl) =>
+        imageUrl ? (
+          <img
+            src={resolveImage(imageUrl)}
+            alt=""
+            style={{ width: 40, height: 40, objectFit: 'cover', borderRadius: 6 }}
+          />
+        ) : (
+          <div style={{ width: 40, height: 40, borderRadius: 6, background: '#F9F1E7' }} />
+        ),
+    },
+    { title: 'Name', dataIndex: 'name', sorter: (a, b) => a.name.localeCompare(b.name) },
+    { title: 'Category', dataIndex: 'category', render: (c) => c || '—' },
+    {
+      title: 'Stock',
+      dataIndex: 'stockQuantity',
+      align: 'right',
+      sorter: (a, b) => Number(a.stockQuantity) - Number(b.stockQuantity),
+      render: (stockQuantity) => {
+        const quantity = Number(stockQuantity);
+        const isOutOfStock = quantity === 0;
+        const isLowStock = quantity > 0 && quantity <= LOW_STOCK_THRESHOLD;
+        return (
+          <Flex justify="flex-end" align="center" gap={8}>
+            {isOutOfStock && <Tag color="error">Out of stock</Tag>}
+            {isLowStock && <Tag color="warning">Low stock</Tag>}
+            <span>{quantity} units</span>
+          </Flex>
+        );
+      },
+    },
+    {
+      title: 'Status',
+      dataIndex: 'isActive',
+      render: (isActive) => (isActive ? <Tag color="success">Active</Tag> : <Tag>Disabled</Tag>),
+    },
+    {
+      title: '',
+      key: 'actions',
+      width: 120,
+      render: (_, product) => (
+        <Button type="text" onClick={() => openStockAdjust(product)}>
+          Adjust stock
+        </Button>
+      ),
+    },
+  ];
+
   return (
     <>
-      <div style={{ marginBottom: 16 }}>
+      <Flex justify="space-between" align="center" wrap="wrap" gap={12} style={{ marginBottom: 16 }}>
         <AdminFilterBar
           categories={categories}
           filters={filters}
@@ -86,50 +142,61 @@ export default function AdminStockPage() {
             </label>
           }
         />
-      </div>
+        <ViewToggle value={view} onChange={setView} />
+      </Flex>
 
-      <List
-        loading={loading}
-        grid={{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 4, xl: 4 }}
-        dataSource={visibleProducts}
-        rowKey="productId"
-        renderItem={(product) => {
-          const quantity = Number(product.stockQuantity);
-          const isOutOfStock = quantity === 0;
-          const isLowStock = quantity > 0 && quantity <= LOW_STOCK_THRESHOLD;
-          const highlightColor = isOutOfStock ? '#ff4d4f' : isLowStock ? '#faad14' : 'var(--color-primary)';
+      {view === 'list' ? (
+        <Table
+          loading={loading}
+          columns={columns}
+          dataSource={visibleProducts}
+          rowKey="productId"
+          pagination={{ pageSize: 20 }}
+        />
+      ) : (
+        <List
+          loading={loading}
+          grid={{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 4, xl: 4 }}
+          dataSource={visibleProducts}
+          rowKey="productId"
+          renderItem={(product) => {
+            const quantity = Number(product.stockQuantity);
+            const isOutOfStock = quantity === 0;
+            const isLowStock = quantity > 0 && quantity <= LOW_STOCK_THRESHOLD;
+            const highlightColor = isOutOfStock ? '#ff4d4f' : isLowStock ? '#faad14' : 'var(--color-primary)';
 
-          return (
-            <List.Item>
-              <AdminItemCard
-                image={product.imageUrl ? resolveImage(product.imageUrl) : null}
-                title={product.name}
-                tags={[
-                  <Tag key="category">{product.category || '—'}</Tag>,
-                  isOutOfStock && (
-                    <Tag color="error" key="stock-status">
-                      Out of stock
-                    </Tag>
-                  ),
-                  isLowStock && (
-                    <Tag color="warning" key="stock-status">
-                      Low stock
-                    </Tag>
-                  ),
-                ].filter(Boolean)}
-                highlight={`${quantity} units`}
-                highlightColor={highlightColor}
-                fields={[{ label: 'Status', value: product.isActive ? 'Active' : 'Disabled' }]}
-                actions={[
-                  <Button key="adjust" type="text" onClick={() => openStockAdjust(product)}>
-                    Adjust stock
-                  </Button>,
-                ]}
-              />
-            </List.Item>
-          );
-        }}
-      />
+            return (
+              <List.Item>
+                <AdminItemCard
+                  image={product.imageUrl ? resolveImage(product.imageUrl) : null}
+                  title={product.name}
+                  tags={[
+                    <Tag key="category">{product.category || '—'}</Tag>,
+                    isOutOfStock && (
+                      <Tag color="error" key="stock-status">
+                        Out of stock
+                      </Tag>
+                    ),
+                    isLowStock && (
+                      <Tag color="warning" key="stock-status">
+                        Low stock
+                      </Tag>
+                    ),
+                  ].filter(Boolean)}
+                  highlight={`${quantity} units`}
+                  highlightColor={highlightColor}
+                  fields={[{ label: 'Status', value: product.isActive ? 'Active' : 'Disabled' }]}
+                  actions={[
+                    <Button key="adjust" type="text" onClick={() => openStockAdjust(product)}>
+                      Adjust stock
+                    </Button>,
+                  ]}
+                />
+              </List.Item>
+            );
+          }}
+        />
+      )}
 
       <StockAdjustModal
         open={stockModalOpen}
