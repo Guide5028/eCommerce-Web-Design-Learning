@@ -162,8 +162,14 @@ export default function AdminDashboardPage() {
           .map((p) => ({ product: p, recommend: restockTarget - Number(p.stockQuantity) }))
           .sort((a, b) => Number(a.product.stockQuantity) - Number(b.product.stockQuantity));
 
-        // oldest -> newest, left to right, for the revenue trend line
-        const revenueBars = [...sales].reverse().map((s) => Number(s.totalAmount));
+        // Cumulative running total, oldest -> newest, left to right -- matches the "So far"
+        // label above it (a per-order line instead made one big order look like a spike
+        // that shoots up then drops back down, which read as broken/confusing).
+        let runningTotal = 0;
+        const revenueBars = [...sales].reverse().map((s) => {
+          runningTotal += Number(s.totalAmount);
+          return runningTotal;
+        });
 
         setStats({
           totalCategories: categories.length,
