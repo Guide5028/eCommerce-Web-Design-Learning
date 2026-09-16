@@ -162,7 +162,7 @@ export default function AdminProductsPage() {
       ) : (
         <List
           loading={loading}
-          grid={{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 4, xl: 4 }}
+          grid={{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 4, xl: 4, xxl: 4 }}
           dataSource={products}
           rowKey="productId"
           pagination={{ pageSize: 20, showSizeChanger: false }}
