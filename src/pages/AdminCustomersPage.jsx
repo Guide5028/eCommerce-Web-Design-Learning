@@ -55,6 +55,7 @@ export default function AdminCustomersPage() {
         grid={{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 4, xl: 4 }}
         dataSource={customers}
         rowKey="customerId"
+        pagination={{ pageSize: 20, showSizeChanger: false }}
         locale={{ emptyText: 'No customers yet -- they show up here once shoppers register.' }}
         renderItem={(customer) => (
           <List.Item>

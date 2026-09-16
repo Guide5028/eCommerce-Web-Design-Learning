@@ -159,6 +159,7 @@ export default function AdminStockPage() {
           grid={{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 4, xl: 4 }}
           dataSource={visibleProducts}
           rowKey="productId"
+          pagination={{ pageSize: 20, showSizeChanger: false }}
           renderItem={(product) => {
             const quantity = Number(product.stockQuantity);
             const isOutOfStock = quantity === 0;

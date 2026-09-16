@@ -131,5 +131,13 @@ export default function AdminEmployeesPage() {
     return <Alert type="error" showIcon message="Couldn't load employees" description={error} />;
   }
 
-  return <Table size="small" rowKey="employeeId" dataSource={employees} columns={columns} pagination={false} />;
+  return (
+    <Table
+      size="small"
+      rowKey="employeeId"
+      dataSource={employees}
+      columns={columns}
+      pagination={{ pageSize: 20 }}
+    />
+  );
 }

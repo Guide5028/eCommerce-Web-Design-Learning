@@ -78,6 +78,7 @@ export default function AdminRefundsPage() {
         dataSource={refunds}
         columns={COLUMNS}
         rowKey="refundId"
+        pagination={{ pageSize: 20 }}
         locale={{ emptyText: 'No refunds yet.' }}
       />
 

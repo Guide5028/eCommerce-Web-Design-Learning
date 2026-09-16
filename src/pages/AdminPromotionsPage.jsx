@@ -110,6 +110,7 @@ export default function AdminPromotionsPage() {
         grid={{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 4, xl: 4 }}
         dataSource={promotions}
         rowKey="promotionId"
+        pagination={{ pageSize: 20, showSizeChanger: false }}
         locale={{ emptyText: 'No promotions yet.' }}
         renderItem={(promotion) => {
           const now = dayjs();
