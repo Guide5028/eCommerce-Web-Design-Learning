@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Button, Card, Flex, List, Popconfirm, Switch, Typography, message } from 'antd';
 import { PlusOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import { categoryService } from '../services/categoryService.js';
+import { createPagination } from '../config/pagination.js';
 import CategoryFormModal from '../components/CategoryFormModal.jsx';
 
 // Admin page for listing, creating, editing, and deleting product categories.
@@ -95,12 +96,7 @@ export default function AdminCategoriesPage() {
         grid={{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 4, xl: 4, xxl: 4 }}
         dataSource={categories}
         rowKey="categoryId"
-        pagination={{
-          defaultPageSize: 10,
-          showSizeChanger: true,
-          pageSizeOptions: [10, 20, 50, 100],
-          showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`,
-        }}
+        pagination={createPagination()}
         renderItem={(category) => (
           <List.Item>
             <Card

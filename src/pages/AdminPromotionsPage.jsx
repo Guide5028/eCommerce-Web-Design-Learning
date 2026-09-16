@@ -5,6 +5,7 @@ import dayjs from 'dayjs';
 import { promotionService } from '../services/promotionService.js';
 import { categoryService } from '../services/categoryService.js';
 import { productService } from '../services/productService.js';
+import { createPagination } from '../config/pagination.js';
 import PromotionFormModal from '../components/PromotionFormModal.jsx';
 import AdminItemCard from '../components/AdminItemCard.jsx';
 
@@ -110,12 +111,7 @@ export default function AdminPromotionsPage() {
         grid={{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 4, xl: 4, xxl: 4 }}
         dataSource={promotions}
         rowKey="promotionId"
-        pagination={{
-          pageSize: 20,
-          showSizeChanger: true,
-          pageSizeOptions: [10, 20, 50, 100],
-          showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`,
-        }}
+        pagination={createPagination()}
         locale={{ emptyText: 'No promotions yet.' }}
         renderItem={(promotion) => {
           const now = dayjs();

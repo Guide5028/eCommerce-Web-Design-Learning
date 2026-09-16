@@ -8,17 +8,10 @@ import AdminItemCard from '../components/AdminItemCard.jsx';
 import AdminFilterBar from '../components/AdminFilterBar.jsx';
 import ViewToggle from '../components/ViewToggle.jsx';
 import useViewMode from '../hooks/useViewMode.js';
+import { createPagination } from '../config/pagination.js';
 
 // Below this, a product's stock gets flagged so admins can restock before it hits 0.
 const LOW_STOCK_THRESHOLD = 5;
-
-// Shared between the Table and card-grid views below.
-const PAGINATION = {
-  pageSize: 20,
-  showSizeChanger: true,
-  pageSizeOptions: [10, 20, 50, 100],
-  showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`,
-};
 
 // Admin page for viewing and adjusting product stock levels -- separate from
 // AdminProductsPage, which owns the catalog details (name/category/price/barcode/SKU).
@@ -159,7 +152,7 @@ export default function AdminStockPage() {
           columns={columns}
           dataSource={visibleProducts}
           rowKey="productId"
-          pagination={PAGINATION}
+          pagination={createPagination()}
         />
       ) : (
         <List
@@ -167,7 +160,7 @@ export default function AdminStockPage() {
           grid={{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 4, xl: 4, xxl: 4 }}
           dataSource={visibleProducts}
           rowKey="productId"
-          pagination={PAGINATION}
+          pagination={createPagination()}
           renderItem={(product) => {
             const quantity = Number(product.stockQuantity);
             const isOutOfStock = quantity === 0;

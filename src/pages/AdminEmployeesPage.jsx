@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Alert, Flex, Select, Spin, Switch, Table, Typography } from 'antd';
 import { useAuth } from '../context/AuthContext.jsx';
 import { employeeService } from '../services/employeeService.js';
+import { createPagination } from '../config/pagination.js';
 
 const ROLE_OPTIONS = [
   { value: 'cashier', label: 'Cashier' },
@@ -137,12 +138,7 @@ export default function AdminEmployeesPage() {
       rowKey="employeeId"
       dataSource={employees}
       columns={columns}
-      pagination={{
-        pageSize: 20,
-        showSizeChanger: true,
-        pageSizeOptions: [10, 20, 50, 100],
-        showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`,
-      }}
+      pagination={createPagination()}
     />
   );
 }
