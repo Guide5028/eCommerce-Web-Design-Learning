@@ -10,6 +10,14 @@ import AdminFilterBar from '../components/AdminFilterBar.jsx';
 import ViewToggle from '../components/ViewToggle.jsx';
 import useViewMode from '../hooks/useViewMode.js';
 
+// Shared between the Table and card-grid views below.
+const PAGINATION = {
+  pageSize: 20,
+  showSizeChanger: true,
+  pageSizeOptions: [10, 20, 50, 100],
+  showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`,
+};
+
 // Admin page for listing, creating, editing, and deleting product catalog details.
 // Stock levels live on their own page (AdminStockPage) -- see /admin/stock.
 export default function AdminProductsPage() {
@@ -157,7 +165,7 @@ export default function AdminProductsPage() {
           columns={columns}
           dataSource={products}
           rowKey="productId"
-          pagination={{ pageSize: 20 }}
+          pagination={PAGINATION}
         />
       ) : (
         <List
@@ -165,7 +173,7 @@ export default function AdminProductsPage() {
           grid={{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 4, xl: 4, xxl: 4 }}
           dataSource={products}
           rowKey="productId"
-          pagination={{ pageSize: 20, showSizeChanger: false }}
+          pagination={PAGINATION}
           renderItem={(product) => (
             <List.Item>
               <AdminItemCard

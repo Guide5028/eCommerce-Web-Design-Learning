@@ -95,7 +95,12 @@ export default function AdminCategoriesPage() {
         grid={{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 4, xl: 4, xxl: 4 }}
         dataSource={categories}
         rowKey="categoryId"
-        pagination={{ pageSize: 20, showSizeChanger: false }}
+        pagination={{
+          defaultPageSize: 20,
+          showSizeChanger: true,
+          pageSizeOptions: [10, 20, 50, 100],
+          showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`,
+        }}
         renderItem={(category) => (
           <List.Item>
             <Card

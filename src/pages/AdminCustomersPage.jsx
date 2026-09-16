@@ -55,7 +55,12 @@ export default function AdminCustomersPage() {
         grid={{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 4, xl: 4, xxl: 4 }}
         dataSource={customers}
         rowKey="customerId"
-        pagination={{ pageSize: 20, showSizeChanger: false }}
+        pagination={{
+          pageSize: 20,
+          showSizeChanger: true,
+          pageSizeOptions: [10, 20, 50, 100],
+          showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`,
+        }}
         locale={{ emptyText: 'No customers yet -- they show up here once shoppers register.' }}
         renderItem={(customer) => (
           <List.Item>

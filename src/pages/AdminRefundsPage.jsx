@@ -78,7 +78,12 @@ export default function AdminRefundsPage() {
         dataSource={refunds}
         columns={COLUMNS}
         rowKey="refundId"
-        pagination={{ pageSize: 20 }}
+        pagination={{
+          pageSize: 20,
+          showSizeChanger: true,
+          pageSizeOptions: [10, 20, 50, 100],
+          showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`,
+        }}
         locale={{ emptyText: 'No refunds yet.' }}
       />
 
